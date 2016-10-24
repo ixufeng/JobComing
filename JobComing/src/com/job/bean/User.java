@@ -31,7 +31,6 @@ public class User {
 	public void setTrueName(String trueName) {
 		this.trueName = trueName;
 	}
-	
 	public int getAge() {
 		return age;
 	}

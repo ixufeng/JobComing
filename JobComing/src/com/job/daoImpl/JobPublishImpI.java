@@ -66,7 +66,7 @@ public class JobPublishImpI implements JobPublishDao{
 	@SuppressWarnings("unchecked")
 	public JobPublish getJobPublish(int jobPublishId){
 		JobPublish jp=new JobPublish();
-		String hql="from jobPublish where jobPublishId=?";
+		String hql="from JobPublish where jobPublishId=?";
 		Object[]params=new Object[]{jobPublishId};
 		jp=(JobPublish) query.getObj(hql, params);
 		return jp;
@@ -95,7 +95,7 @@ public class JobPublishImpI implements JobPublishDao{
 	 */
 	public List<JobPublish>getJPListByUserId(int userId){
 		List<JobPublish>list=new ArrayList<>();
-		String hql="from jobPublish where userId=?";
+		String hql="from JobPublish where userId=?";
 		Object[]params=new Object[]{userId};
 		list=getJobPublishList(hql, params);
 		return list;
