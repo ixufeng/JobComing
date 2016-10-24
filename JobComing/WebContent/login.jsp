@@ -37,7 +37,7 @@
 									<label class="mlabel"></label>
 									<input type="password" name="password" placeholder="输入密码" class="form-control" id="login_password">
 								</div>
-								<button type="submit" class="btn btn-block">登录</button>
+								<button type="submit" class="btn btn-block" id="popup-submit">登录</button>
 								<div id="popup-captcha"></div>
 							</div>
 						</fieldset>
@@ -68,12 +68,15 @@
 				             geetest_seccode: validate.geetest_seccode
 				            },
 				     success: function (data) {
-				            
+				    		 if (data && (data.status === "success")) {
+		                        $(document.body).html('<h1>登录成功</h1>');
+		                    } else {
+		                        $(document.body).html('<h1>登录失败</h1>');
+		                    }
 				     });				    
-					    captchaObj.show();	  
+					   	  
 				     });		
-				      // 将验证码加到id为captcha的元素里
-				      captchaObj.appendTo("#popup-captcha");
+				    
 				    };
 				    // 验证开始需要向网站主后台获取id，challenge，success（是否启用failback）
 				    $.ajax({
