@@ -30,7 +30,7 @@ $("#register_username").blur(function(){
 	else{
 		$.ajax({
 			type:"post",
-			url:"RegisterServlet?curr="+"register_username",
+			url:"AjaxServlet?curr="+"register_username",
 			data:{username:value},
 			success:function(data){
 				$("#register_username").prev().text(data);
@@ -98,7 +98,7 @@ $("#register_email").blur(function(){
 	else{
 		$.ajax({
 			type:"post",
-			url:"RegisterServlet?curr="+"register_email",
+			url:"AjaxServlet?curr="+"register_email",
 			data:{email:value},
 			success:function(data){
 				$("#register_email").prev().text(data);
@@ -127,8 +127,21 @@ $("#register_phone").blur(function(){
 		$(this).addClass("input-error");
 	}
 	else{
-		$(this).prev().html("");
-		$(this).removeClass("input-error");
+		$.ajax({
+			type:"post",
+			url:"AjaxServlet?curr="+"register_phone",
+			data:{phone:value},
+			success:function(data){
+				$("#register_phone").prev().text(data);
+				if(data!=""){
+					$("#register_phone").addClass("input-error");
+				}
+			},
+			error:function(){
+				alert("出现了一点错误")
+			},
+			dataType:"text",
+		});
 	}
 });
  
