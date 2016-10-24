@@ -14,7 +14,7 @@
         <property name="trueName" type="java.lang.String">
             <column name="TRUENAME" />
         </property>
-        <property name="password" type="int">
+        <property name="password" type="java.lang.String">
             <column name="PASSWORD" />
         </property>
         <property name="age" type="int">

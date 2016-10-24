@@ -5,7 +5,7 @@ public class User {
 	private int userId;
 	private String userName;
 	private String trueName;
-	private int password;
+	private String password;
 	private int age;
 	private int sex;
 	private int phone;
@@ -31,10 +31,10 @@ public class User {
 	public void setTrueName(String trueName) {
 		this.trueName = trueName;
 	}
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	public int getAge() {
