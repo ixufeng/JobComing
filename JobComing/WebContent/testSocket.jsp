@@ -9,17 +9,20 @@
 </head>
 <body>
 	<input id="websocketContent" type="text">
-<<<<<<< HEAD
+
 	
 	<button="button" id="websocketSend">发送</button>
 	
 	<div id="content"></div>
 	
-=======
+
 	<button type="button" id="websocketSend">发送</button>
+	
 	<div id="content">
+	
+	
 	</div>
->>>>>>> master
+
 </body>
 
 <script type="text/javascript" src="js/socket.js"></script>
