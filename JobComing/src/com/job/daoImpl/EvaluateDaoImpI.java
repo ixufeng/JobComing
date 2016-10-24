@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.junit.Test;
 
 import com.job.bean.Evaluate;
+import com.job.bean.User;
 import com.job.dao.EvaluateDao;
 import com.job.hibernate.CommonQuery;
 
@@ -52,6 +53,16 @@ public class EvaluateDaoImpI implements EvaluateDao {
 	public int update(String hql, Object[] params) {
 		
 		return query.update(hql, params);
+	}
+	/**
+	 * 得到一个评论对象
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public Evaluate getEvaluate(String hql, Object[] params){
+		Object obj = query.getObj(hql, params);
+		return obj==null?null:(Evaluate)obj;
 	}
 	/**
 	 * 根据用户id返回一个评价集合
