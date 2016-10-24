@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-24 12:36:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.ChatRecoed" table="CHATRECOED">
+        <id name="userSendId" type="int">
+            <column name="USERSENDID" />
+            <generator class="assigned" />
+        </id>
+        <property name="chatRecordId" type="int">
+            <column name="CHATRECORDID" />
+        </property>
+        <property name="userReciveId" type="int">
+            <column name="USERRECIVEID" />
+        </property>
+        <property name="chatContent" type="java.lang.String">
+            <column name="CHATCONTENT" />
+        </property>
+        <property name="time" type="java.util.Date">
+            <column name="TIME" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

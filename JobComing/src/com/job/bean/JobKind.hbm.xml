@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-24 12:36:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.JobKind" table="JOBKIND">
+        <id name="jobKindId" type="int">
+            <column name="JOBKINDID" />
+            <generator class="assigned" />
+        </id>
+        <property name="jobKindName" type="java.lang.String">
+            <column name="JOBKINDNAME" />
+        </property>
+        <property name="jobKindIntroduce" type="java.lang.String">
+            <column name="JOBKINDINTRODUCE" />
+        </property>
+    </class>
+</hibernate-mapping>

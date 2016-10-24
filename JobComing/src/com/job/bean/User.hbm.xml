@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-24 12:36:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.User" table="USER">
+        <id name="userId" type="int">
+            <column name="USERID" />
+            <generator class="increment" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="trueName" type="java.lang.String">
+            <column name="TRUENAME" />
+        </property>
+        <property name="password" type="int">
+            <column name="PASSWORD" />
+        </property>
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        <property name="sex" type="int">
+            <column name="SEX" />
+        </property>
+        <property name="phone" type="int">
+            <column name="PHONE" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="headPicture" type="java.lang.String">
+            <column name="HEADPICTURE" />
+        </property>
+        <property name="score" type="int">
+            <column name="SCORE" />
+        </property>
+        <property name="identifyCode" type="java.lang.String">
+            <column name="IDENTIFYCODE" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -16,5 +16,8 @@
 		<property name="format_sql">true</property> -->
 		<property name="hbm2ddl.auto">update</property>	
 		<property name="javax.persistence.validation.mode">none</property>	
+		
+		<mapping resource="com/job/bean/User.hbm.xml"/>
+		
 	</session-factory>
 </hibernate-configuration>
