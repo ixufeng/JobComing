@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.job.bean.JobPublish;
+import com.job.bean.User;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
 
@@ -57,16 +58,23 @@ public class JobPublishImpI implements JobPublishDao{
 		Object[]params=new Object[]{jobPublishId};
 		return delete(hql, params);
 	}
+	
+	/**
+	 * 返回一条兼职信息
+	 */
+	public JobPublish getJobPublish(String hql, Object[] params) {
+		Object obj = query.getObj(hql, params);
+		return obj==null?null:(JobPublish)obj;
+	}
+
 	/**
 	 * 根据兼职信息编号返回一条兼职信息
 	 */
 	@SuppressWarnings("unchecked")
 	public JobPublish getJobPublish(int jobPublishId){
-		JobPublish jp=new JobPublish();
 		String hql="from JobPublish where jobPublishId=?";
 		Object[]params=new Object[]{jobPublishId};
-		jp=(JobPublish) query.getObj(hql, params);
-		return jp;
+		return getJobPublish(hql, params);
 	}
 	/**
 	 * 返回多条兼职信息
@@ -82,7 +90,7 @@ public class JobPublishImpI implements JobPublishDao{
 		return list;
 	}
 	/**
-	 * 根据工作种类返回多条兼职信息
+	 * 根据工作种类id返回多条兼职信息
 	 */
 	public List<JobPublish> getJobPublishList(int jobKindId){
 		List<JobPublish>list=new ArrayList<JobPublish>();

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+
+import com.job.bean.JobPublish;
 import com.job.bean.User;
 import com.job.dao.UserDao;
 import com.job.hibernate.CommonQuery;
@@ -77,7 +79,11 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	public List<User> getUserList(String hql, Object[] params) {
 		List<User> list = new ArrayList<User>();
-		list=(List<User>) query.getObj(hql, params);
+		List<Object>list2=new ArrayList<Object>();
+		list2=query.selectForList(hql, params);
+		for(int i=0;i<list2.size();i++){
+			list.add((User)list2.get(i));
+		}
 		return list;
 		
 	}
@@ -99,6 +105,22 @@ public class UserDaoImpl implements UserDao {
 	public User getUser(String userName){
 		String hql="from User where userName=?";
 		Object[] params=new Object[]{userName};
+		return getUser(hql, params);
+	}
+	/**
+	 * 根据手机号返回一个用户对象
+	 */
+	public User getUserByPhone(int phone){
+		String hql="from User where phone=?";
+		Object[]params=new Object[]{phone};
+		return getUser(hql, params);
+	}
+	/**
+	 * 根据邮箱返回一个用户对象
+	 */
+	public User getUserByEmail(String email){
+		String hql="from User where email=?";
+		Object[]params=new Object[]{email};
 		return getUser(hql, params);
 	}
 }

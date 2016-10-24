@@ -72,13 +72,8 @@ public class EvaluateDaoImpI implements EvaluateDao {
 	 * 根据评论编号删除评论
 	 */
 	public int delete(int evaluateid){
-		String hql="delete from Evaluate where evaluate=?";
+		String hql="delete from Evaluate where evaluateId=?";
 		Object[]params=new Object[]{evaluateid};
 		return delete(hql, params);
-	}
-	@Test
-	public void test(){
-		System.out.println(getEvaluateListByUserId(0).size());
-		
 	}
 }

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+
 import com.job.bean.JobKind;
+import com.job.bean.User;
 import com.job.dao.JobKindDao;
 import com.job.hibernate.CommonQuery;
 
@@ -58,9 +60,8 @@ public class JobKindDaoImpI implements JobKindDao {
 	 * @return
 	 */
 	public JobKind getJobKind(String hql, Object[] params){
-		JobKind jobKind=new JobKind();
-		jobKind=(JobKind) query.getObj(hql, params);
-		return jobKind;
+		Object obj = query.getObj(hql, params);
+		return obj==null?null:(JobKind)obj;
 	}
 	
 	/**
@@ -72,7 +73,11 @@ public class JobKindDaoImpI implements JobKindDao {
 	@SuppressWarnings("unchecked")
 	public List<JobKind>getJobKindList(String hql,Object[]params){
 		List<JobKind>list=new ArrayList<JobKind>();
-		list=(List<JobKind>) query.getObj(hql, params);
+		List<Object>list2=new ArrayList<Object>();
+		list2=query.selectForList(hql, params);
+		for(int i=0;i<list2.size();i++){
+			list.add((JobKind)list2.get(i));
+		}
 		return list;
 	}
 	/**
@@ -95,4 +100,5 @@ public class JobKindDaoImpI implements JobKindDao {
 		Object[] params=new Object[]{jobKindName};
 		return getJobKind(hql, params);
 	}
+
 }
