@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-24 12:36:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.Evaluate" table="EVALUATE">
+        <id name="evaluateId" type="int">
+            <column name="EVALUATEID" />
+            <generator class="assigned" />
+        </id>
+        <property name="jobPublishId" type="int">
+            <column name="JOBPUBLISHID" />
+        </property>
+        <property name="userId" type="int">
+            <column name="USERID" />
+        </property>
+        <property name="grade" type="int">
+            <column name="GRADE" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <property name="evaluateTime" type="java.util.Date">
+            <column name="EVALUATETIME" />
+        </property>
+    </class>
+</hibernate-mapping>

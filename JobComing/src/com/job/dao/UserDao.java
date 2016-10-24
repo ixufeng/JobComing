@@ -1,5 +1,6 @@
 package com.job.dao;
 
-public class UserDao {
-
+public interface UserDao extends QueryDao{
+	
+	
 }
