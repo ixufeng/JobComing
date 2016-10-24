@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-24 12:36:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.JobPublish" table="JOBPUBLISH">
+        <id name="jobPublishId" type="int">
+            <column name="JOBPUBLISHID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="int">
+            <column name="USERID" />
+        </property>
+        <property name="jobKindId" type="int">
+            <column name="JOBKINDID" />
+        </property>
+        <property name="jobPublishTime" type="java.util.Date">
+            <column name="JOBPUBLISHTIME" />
+        </property>
+        <property name="addressNumber" type="java.lang.String">
+            <column name="ADDRESSNUMBER" />
+        </property>
+        <property name="detailAddress" type="java.lang.String">
+            <column name="DETAILADDRESS" />
+        </property>
+        <property name="workBeginTime" type="java.util.Date">
+            <column name="WORKBEGINTIME" />
+        </property>
+        <property name="workOverTime" type="java.util.Date">
+            <column name="WORKOVERTIME" />
+        </property>
+        <property name="workDescribe" type="java.lang.String">
+            <column name="WORKDESCRIBE" />
+        </property>
+    </class>
+</hibernate-mapping>
