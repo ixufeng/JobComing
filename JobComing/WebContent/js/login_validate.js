@@ -7,18 +7,8 @@ $("#login_username").blur(function(){
 		$(this).addClass("input-error");
 	}
 	else{
-		$.ajax({
-			type:"post",
-			url:"",
-			data:{username:value},
-			success:function(date){
-				
-			},
-			error:function(){
-				
-			},
-			dataType:"",
-		});
+		$(this).prev().html("");
+		$(this).removeClass("input-error");
 	}
 });
 
@@ -30,17 +20,7 @@ $("#login_password").blur(function(){
 		$(this).addClass("input-error");
 	}
 	else{
-		$.ajax({
-			type:"post",
-			url:"",
-			data:{password:value},
-			success:function(date){
-				
-			},
-			error:function(){
-				
-			},
-			dataType:"",
-		});
+		$(this).prev().html("");
+		$(this).removeClass("input-error");
 	}
 })
