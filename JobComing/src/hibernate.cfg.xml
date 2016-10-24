@@ -18,6 +18,11 @@
 		<property name="javax.persistence.validation.mode">none</property>	
 		
 		<mapping resource="com/job/bean/User.hbm.xml"/>
-		
+		<mapping resource="com/job/bean/RelationShip.hbm.xml"/>
+		<mapping resource="com/job/bean/JobPublish.hbm.xml"/>
+		<mapping resource="com/job/bean/JobKind.hbm.xml"/>
+		<mapping resource="com/job/bean/Evaluate.hbm.xml"/>
+		<mapping resource="com/job/bean/ChatRecoed.hbm.xml"/>
+		<mapping resource="com/job/bean/AgreeMent.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

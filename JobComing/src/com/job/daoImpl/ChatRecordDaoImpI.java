@@ -1,5 +1,10 @@
 package com.job.daoImpl;
 
+import java.io.Serializable;
+
+import org.hibernate.Session;
+
+import com.job.bean.ChatRecoed;
 import com.job.dao.ChatRecordDao;
 import com.job.hibernate.CommonQuery;
 
@@ -12,7 +17,18 @@ public class ChatRecordDaoImpI implements ChatRecordDao {
 	
 		return query.update(hql, params) ;
 	}
-
+	/**
+	 * 根据聊天记录对象插入聊天记录表
+	 */
+	public int add(ChatRecoed cr){
+		Session session = query.getSession();
+		Serializable se = session.save(cr);
+		query.release(session);
+		if(se!=null){
+			return 1;
+		}
+		return 0;
+	}
 	@Override
 	/**
 	 * 删除一条聊天记录
