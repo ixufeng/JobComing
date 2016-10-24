@@ -11,7 +11,7 @@ public interface JobPublishDao extends QueryDao {
 	public int delete(int jobPublishId);
 	//返回一条兼职信息
 	public JobPublish getJobPublish(String hql, Object[] params);
-	//返回多条兼职信息
+	//返回一个兼职信息集合
 	public List<JobPublish> getJobPublishList(String hql, Object[] params);
 	//根据兼职信息编号返回一条兼职信息
 	public JobPublish getJobPublish(int jobPublishId);
