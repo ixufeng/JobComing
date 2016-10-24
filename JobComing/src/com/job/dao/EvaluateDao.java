@@ -11,6 +11,8 @@ public interface EvaluateDao extends QueryDao {
 	public int add(Evaluate eval);
 	//根据用户id返回一个评价集合
 	public List<Evaluate> getEvaluateListByUserId(int userid);
+	//返回一个评价集合
+	public List<Evaluate>getEvaluateList(String hql, Object[] params);
 	//根据评论编号删除评论
 	public int delete(int evaluateid);
 }
