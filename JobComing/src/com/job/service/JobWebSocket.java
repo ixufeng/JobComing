@@ -61,9 +61,6 @@ public class JobWebSocket {
 		
 	}
 	
-	
-	
-	
 	/**
 	 * 发送消息
 	 * @param mes

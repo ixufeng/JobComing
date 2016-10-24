@@ -9,8 +9,11 @@
 </head>
 <body>
 	<input id="websocketContent" type="text">
+	
 	<button="button" id="websocketSend">发送</button>
-
+	
+	<div id="content"></div>
+	
 </body>
 
 <script type="text/javascript" src="js/socket.js"></script>
