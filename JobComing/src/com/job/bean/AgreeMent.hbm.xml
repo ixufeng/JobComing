@@ -6,7 +6,7 @@
     <class name="com.job.bean.AgreeMent" table="AGREEMENT">
         <id name="agreeMentId" type="int">
             <column name="AGREEMENTID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="jobPublishId" type="int">
             <column name="JOBPUBLISHID" />
