@@ -1,9 +1,12 @@
 package com.job.daoImpl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 
+import com.job.bean.JobKind;
 import com.job.bean.RelationShip;
 import com.job.dao.RelationShipDao;
 import com.job.hibernate.CommonQuery;
@@ -25,7 +28,7 @@ public class RelationShipDaoImpl implements RelationShipDao {
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private int add(RelationShip rs){
+	public int add(RelationShip rs){
 		Session session = query.getSession();
 		Serializable se = session.save(rs);
 		query.release(session);
@@ -60,5 +63,17 @@ public class RelationShipDaoImpl implements RelationShipDao {
 		String hql="delete from RelationShip where relationShipId=?";
 		Object[]params=new Object[]{relationShipId};
 		return delete(hql, params);
+	}
+	/**
+	 * 返回一个关注记录集合
+	 */
+	public List<RelationShip>getRelationShipList(String hql,Object[]params){
+		List<RelationShip>list=new ArrayList<RelationShip>();
+		List<Object>list2=new ArrayList<Object>();
+		list2=query.selectForList(hql, params);
+		for(int i=0;i<list2.size();i++){
+			list.add((RelationShip)list2.get(i));
+		}
+		return list;
 	}
 }

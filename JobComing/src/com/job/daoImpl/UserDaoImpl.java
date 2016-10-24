@@ -1,11 +1,8 @@
 package com.job.daoImpl;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-
-import com.job.bean.JobPublish;
 import com.job.bean.User;
 import com.job.dao.UserDao;
 import com.job.hibernate.CommonQuery;
@@ -110,7 +107,7 @@ public class UserDaoImpl implements UserDao {
 	/**
 	 * 根据手机号返回一个用户对象
 	 */
-	public User getUserByPhone(int phone){
+	public User getUserByPhone(long phone){
 		String hql="from User where phone=?";
 		Object[]params=new Object[]{phone};
 		return getUser(hql, params);

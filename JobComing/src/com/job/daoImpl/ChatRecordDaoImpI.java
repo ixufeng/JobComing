@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.hibernate.Session;
 
 import com.job.bean.ChatRecoed;
+import com.job.bean.User;
 import com.job.dao.ChatRecordDao;
 import com.job.hibernate.CommonQuery;
 
@@ -46,5 +47,14 @@ public class ChatRecordDaoImpI implements ChatRecordDao {
 		
 		return query.update(hql, params);
 	}
-
+	/**
+	 * 返回一个聊天记录对象
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public ChatRecoed getChatRecord(String hql, Object[] params){
+		Object obj = query.getObj(hql, params);
+		return obj==null?null:(ChatRecoed)obj;
+	}
 }
