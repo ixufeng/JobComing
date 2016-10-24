@@ -31,6 +31,12 @@ public class User {
 	public void setTrueName(String trueName) {
 		this.trueName = trueName;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getAge() {
 		return age;
 	}
@@ -42,13 +48,6 @@ public class User {
 	}
 	public void setSex(int sex) {
 		this.sex = sex;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public long getPhone() {
 		return phone;
@@ -84,6 +83,4 @@ public class User {
 	public User() {
 		super();
 	}
-	
-
 }

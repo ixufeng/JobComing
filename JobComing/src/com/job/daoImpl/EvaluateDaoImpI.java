@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.Test;
+
 import com.job.bean.Evaluate;
 import com.job.dao.EvaluateDao;
 import com.job.hibernate.CommonQuery;
@@ -55,18 +57,22 @@ public class EvaluateDaoImpI implements EvaluateDao {
 	 * 根据用户id返回一个评价集合
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Evaluate> getEvaluateByUserId(int userid){
+	public List<Evaluate> getEvaluateListByUserId(int userid){
 		List<Evaluate>list=new ArrayList<>();
+		List<Object>list2=new ArrayList<>();
 		String hql="from Evaluate where userId=?";
 		Object[]params=new Object[]{userid};
-		list=(List<Evaluate>) query.getObj(hql, params);
+		list2=query.selectForList(hql, params);
+		for(int i=0;i<list2.size();i++){
+			list.add((Evaluate)list2.get(i));
+		}
 		return list;
 	}
 	/**
 	 * 根据评论编号删除评论
 	 */
 	public int delete(int evaluateid){
-		String hql="delete from Evaluate where evaluate=?";
+		String hql="delete from Evaluate where evaluateId=?";
 		Object[]params=new Object[]{evaluateid};
 		return delete(hql, params);
 	}
