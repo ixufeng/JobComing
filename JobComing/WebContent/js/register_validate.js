@@ -17,7 +17,7 @@
 //注册表单  用户名
 $("#register_username").blur(function(){
 	//用户名规则--数字，字母，下划线，中文 6-12位
-	var username_reg = /^[a-z\d_\u4e00-\u9fa5]{6,12}$/;
+	var username_reg = /^[A-Za-z\d_\u4e00-\u9fa5]{6,12}$/;
 	var value = $(this).val();
 	if(value==""){
 		$(this).prev().html("用户名不能为空");
@@ -30,15 +30,18 @@ $("#register_username").blur(function(){
 	else{
 		$.ajax({
 			type:"post",
-			url:"",
+			url:"RegisterServlet?curr="+"register_username",
 			data:{username:value},
-			success:function(date){
-				
+			success:function(data){
+				$("#register_username").prev().text(data);
+				if(data!=""){
+					$("#register_username").addClass("input-error");
+				}
 			},
 			error:function(){
-				
+				alert("出现了一点错误")
 			},
-			dataType:"",
+			dataType:"text",
 		});
 	}
 });
@@ -93,8 +96,21 @@ $("#register_email").blur(function(){
 		$(this).addClass("input-error");
 	}
 	else{
-		$(this).prev().html("");
-		$(this).removeClass("input-error");
+		$.ajax({
+			type:"post",
+			url:"RegisterServlet?curr="+"register_email",
+			data:{email:value},
+			success:function(data){
+				$("#register_email").prev().text(data);
+				if(data!=""){
+					$("#register_email").addClass("input-error");
+				}
+			},
+			error:function(){
+				alert("出现了一点错误")
+			},
+			dataType:"text",
+		});
 	}
 });
 

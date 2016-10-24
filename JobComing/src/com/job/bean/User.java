@@ -5,10 +5,10 @@ public class User {
 	private int userId;
 	private String userName;
 	private String trueName;
-	private int password;
+	private String password;
 	private int age;
 	private int sex;
-	private int phone;
+	private long phone;
 	private String email;
 	private String headPicture;
 	private int score;
@@ -31,12 +31,7 @@ public class User {
 	public void setTrueName(String trueName) {
 		this.trueName = trueName;
 	}
-	public int getPassword() {
-		return password;
-	}
-	public void setPassword(int password) {
-		this.password = password;
-	}
+	
 	public int getAge() {
 		return age;
 	}
@@ -49,10 +44,17 @@ public class User {
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public int getPhone() {
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public long getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 	public String getEmail() {
