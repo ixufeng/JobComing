@@ -1,6 +1,5 @@
 package com.job.service;
 
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.websocket.OnClose;
