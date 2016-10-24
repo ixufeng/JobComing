@@ -1,11 +1,13 @@
 package com.job.daoImpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.hibernate.Session;
 import com.job.bean.JobKind;
 import com.job.dao.JobKindDao;
 import com.job.hibernate.CommonQuery;
+
 
 public class JobKindDaoImpI implements JobKindDao {
 	private CommonQuery query = new CommonQuery();
@@ -17,7 +19,20 @@ public class JobKindDaoImpI implements JobKindDao {
 	
 		return query.update(hql, params);
 	}
-
+	/**
+	 * 根据一个工作种类对象插入工作种类表
+	 * @param jk
+	 * @return
+	 */
+	public int add(JobKind jk){
+		Session session = query.getSession();
+		Serializable se = session.save(jk);
+		query.release(session);
+		if(se!=null){
+			return 1;
+		}
+		return 0;
+	}
 	@Override
 	/**
 	 * 删除一个工作种类

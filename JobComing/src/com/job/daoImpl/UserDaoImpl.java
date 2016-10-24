@@ -3,9 +3,7 @@ package com.job.daoImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
-
 import com.job.bean.User;
 import com.job.dao.UserDao;
 import com.job.hibernate.CommonQuery;
@@ -103,5 +101,4 @@ public class UserDaoImpl implements UserDao {
 		Object[] params=new Object[]{userName};
 		return getUser(hql, params);
 	}
-	
 }

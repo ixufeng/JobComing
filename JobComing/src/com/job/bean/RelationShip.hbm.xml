@@ -6,7 +6,7 @@
     <class name="com.job.bean.RelationShip" table="RELATIONSHIP">
         <id name="relationShipId" type="int">
             <column name="RELATIONSHIPID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="userIdA" type="int">
             <column name="USERIDA" />
