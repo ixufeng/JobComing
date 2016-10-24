@@ -15,7 +15,7 @@ public interface UserDao extends QueryDao{
 	//通过用户姓名返回一个用户对象
 	public User getUser(String userName);
 	//根据手机号返回一个用户对象
-	public User getUserByPhone(int phone);
+	public User getUserByPhone(long phone);
 	//根据邮箱返回一个用户对象
 	public User getUserByEmail(String email);
 }

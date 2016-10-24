@@ -13,7 +13,7 @@ public interface AgreeMentDao extends QueryDao {
 	public int update(String status,int agreeMnetId);
 	//根据用户id返回协议记录集合
 	public List<AgreeMent> getAgreeMentListByUserId(int userId);
-	//返回一条协议记录
+	//返回一条协议记录对象
 	public AgreeMent getAgreeMent(String hql, Object[] params);
 
 }
