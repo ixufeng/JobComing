@@ -11,7 +11,7 @@
 	<input id="websocketContent" type="text">
 
 	
-	<button="button" id="websocketSend">发送</button>
+	<button type="button" id="websocketSend">发送</button>
 	
 	<div id="content"></div>
 	

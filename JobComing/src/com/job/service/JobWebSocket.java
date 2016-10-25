@@ -18,7 +18,6 @@ import javax.websocket.server.ServerEndpoint;
 public class JobWebSocket {
 
 	private static CopyOnWriteArraySet<JobWebSocket> webSocketSet = new CopyOnWriteArraySet<JobWebSocket>();
-	
 	private Session session;
 	private String userKey;  //标志用户的id
 	
@@ -32,6 +31,7 @@ public class JobWebSocket {
 		
 			
 		 this.session = session;
+		 
          webSocketSet.add(this);     //加入set中      
         
 	}
@@ -56,7 +56,9 @@ public class JobWebSocket {
 	@OnMessage
 	public void onMessage(String message,Session session){
 		
-		System.out.println("来自客户端的消息：" + message);
+		for(JobWebSocket so:webSocketSet){
+			so.sendMessage("hello");
+		}
 		 
 		
 	}
@@ -67,6 +69,7 @@ public class JobWebSocket {
 	 */
 	public void sendMessage(String mes){
 		
+		this.session.getAsyncRemote().sendText(mes);
 	}
 
 	public String getUserKey() {
