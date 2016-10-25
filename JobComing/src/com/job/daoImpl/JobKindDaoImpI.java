@@ -75,7 +75,6 @@ public class JobKindDaoImpI implements JobKindDao {
 	 * @param params
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public List<JobKind> getJobKindList(String hql, Object[] params) {
 		List<JobKind> list = new ArrayList<JobKind>();
 		List<Object> list2 = new ArrayList<Object>();
@@ -109,5 +108,14 @@ public class JobKindDaoImpI implements JobKindDao {
 		Object[] params = new Object[] { jobKindName };
 		return getJobKind(hql, params);
 	}
-
+	/**
+	 * 通过种类名称返回一个种类集合
+	 * @param kindName
+	 * @return
+	 */
+	public List<JobKind> getKindList(String kindName){
+		String hql="from JobKind where jobKindName like '%"+kindName+"%'";
+		Object[]params=new Object[]{};
+		return getJobKindList(hql, params);
+	}
 }

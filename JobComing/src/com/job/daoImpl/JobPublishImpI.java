@@ -73,9 +73,7 @@ public class JobPublishImpI implements JobPublishDao {
 	/**
 	 * 根据兼职信息编号返回一条兼职信息
 	 */
-	@SuppressWarnings("unchecked")
 	public JobPublish getJobPublish(int jobPublishId) {
-		JobPublish jp = new JobPublish();
 		String hql = "from JobPublish where jobPublishId=?";
 		Object[] params = new Object[] { jobPublishId };
 		return getJobPublish(hql, params);
@@ -84,7 +82,6 @@ public class JobPublishImpI implements JobPublishDao {
 	/**
 	 * 返回多条兼职信息
 	 */
-	@SuppressWarnings("unchecked")
 	public List<JobPublish> getJobPublishList(String hql, Object[] params) {
 		List<JobPublish> list = new ArrayList<JobPublish>();
 		List<Object> list2 = new ArrayList<Object>();
@@ -99,21 +96,19 @@ public class JobPublishImpI implements JobPublishDao {
 	 * 根据工作种类id返回多条兼职信息
 	 */
 	public List<JobPublish> getJobPublishList(int jobKindId) {
-		List<JobPublish> list = new ArrayList<JobPublish>();
 		String hql = "from JobPublish where jobKindId=?";
 		Object[] params = new Object[] { jobKindId };
-		list = getJobPublishList(hql, params);
-		return list;
+		return  getJobPublishList(hql, params);
+		
 	}
 
 	/**
 	 * 根据用户id返回多条兼职信息
 	 */
 	public List<JobPublish> getJPListByUserId(int userId) {
-		List<JobPublish> list = new ArrayList<JobPublish>();
 		String hql = "from JobPublish where userId=?";
 		Object[] params = new Object[] { userId };
-		list = getJobPublishList(hql, params);
-		return list;
+		return  getJobPublishList(hql, params);
 	}
+
 }

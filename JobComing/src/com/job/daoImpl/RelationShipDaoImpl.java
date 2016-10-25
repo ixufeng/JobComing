@@ -27,7 +27,6 @@ public class RelationShipDaoImpl implements RelationShipDao {
 	 * @param rs
 	 * @return
 	 */
-	@SuppressWarnings("unused")
 	public int add(RelationShip rs) {
 		Session session = query.getSession();
 		Serializable se = session.save(rs);
