@@ -37,7 +37,7 @@
 									<label class="mlabel"></label>
 									<input type="password" name="password" placeholder="输入密码" class="form-control" id="login_password">
 								</div>
-								<button type="submit" class="btn btn-block" id="popup-submit">登录</button>
+								<button type="submit" class="btn btn-block" id="popup-submit">登&nbsp;录</button>
 								<div id="popup-captcha"></div>
 							</div>
 						</fieldset>
@@ -52,52 +52,5 @@
 		<script src="js/login_register.js"></script>
 		<script src="js/login_validate.js"></script>
 		<script src="http://static.geetest.com/static/tools/gt.js"></script>
-		<script>
-		 var handlerPopup = function (captchaObj) {
-		        // 成功的回调
-		        captchaObj.onSuccess(function () {
-		            var validate = captchaObj.getValidate();
-		            $.ajax({
-		                url: "VerifyLoginServlet", // 进行二次验证
-		                type: "post",
-		                dataType: "json",
-		                data: {
-		                    geetest_challenge: validate.geetest_challenge,
-		                    geetest_validate: validate.geetest_validate,
-		                    geetest_seccode: validate.geetest_seccode
-		                },
-		                success: function (data) {
-		                    if (data && (data.status === "success")) {
-		                        $(document.body).html('<h1>登录成功</h1>');
-		                    } else {
-		                        $(document.body).html('<h1>登录失败</h1>');
-		                    }
-		                }
-		            });
-		        });
-		        $("#popup-submit").click(function () {
-		            captchaObj.show();
-		        });
-		        // 将验证码加到id为captcha的元素里
-		        captchaObj.appendTo("#popup-captcha");
-		    };
-		    // 验证开始需要向网站主后台获取id，challenge，success（是否启用failback）
-		    $.ajax({
-		        url: "StartCaptchaServlet?t=" + (new Date()).getTime(), // 加随机数防止缓存
-		        type: "post",
-		        dataType: "json",
-		        success: function (data) {
-		            // 使用initGeetest接口
-		            // 参数1：配置参数
-		            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
-		            initGeetest({
-		                gt: data.gt,
-		                challenge: data.challenge,
-		                product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
-		                offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-		            }, handlerPopup);
-		        }
-		    });
-		</script>
 	</body>
 </html>
