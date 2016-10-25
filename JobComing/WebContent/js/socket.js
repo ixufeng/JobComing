@@ -18,7 +18,8 @@
 
 
 var ws = $.ws.init("ws://localhost:8080/JobComing/websocket");
-
+console.log(ws);
+console.log("链接成功了吗");
 ws.onopen = function(){
 	
 	console.log("链接成功");
