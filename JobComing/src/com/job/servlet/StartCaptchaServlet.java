@@ -1,6 +1,8 @@
 package com.job.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +31,8 @@ public class StartCaptchaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key());
+		
+		String resStr = "{}";
 		// 自定义userid
 		String userid = "test";
 		// 进行验证预处理
@@ -37,7 +41,10 @@ public class StartCaptchaServlet extends HttpServlet {
 		request.getSession().setAttribute(gtSdk.gtServerStatusSessionKey, gtServerStatus);
 		// 将userid设置到session中
 		request.getSession().setAttribute("userid", userid);
-		response.getWriter().write(gtSdk.getResponseStr());
+		resStr = gtSdk.getResponseStr();
+
+		PrintWriter out = response.getWriter();
+		out.println(resStr);
 	}
 
 }
