@@ -128,13 +128,13 @@ public class JobPublishImpI implements JobPublishDao {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<JobPublish>getJPByPage(int beginIndex,int endIndex,int addressNumber){
+	public List<JobPublish>getJPByPage(int beginIndex,int pagesize,int addressNumber){
 		String hql="from JobPublish where addressNumber = ?";
 		Session session=query.getSession();
 		Object[]params=new Object[]{addressNumber};
 		Query myquery=query.getQuery(hql, params, session);
 		myquery.setFirstResult(beginIndex);
-		myquery.setMaxResults(endIndex);
+		myquery.setMaxResults(pagesize);
 		return myquery.list();
 		
 		
