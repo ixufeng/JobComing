@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-26 19:48:20 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.Inform" table="INFORM">
+        <id name="informId" type="int">
+            <column name="INFORMID" />
+            <generator class="increment" />
+        </id>
+        <property name="informSendId" type="int">
+            <column name="INFORMSENDID" />
+        </property>
+        <property name="informReciveId" type="int">
+            <column name="INFORMRECIVEID" />
+        </property>
+        <property name="informContent" type="java.lang.String">
+            <column name="INFORMCONTENT" />
+        </property>
+        <property name="informStatue" type="int">
+            <column name="INFORMSTATUE" />
+        </property>
+        <property name="informTime" type="java.util.Date">
+            <column name="INFORMTIME" />
+        </property>
+    </class>
+</hibernate-mapping>
