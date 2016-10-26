@@ -1,6 +1,5 @@
 package com.job.bean;
 
-import java.util.Date;
 
 public class User {
 	//编号,用户名,真实姓名,年龄,密码,性别,手机号码,邮箱,头像,用户积分（信誉度）,二维码
