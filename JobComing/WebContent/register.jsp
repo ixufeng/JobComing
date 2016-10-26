@@ -83,7 +83,7 @@
 							</div>
 							<div class="form-bottom">
 								<div class="form-group" style="margin-bottom: 25px;">
-									<select class="form-control" id="sel_year" style="height: 48px;">
+									<select class="form-control" id="sel_year" style="height: 48px;" name="age">
 										<option value=" ">选择出生年份</option>
 									</select>
 								</div>

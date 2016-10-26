@@ -16,6 +16,7 @@ public class JobPublish {
 	private Date workBeginTime;
 	private Date workOverTime;
 	private String workDescribe;
+	private int isValidate;
 	public int getJobPublishId() {
 		return jobPublishId;
 	}
@@ -69,6 +70,13 @@ public class JobPublish {
 	}
 	public void setWorkDescribe(String workDescribe) {
 		this.workDescribe = workDescribe;
+	}
+	
+	public int getIsValidate() {
+		return isValidate;
+	}
+	public void setIsValidate(int isValidate) {
+		this.isValidate = isValidate;
 	}
 	public JobPublish() {
 		super();

@@ -17,5 +17,8 @@ public interface AgreeMentDao extends QueryDao {
 	public List<AgreeMent> getAgreeMentList(String hql, Object[] params);
 	//返回一条协议记录对象
 	public AgreeMent getAgreeMent(String hql, Object[] params);
-
+	//根据协议的编号返回一个协议对象
+	public AgreeMent getAgreeMentByAgreeMentId(int AgreeMentId);
+	//根据发布工作id返回一个协议对象
+	public AgreeMent getAgreeMentByJobPublishId(int jobPublishId);
 }
