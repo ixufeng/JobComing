@@ -2,6 +2,8 @@ package com.job.bean;
 
 import java.util.Date;
 
+
+
 public class JobPublish {
 	//工作发布：	编号	用户编号	类别编号	发布时间	地址编号(省市区) 	详细地址	
 	//工作开始时间	工作结束时间	描述
@@ -9,7 +11,7 @@ public class JobPublish {
 	private int userId;
 	private int jobKindId;
 	private Date jobPublishTime;
-	private String addressNumber;
+	private int  addressNumber;
 	private String detailAddress;
 	private Date workBeginTime;
 	private Date workOverTime;
@@ -38,10 +40,10 @@ public class JobPublish {
 	public void setJobPublishTime(Date jobPublishTime) {
 		this.jobPublishTime = jobPublishTime;
 	}
-	public String getAddressNumber() {
+	public int getAddressNumber() {
 		return addressNumber;
 	}
-	public void setAddressNumber(String addressNumber) {
+	public void setAddressNumber(int addressNumber) {
 		this.addressNumber = addressNumber;
 	}
 	public String getDetailAddress() {
