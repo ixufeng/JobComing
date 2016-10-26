@@ -17,7 +17,7 @@
         <property name="jobPublishTime" type="java.util.Date">
             <column name="JOBPUBLISHTIME" />
         </property>
-        <property name="addressNumber" type="java.lang.String">
+        <property name="addressNumber" type="int">
             <column name="ADDRESSNUMBER" />
         </property>
         <property name="detailAddress" type="java.lang.String">
@@ -31,6 +31,9 @@
         </property>
         <property name="workDescribe" type="java.lang.String">
             <column name="WORKDESCRIBE" />
+        </property>
+        <property name="isValidate" type="int">
+            <column name="ISVALIDATE" />
         </property>
     </class>
 </hibernate-mapping>
