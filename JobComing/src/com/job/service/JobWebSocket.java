@@ -1,8 +1,6 @@
 package com.job.service;
 
 import java.util.concurrent.CopyOnWriteArraySet;
-
-import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -10,8 +8,6 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-
-import com.job.bean.User;
 import com.job.util.LocalThread;
 /**
  * 注解是一个类层次的注解，它的功能主要是将目前的类定义成一个websocket服务器端,

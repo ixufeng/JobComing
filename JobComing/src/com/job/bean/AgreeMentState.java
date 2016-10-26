@@ -11,3 +11,21 @@ public class AgreeMentState {
 	public static final String State_evaluate = "待评价";
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
