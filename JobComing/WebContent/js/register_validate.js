@@ -2,7 +2,7 @@
 	var sel_year = $("#sel_year")[0].options;
 	var sel_month = $("#sel_month")[0].options;
 	for(var i = 1970;i <= 2016; i++){
-		sel_year.add(new Option(i,i+"年"));
+		sel_year.add(new Option(i+"年",i));
 	}
 	
 	$("#sel_year").change(function(){
