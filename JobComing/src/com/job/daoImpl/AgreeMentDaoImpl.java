@@ -84,13 +84,8 @@ public class AgreeMentDaoImpl implements AgreeMentDao {
 	public List<AgreeMent> getAgreeMentListByUserId(int userId) {
 		String hql = "from AgreeMent where userId=?";
 		Object[] params = new Object[] { userId };
-		List<AgreeMent> list = new ArrayList<AgreeMent>();
-		List<Object> list2 = new ArrayList<Object>();
-		list2 = query.selectForList(hql, params);
-		for (int i = 0; i < list2.size(); i++) {
-			list.add((AgreeMent) list2.get(i));
-		}
-		return list;
+		
+		return getAgreeMentList(hql, params);
 	}
 
 	/**
