@@ -17,10 +17,10 @@
         <property name="password" type="java.lang.String">
             <column name="PASSWORD" />
         </property>
-        <property name="age" type="int">
-            <column name="AGE" />
+        <property name="birthday" type="java.lang.String">
+            <column name="BIRTHDAY" />
         </property>
-        <property name="sex" type="int">
+        <property name="sex" type="java.lang.String">
             <column name="SEX" />
         </property>
         <property name="phone" type="long">
