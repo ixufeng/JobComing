@@ -8,10 +8,8 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 
 import com.job.daoImpl.UserDaoImpl;
@@ -22,11 +20,9 @@ public class UploadService {
 	 * 
 	 * @param rsq
 	 */
-	public boolean upLoad(HttpServletRequest rsq, HttpServletResponse rsp, String absolutepath,int userid) {
+	public boolean upLoad(List<FileItem> fileList,DiskFileUpload disk , String absolutepath,int userid) {
 		// 建立标识
 		boolean isSuccess = true;
-		// 创建文件上传对象
-		DiskFileUpload disk = new DiskFileUpload();
 		// 设定字符集
 		disk.setHeaderEncoding("utf-8");
 		// 创建临时缓存文件
@@ -40,9 +36,7 @@ public class UploadService {
 		disk.setSizeThreshold(1024 * 10);
 		// 设定上传文件大小
 		disk.setSizeMax(1024 * 1024 * 10);
-		// 读取请求对象中的输入流获取提交对象集合
 		try {
-			List<FileItem> fileList = disk.parseRequest(rsq);
 			// 遍历提交的对象
 			for (FileItem item : fileList) {
 				// 判断文件是否是上传对象
@@ -81,10 +75,7 @@ public class UploadService {
 		} catch (FileNotFoundException e) {
 			isSuccess = false;
 			e.printStackTrace();
-		} catch (FileUploadException e) {
-			isSuccess = false;
-			e.printStackTrace();
-		} catch (IOException e) {
+		}catch (IOException e) {
 			isSuccess = false;
 			e.printStackTrace();
 		}
