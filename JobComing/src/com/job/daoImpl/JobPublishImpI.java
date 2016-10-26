@@ -110,5 +110,12 @@ public class JobPublishImpI implements JobPublishDao {
 		Object[] params = new Object[] { userId };
 		return  getJobPublishList(hql, params);
 	}
-
+	/**
+	 * 通过地址编号(省市区)返回多条兼职信息
+	 */
+	public List<JobPublish>getJPListByAddressNumber(int addressnumber){
+		String hql = "from JobPublish where addressNumber=?";
+		Object[] params = new Object[] { addressnumber};
+		return  getJobPublishList(hql, params);
+	}
 }
