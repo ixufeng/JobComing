@@ -27,6 +27,12 @@ public class JobShow {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	
 	
 }
