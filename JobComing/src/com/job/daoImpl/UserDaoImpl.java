@@ -80,7 +80,6 @@ public class UserDaoImpl implements UserDao {
 	 * @param params
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public List<User> getUserList(String hql, Object[] params) {
 		List<User> list = new ArrayList<User>();
 		List<Object> list2 = new ArrayList<Object>();
