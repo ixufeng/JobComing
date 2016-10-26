@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		//long phone=request.getParameter("phone");
 		String trueName=request.getParameter("realname");
-		int year=new Date().getYear();
+		
 				
 		
 		User user=new User();

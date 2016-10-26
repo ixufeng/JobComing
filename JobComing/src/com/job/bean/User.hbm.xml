@@ -17,8 +17,8 @@
         <property name="password" type="java.lang.String">
             <column name="PASSWORD" />
         </property>
-        <property name="age" type="int">
-            <column name="AGE" />
+        <property name="birthday" type="java.util.Date">
+            <column name="BIRTHDAY" />
         </property>
         <property name="sex" type="int">
             <column name="SEX" />
