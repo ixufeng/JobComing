@@ -21,4 +21,6 @@ public interface JobPublishDao extends QueryDao {
 	public List<JobPublish>getJPListByUserId(int userId);
 	//通过地址编号(省市区)返回多条兼职信息
 	public List<JobPublish>getJPListByAddressNumber(int addressnumber);
+	//根据地址编号(省市区)返回分页兼职信息
+	public List<JobPublish>getJPByPage(int beginIndex,int endIndex,int addressNumber);
 }

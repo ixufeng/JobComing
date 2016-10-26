@@ -3,6 +3,8 @@ package com.job.daoImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.job.bean.JobPublish;
@@ -117,5 +119,24 @@ public class JobPublishImpI implements JobPublishDao {
 		String hql = "from JobPublish where addressNumber=?";
 		Object[] params = new Object[] { addressnumber};
 		return  getJobPublishList(hql, params);
+	}
+	/**
+	 * 根据地址编号(省市区)返回分页兼职信息
+	 * @param beginIndex
+	 * @param endIndex
+	 * @param addressNumber
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<JobPublish>getJPByPage(int beginIndex,int endIndex,int addressNumber){
+		String hql="from JobPublish where addressNumber = ?";
+		Session session=query.getSession();
+		Object[]params=new Object[]{addressNumber};
+		Query myquery=query.getQuery(hql, params, session);
+		myquery.setFirstResult(beginIndex);
+		myquery.setMaxResults(endIndex);
+		return myquery.list();
+		
+		
 	}
 }
