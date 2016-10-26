@@ -48,7 +48,7 @@ public class MailService {
 		}
 	}
 	/**
-	 * 发送一个预约邮件
+	 * 发送一个邮件
 	 * @param user
 	 * @param jobPublishId
 	 * @param 1:预约2：企业确定要人，3 用户决定去参与
