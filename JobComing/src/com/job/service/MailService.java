@@ -51,9 +51,11 @@ public class MailService {
 	 * 发送一个预约邮件
 	 * @param user
 	 * @param jobPublishId
+	 * @param 1:预约2：企业确定要人，3 用户决定去参与
 	 * @return
 	 */
-	public boolean sendPreEmail(User user,int jobPublishId){
+	public boolean sendHandleEmail(User user,int jobPublishId,int state){
+		
 		
 		JobPublish job = jbDao.getJobPublish(jobPublishId);
 		if(job!=null&&user!=null){
@@ -63,12 +65,11 @@ public class MailService {
 				sendAEmail(u.getEmail(),"title","content");
 				
 				return true;
-			}
-			
+			}			
 		}
 
 		return false;
 	}
-	
+
 		
 }

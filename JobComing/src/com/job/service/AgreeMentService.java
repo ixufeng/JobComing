@@ -7,7 +7,8 @@ import com.job.dao.AgreeMentDao;
 import com.job.daoImpl.AgreeMentDaoImpl;
 
 public class AgreeMentService {
-	private AgreeMentDao aDao = new AgreeMentDaoImpl();
+	private AgreeMentDaoImpl aDao = new AgreeMentDaoImpl();
+	
 	
 	/**
 	 * 有人预约就会产生一个协议
@@ -22,6 +23,14 @@ public class AgreeMentService {
 			aDao.add(ment);
 		}
 	}
-	
+	/**
+	 * 跟新协议状态
+	 * @param jobPublishId
+	 * @param state
+	 */
+	public void updateAgreeMentDao(int jobPublishId,String state){
+		
+		
+	}
 	
 }
