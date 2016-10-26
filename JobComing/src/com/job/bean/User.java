@@ -8,8 +8,8 @@ public class User {
 	private String userName;
 	private String trueName;
 	private String password;
-	private Date birthday;
-	private int sex;
+	private String birthday;
+	private String sex;
 	private long phone;
 	private String email;
 	private String headPicture;
@@ -39,17 +39,16 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	public long getPhone() {

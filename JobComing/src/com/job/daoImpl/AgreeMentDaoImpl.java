@@ -77,7 +77,23 @@ public class AgreeMentDaoImpl implements AgreeMentDao {
 		Object obj = query.getObj(hql, params);
 		return obj == null ? null : (AgreeMent) obj;
 	}
-
+	/**
+	 * 根据协议的编号返回一个协议对象
+	 */
+	public AgreeMent getAgreeMentByAgreeMentId(int AgreeMentId){
+		String hql="from AgreeMent where agreeMentId=?";
+		Object[]params=new Object[]{AgreeMentId};
+		return getAgreeMent(hql, params);
+	}
+	/**
+	 * 根据发布工作id返回一个协议对象
+	 */
+	public AgreeMent getAgreeMentByJobPublishId(int jobPublishId){
+		String hql="from AgreeMent where jobPublishId=?";
+		Object[]params=new Object[]{jobPublishId};
+		return getAgreeMent(hql, params);
+	}
+		
 	/**
 	 * 根据用户id返回协议记录集合
 	 */
