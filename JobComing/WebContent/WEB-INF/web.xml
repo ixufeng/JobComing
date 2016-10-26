@@ -4,4 +4,20 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <filter-name>Encodefilter</filter-name>
+    <filter-class>com.job.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>Encodefilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>sessionfilter</filter-name>
+    <filter-class>com.job.filter.HttpSessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sessionfilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
 </web-app>
