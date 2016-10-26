@@ -1,12 +1,14 @@
 package com.job.bean;
 
+import java.util.Date;
+
 public class User {
 	//编号,用户名,真实姓名,年龄,密码,性别,手机号码,邮箱,头像,用户积分（信誉度）,二维码
 	private int userId;
 	private String userName;
 	private String trueName;
 	private String password;
-	private int age;
+	private Date birthday;
 	private int sex;
 	private long phone;
 	private String email;
@@ -37,11 +39,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getAge() {
-		return age;
+	
+	public Date getBirthday() {
+		return birthday;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 	public int getSex() {
 		return sex;
@@ -73,7 +76,6 @@ public class User {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
 	public String getIdentifyCode() {
 		return identifyCode;
 	}
