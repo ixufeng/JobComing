@@ -2,14 +2,20 @@ package com.job.service;
 
 import java.util.List;
 
+import com.job.bean.JobPublish;
 import com.job.bean.User;
+import com.job.dao.JobPublishDao;
+import com.job.dao.UserDao;
+import com.job.daoImpl.JobPublishImpI;
+import com.job.daoImpl.UserDaoImpl;
 import com.xufeng.factory.MailFactory;
 import com.xufeng.factory.MailServer;
 
 public class MailService {
 
 	private MailFactory factory = new MailFactory("mail.xml");
-	
+	private  JobPublishDao jbDao = new JobPublishImpI();
+	private UserDao uDao = new UserDaoImpl();
 	/**
 	 * 发送一个邮件
 	 * @param address 邮件地址
@@ -40,6 +46,28 @@ public class MailService {
 		for(User u:list){
 			server.sendMail(u.getEmail(), title, message);
 		}
+	}
+	/**
+	 * 发送一个预约邮件
+	 * @param user
+	 * @param jobPublishId
+	 * @return
+	 */
+	public boolean sendPreEmail(User user,int jobPublishId){
+		
+		JobPublish job = jbDao.getJobPublish(jobPublishId);
+		if(job!=null&&user!=null){
+			User u = uDao.getUser(job.getUserId());
+			if(u!=null){
+				//内容待补充
+				sendAEmail(u.getEmail(),"title","content");
+				
+				return true;
+			}
+			
+		}
+
+		return false;
 	}
 	
 		
