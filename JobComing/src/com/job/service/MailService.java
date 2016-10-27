@@ -2,6 +2,8 @@ package com.job.service;
 
 import java.util.List;
 
+import org.junit.Test;
+
 import com.job.bean.JobPublish;
 import com.job.bean.User;
 import com.job.dao.JobPublishDao;
@@ -70,6 +72,10 @@ public class MailService {
 
 		return false;
 	}
-
+	@Test
+	public void test(){
+		String content = "<div style='width: 600px;height: 180px;background: white;box-shadow: 0 2px 8px 0 rgba(0,0,0,0.13);'><h3 style='text-align: center;padding-top: 40px;'>欢迎注册JobComing</h3><h4 style='text-align: center;'>点击<a href=''>我要注册</a>即可完成</h4></div>";
+		sendAEmail("1054993687@qq.com","亲爱的用户，你好。我们是jobComing",content);
+	}
 		
 }
