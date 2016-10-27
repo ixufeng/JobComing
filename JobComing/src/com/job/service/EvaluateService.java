@@ -62,17 +62,5 @@ public class EvaluateService {
 		}		
 		return false;
 	}
-<<<<<<< HEAD
-	@Test
-	public void test(){
-		User u = new User();
-		u.setUserName("xufeng");
-		u.setPassword("xufeng");
-		uDao.add(u);
-	}
-=======
-	
-	
-	
->>>>>>> master
+
 }
