@@ -18,7 +18,7 @@
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col-sm-6 form-box">
-					<form role="form" action="LoginServlet" method="post" class="registration-form">
+					<form role="form" action="LoginServlet.do" method="post" class="registration-form">
 						<fieldset>
 							<div class="form-top">
 								<div class="form-top-left">
