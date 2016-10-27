@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
@@ -139,4 +140,5 @@ public class JobPublishImpI implements JobPublishDao {
 		
 		
 	}
+	
 }

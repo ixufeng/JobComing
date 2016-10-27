@@ -31,7 +31,7 @@ public class ShowJobService {
 	 */
 	public ArrayList<JobShow> getJobShow(int pageIndex,int pageSize,int addressNumber){		
 		ArrayList<JobShow> list = new ArrayList<JobShow>();
-		int beginIndex = pageSize*(pageIndex-1)+1;
+		int beginIndex = pageSize*(pageIndex-1);
 		
 		List<JobPublish> tempList = jobDao.getJPByPage(beginIndex, pageSize, addressNumber);
 		
@@ -40,9 +40,10 @@ public class ShowJobService {
 			
 			jobShow.setUser(userDao.getUser(job.getUserId()));
 			jobShow.setJobKind(jobKindDao.getJobKind(job.getJobKindId()));
-			//townDaoImpl.geAddressTownByTownName(townName) 
 			
+			townDaoImpl.geAddressTownByTownCode(addressNumber); 	
 			jobShow.setJobPublish(job);	
+			list.add(jobShow);
 		}
 		
 		return list;
@@ -66,10 +67,7 @@ public class ShowJobService {
 	public void getHotJobType(){
 		
 	}
-	@Test
-	public void test(){
-		System.out.println(getJobShow(1,20,0).size());
-	}
+	
 	
 	
 	
