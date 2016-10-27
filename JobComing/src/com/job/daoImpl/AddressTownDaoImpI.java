@@ -48,7 +48,7 @@ public class AddressTownDaoImpI implements AddressTownDao {
 	/**
 	 * 通过区县编码 返回一个区县对象
 	 */
-	public AddressTown geAddressTownByTownCode(String townCode) {
+	public AddressTown geAddressTownByTownCode(int townCode) {
 		String hql = "from AddressTown where townCode=?";
 		Object[] params = new Object[] { townCode };
 		return getAddressTown(hql, params);
