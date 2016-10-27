@@ -3,10 +3,15 @@ package com.job.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
+import com.job.bean.JobKind;
 import com.job.bean.JobPublish;
 import com.job.bean.JobShow;
+import com.job.dao.AddressTownDao;
 import com.job.dao.JobPublishDao;
 import com.job.dao.UserDao;
+import com.job.daoImpl.AddressTownDaoImpI;
 import com.job.daoImpl.JobKindDaoImpI;
 import com.job.daoImpl.JobPublishImpI;
 import com.job.daoImpl.UserDaoImpl;
@@ -16,7 +21,7 @@ public class ShowJobService {
 	private JobPublishDao jobDao = new JobPublishImpI();
 	private UserDao userDao = new UserDaoImpl();
 	private JobKindDaoImpI jobKindDao = new JobKindDaoImpI();
-	
+	private AddressTownDaoImpI townDaoImpl = new AddressTownDaoImpI();
 	/**
 	 * 有具体地址的显示
 	 * @param pageIndex
@@ -35,7 +40,7 @@ public class ShowJobService {
 			
 			jobShow.setUser(userDao.getUser(job.getUserId()));
 			jobShow.setJobKind(jobKindDao.getJobKind(job.getJobKindId()));
-			//jobShow.setLocation();
+			//townDaoImpl.geAddressTownByTownName(townName) 
 			
 			jobShow.setJobPublish(job);	
 		}
@@ -43,8 +48,28 @@ public class ShowJobService {
 		return list;
 	}
 	
+	/**
+	 * 默认的兼职形式,取十个
+	 */
+	public ArrayList<JobKind> getJobType(){
+		
+		ArrayList<JobKind> list = new ArrayList<JobKind>();
+		
+		list =  (ArrayList<JobKind>) jobKindDao.getJobKindList("from JobKind ", null);
+		
+		return list;
 	
-	
+	}
+	/**
+	 * 获取热门的兼职形式
+	 */
+	public void getHotJobType(){
+		
+	}
+	@Test
+	public void test(){
+		System.out.println(getJobShow(1,20,0).size());
+	}
 	
 	
 	
