@@ -62,6 +62,7 @@ public class EvaluateService {
 		}		
 		return false;
 	}
+<<<<<<< HEAD
 	@Test
 	public void test(){
 		User u = new User();
@@ -69,4 +70,9 @@ public class EvaluateService {
 		u.setPassword("xufeng");
 		uDao.add(u);
 	}
+=======
+	
+	
+	
+>>>>>>> master
 }
