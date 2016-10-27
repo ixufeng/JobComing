@@ -9,4 +9,6 @@ public interface AddressTownDao {
 	public List<AddressTown> getTownListByCityCode(int cityCode);
 	// 通过区县名称 返回一个区县对象
 	public AddressTown geAddressTownByTownName(String townName );
+	//通过区县编码 返回一个区县对象
+	public AddressTown geAddressTownByTownCode(String townCode);
 }
