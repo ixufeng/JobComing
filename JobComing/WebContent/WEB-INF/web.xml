@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <!-- 字符编码过滤器 -->
   <filter>
     <filter-name>Encodefilter</filter-name>
     <filter-class>com.job.filter.EncodingFilter</filter-class>
@@ -13,7 +12,6 @@
     <filter-name>Encodefilter</filter-name>
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
-  <!-- Session过滤器 -->
   <filter>
     <filter-name>sessionfilter</filter-name>
     <filter-class>com.job.filter.HttpSessionFilter</filter-class>
@@ -22,8 +20,7 @@
     <filter-name>sessionfilter</filter-name>
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
-  <!-- 用户是否登录过滤器 -->
-   <filter>
+  <filter>
     <filter-name>userfilter</filter-name>
     <filter-class>com.job.filter.UserFilter</filter-class>
   </filter>
