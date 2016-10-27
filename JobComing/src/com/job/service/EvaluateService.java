@@ -59,12 +59,8 @@ public class EvaluateService {
 				}
 				return true;
 			}		
-		}
-		
-		
+		}		
 		return false;
 	}
-	
-	
-	
+
 }
