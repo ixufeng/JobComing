@@ -133,4 +133,12 @@ public class UserDaoImpl implements UserDao {
 		Object[] params = new Object[] { email };
 		return getUser(hql, params);
 	}
+	/**
+	 * 根据用户编号增加用户积分
+	 */
+	public int updateScore(int score, int userId){
+		String hql="update User set score+=? where userId=?";
+		Object[] params =new Object[]{userId};
+		return update(hql,params);
+	}
 }

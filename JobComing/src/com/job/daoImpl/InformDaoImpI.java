@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.job.bean.Inform;
-import com.job.bean.JobPublish;
 import com.job.dao.InformDao;
 import com.job.hibernate.CommonQuery;
 

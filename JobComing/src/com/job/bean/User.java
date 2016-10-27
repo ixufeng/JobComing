@@ -12,7 +12,7 @@ public class User {
 	private long phone;
 	private String email;
 	private String headPicture;
-	private int score;
+	private int score=100;
 	private String identifyCode;
 	public int getUserId() {
 		return userId;
