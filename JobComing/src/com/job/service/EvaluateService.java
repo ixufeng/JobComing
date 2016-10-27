@@ -2,6 +2,8 @@ package com.job.service;
 
 import java.util.Date;
 
+import org.junit.Test;
+
 import com.job.bean.Evaluate;
 import com.job.bean.JobPublish;
 import com.job.bean.User;
@@ -57,10 +59,14 @@ public class EvaluateService {
 				}
 				return true;
 			}		
-		}
-		
-		
+		}		
 		return false;
 	}
-	
+	@Test
+	public void test(){
+		User u = new User();
+		u.setUserName("xufeng");
+		u.setPassword("xufeng");
+		uDao.add(u);
+	}
 }
