@@ -7,7 +7,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.job.bean.Inform;
-import com.job.bean.JobPublish;
 import com.job.dao.InformDao;
 import com.job.hibernate.CommonQuery;
 
@@ -58,11 +57,11 @@ public class InformDaoImpI implements InformDao {
 		return update(hql, params);
 	}
 	/**
-	 * 根据用户id和返回一个未读消息记录集合
+	 * 根据用户id和返回一个未读或未读消息记录集合
 	 */
-	public List<Inform> getIListByReUserIdAndStatus(int informReciveId){
-		String hql="from Inform where informReciveId=? and infromStatus=0 ";
-		Object[]params=new Object[]{informReciveId};
+	public List<Inform> getIListByReUserIdAndStatus(int informReciveId,int status){
+		String hql="from Inform where informReciveId=? and infromStatus=？ ";
+		Object[]params=new Object[]{informReciveId,status};
 		List<Inform> list =new ArrayList<>();
 		List<Object> list2 =query.selectForList(hql, params);
 		list2 = query.selectForList(hql, params);

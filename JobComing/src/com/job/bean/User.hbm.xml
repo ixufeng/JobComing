@@ -33,7 +33,7 @@
             <column name="HEADPICTURE" />
         </property>
         <property name="score" type="int">
-            <column name="SCORE" />
+            <column name="SCORE"  />
         </property>
         <property name="identifyCode" type="java.lang.String">
             <column name="IDENTIFYCODE" />

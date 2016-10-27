@@ -10,7 +10,7 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/JobComing?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="connection.url">jdbc:mysql://115.159.68.41:3306/JobComing?useUnicode=true&amp;characterEncoding=UTF-8</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>		
 		<!-- <property name="show_sql">true</property>
 		<property name="format_sql">true</property> -->
@@ -24,5 +24,8 @@
 		<mapping resource="com/job/bean/Evaluate.hbm.xml"/>
 		<mapping resource="com/job/bean/ChatRecoed.hbm.xml"/>
 		<mapping resource="com/job/bean/AgreeMent.hbm.xml"/>
+		<mapping resource="com/job/bean/AddressProvince.hbm.xml"/>
+		<mapping resource="com/job/bean/AddressTown.hbm.xml"/>
+		<mapping resource="com/job/bean/AddressCity.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
