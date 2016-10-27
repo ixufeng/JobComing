@@ -53,7 +53,7 @@
 							<a href="" class="active">成都</a>
 							<a href="" class="active">苏州</a>
 							<a href="" class="active">长沙</a>
-							<a href="city.html" style="float: right;">更多<i class="caret"></i></a>
+							<a href="city.jsp" style="float: right;">更多<i class="caret"></i></a>
 							<div class="sep5" style="height: 20px;"></div>
 							<span>兼职形式：</span>
 							<a class="ser-kind">所有</a>
