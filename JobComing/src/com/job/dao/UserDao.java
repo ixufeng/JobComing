@@ -18,4 +18,6 @@ public interface UserDao extends QueryDao{
 	public User getUserByPhone(long phone);
 	//根据邮箱返回一个用户对象
 	public User getUserByEmail(String email);
+	//根据用户编号增加用户积分
+	public int updateScore(int score, int userId);
 }
