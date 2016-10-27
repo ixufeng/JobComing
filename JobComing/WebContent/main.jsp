@@ -20,8 +20,8 @@
 		</div>
 		<header class="site-header jumbotron">
 			<div class="site-nav">
-				<a href="login.html">登录</a> <span>/</span>
-				<a href="register.html">注册</a>
+				<a href="login.jsp">登录</a> <span>/</span>
+				<a href="register.jsp">注册</a>
 			</div>
 			<div class="container">
 				<div class="row">
