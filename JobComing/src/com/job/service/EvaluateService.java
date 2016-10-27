@@ -49,12 +49,13 @@ public class EvaluateService {
 				if(tempGrade>0){
 					int effect = tempGrade/10;
 					
+					uDao.updateScore(effect, tempUserId);
 				}else{
 					int effect = tempGrade/5;
+					uDao.updateScore(effect, tempUserId);
+					
 				}
-				
-				
-				
+				return true;
 			}		
 		}
 		

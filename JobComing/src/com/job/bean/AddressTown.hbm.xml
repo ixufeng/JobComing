@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-27 10:46:10 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.job.bean.AddressTown" table="ADDRESSTOWN">
+        <id name="townId" type="int">
+            <column name="TOWNID" />
+            <generator class="assigned" />
+        </id>
+        <property name="townCode" type="int">
+            <column name="TOWNCODE" />
+        </property>
+        <property name="cityCode" type="int">
+            <column name="CITYCODE" />
+        </property>
+        <property name="townName" type="java.lang.String">
+            <column name="TOWNNAME" />
+        </property>
+    </class>
+</hibernate-mapping>
