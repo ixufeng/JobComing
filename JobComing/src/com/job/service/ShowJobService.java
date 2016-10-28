@@ -69,7 +69,7 @@ public class ShowJobService {
 	 * 今日兼职推送
 	 */
 	public void getTodayWork(){
-		
+		  
 		
 	}
 	

@@ -17,18 +17,19 @@
 
 
 
-var ws = $.ws.init("ws://localhost:8080/JobComing/websocket");
-console.log(ws);
-console.log("链接成功了吗");
+var ws = $.ws.init("ws://192.168.9.202:8080/JobComing/websocket");
+
 ws.onopen = function(){
-	
 	console.log("链接成功");
 }
 
 ws.onmessage = function(data){
-	console.log(data.data);
+	$("#content").append("<li>"+data.data+"</li>");
 }
 $("#websocketSend").click(function(){
+	
 	var content = $("#websocketContent").val();
-	ws.send(content);
+	var json = "{'receivedUserKey':'xufeng','content':'"+content+"'}";
+	ws.send(json);
+	$("#content").append("<li>"+content+"</li>");
 });

@@ -1,5 +1,6 @@
 package com.job.service;
 
+
 import java.util.concurrent.CopyOnWriteArraySet;
 import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
@@ -8,6 +9,8 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+
+import com.job.bean.User;
 import com.job.util.LocalThread;
 /**
  * 注解是一个类层次的注解，它的功能主要是将目前的类定义成一个websocket服务器端,
@@ -20,7 +23,8 @@ import com.job.util.LocalThread;
 @ServerEndpoint("/websocket")
 public class JobWebSocket  {
 
-	private static CopyOnWriteArraySet<JobWebSocket> webSocketSet = new CopyOnWriteArraySet<JobWebSocket>();
+	public static CopyOnWriteArraySet<JobWebSocket> webSocketSet = new CopyOnWriteArraySet<JobWebSocket>();
+	
 	private Session session;
 	private String userKey;  //标志用户的id
 	
@@ -37,10 +41,21 @@ public class JobWebSocket  {
 		 //判断用户是否已经登陆
 		 HttpSession hs = LocalThread.threadLocal.get();
 		 if(hs!=null){
-			 if(hs.getAttribute("user")!=null){				 
-				 webSocketSet.add(this);     //加入set中   
-			 }			
-		 }        
+			 if(hs.getAttribute("user")!=null){		
+				 System.out.println("加入成功");
+				 User u = (User) hs.getAttribute("user");
+				 this.userKey = u.getUserName(); 
+				 webSocketSet.add(this); 
+				    //加入set中   
+			 }else{
+				 	System.out.println("没有session");
+				 	this.session.getAsyncRemote().sendText("000");
+			    }		
+		 } else{
+			 this.session.getAsyncRemote().sendText("000");
+		 }  
+		
+		 
 	}
 	
 	/**
@@ -57,18 +72,14 @@ public class JobWebSocket  {
 	 */
 	@OnError
 	public void OnError(Session session,Throwable error){
-		error.printStackTrace();
+		
 		System.out.println("发生错误");
 	}
 	
 	@OnMessage
 	public void onMessage(String message,Session session){
 		
-		for(JobWebSocket so:webSocketSet){
-			so.sendMessage("hello");
-		}
-		 
-		
+		SocketMessageHandle.handleMessage(session, message);
 	}
 	
 	/**
