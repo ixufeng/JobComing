@@ -7,9 +7,12 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.junit.Test;
+
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
+import com.job.util.TimeUtils;
 
 public class JobPublishImpI implements JobPublishDao {
 	private CommonQuery query = new CommonQuery();
@@ -138,12 +141,16 @@ public class JobPublishImpI implements JobPublishDao {
 		return myquery.list();
 	}
 	/**
-	 *  获取当天发布的信息
+	 *  获取当天发布10条的信息
 	 */
-	public List<JobPublish>getJBListByToday(Date morningTime){
-		String hql="from JobPublish where jobPublishTime>?";
-		Object[] params =new Object[] {morningTime};
-		return getJobPublishList(hql, params);
+	@SuppressWarnings("unchecked")
+	public List<JobPublish>getJBListByToday(Date morningTime,int addressNuber){
+		String hql="from JobPublish where jobPublishTime>? and addressNumber=? order by jobPublishTime desc ";
+		Object[] params =new Object[] {morningTime,addressNuber};
+		Session session=query.getSession();
+		Query myquery=query.getQuery(hql, params, session);
+		myquery.setFirstResult(1);
+		myquery.setMaxResults(10);
+		return myquery.list();
 	}
-	
 }

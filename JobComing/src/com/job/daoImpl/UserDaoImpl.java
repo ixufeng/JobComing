@@ -141,4 +141,5 @@ public class UserDaoImpl implements UserDao {
 		Object[] params =new Object[]{userId};
 		return update(hql,params);
 	}
+	
 }
