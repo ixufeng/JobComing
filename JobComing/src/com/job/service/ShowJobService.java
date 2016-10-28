@@ -104,6 +104,7 @@ public class ShowJobService {
 			//发布的工作
 			JobPublish jobPublish=new JobPublish();
 			jobPublish.setDetailAddress(list.get(i).getDetailAddress());
+			jobPublish.setJobPublishId(list.get(i).getJobPublishId());
 			jobShow.setJobPublish(jobPublish);
 			//地点
 			jobShow.setLocation(location);

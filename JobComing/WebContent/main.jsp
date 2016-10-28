@@ -106,7 +106,7 @@
 												<td width="auto" valign="middle">
 													<span class="item_title"> 
 														<a href="" style="color: #00b38a;">[<c:out value="${jobshow.jobKind.jobKindName }"></c:out>]</a>
-														<a href="" style="color: #4d5256;"><c:out value="${jobshow.jobPublish.workDescribe }"></c:out></a>
+														<a href="DetailJobPServlet.do?jobPublishId=${jobshow.jobPublish.jobPublishId}" style="color: #4d5256;"><c:out value="${jobshow.jobPublish.workDescribe }"></c:out></a>
 													</span>
 													<div class="sep5" style="height: 1px;"></div>
 	
@@ -170,7 +170,7 @@
 					        <li class="list-group-item">
 					        	<a href="">${hotjob.location } </a>&nbsp;
 					        	<a href="">[${hotjob.jobKind.jobKindName}]</a>&nbsp;
-					        	<a href="">
+					        	<a href="DetailJobPServlet.do?jobPublishId=${hotjob.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
 					        		&nbsp;${hotjob.jobPublish.detailAddress}
 					        		<span style="font-weight: bold;">...</span>
