@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.junit.Test;
-
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
