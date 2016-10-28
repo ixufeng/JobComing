@@ -1,5 +1,6 @@
 package com.job.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.job.bean.JobPublish;
@@ -23,4 +24,6 @@ public interface JobPublishDao extends QueryDao {
 	public List<JobPublish>getJPListByAddressNumber(int addressnumber);
 	//根据地址编号(省市区)返回分页兼职信息
 	public List<JobPublish>getJPByPage(int beginIndex,int pagesize,int addressNumber);
+	// 获取当天发布的信息
+	public List<JobPublish>getJBListByToday(Date morningTime);
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.job.bean.AddressCity;
-import com.job.bean.AddressTown;
 import com.job.dao.AddressCityDao;
 import com.job.hibernate.CommonQuery;
 
@@ -61,7 +60,7 @@ public class AddressCityDaoImpI implements AddressCityDao {
 	 * 通过城市编码 返回一个城市对象
 	 */
 
-	public AddressCity geAddressCityByCityCode(int cityCode) {
+	public AddressCity getAddressCityByCityCode(int cityCode) {
 
 		String hql = "from AddressCity where cityCode=?";
 		Object[] params = new Object[] { cityCode };
