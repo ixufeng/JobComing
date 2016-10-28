@@ -72,6 +72,7 @@ public class ShowJobService {
 	/**
 	 * 今日兼职推送
 	 */
+
 	public List<JobShow> getTodayWork(int addressNumber){
 		ArrayList<JobPublish>list=new ArrayList<JobPublish>();
 		List<JobShow>list2=new ArrayList<>();
@@ -111,6 +112,7 @@ public class ShowJobService {
 			list2.add(jobShow);
 		}
 		return list2;
+
 	}
 
 	

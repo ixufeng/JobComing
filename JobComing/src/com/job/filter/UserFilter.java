@@ -11,7 +11,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+<<<<<<< HEAD
 //@WebFilter("/*.do")
+=======
+//@WebFilter("*.do")
+>>>>>>> 4ad151c57cec5dea24d2fc299e18e44656d5922f
 public class UserFilter implements Filter {
 
 	@Override

@@ -36,7 +36,9 @@ public class MainPageServlet extends HttpServlet {
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
 		request.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
+
 		request.setAttribute("hotList", jobService.getTodayWork(320500));
+
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
 	}

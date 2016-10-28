@@ -27,7 +27,11 @@ public class HttpSessionFilter implements Filter {
 			throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest) arg0;
-		LocalThread.threadLocal.set(request.getSession());
+		System.out.println(request.getSession()==null);
+		if(LocalThread.threadLocal.get()==null){
+			LocalThread.threadLocal.set(request.getSession());
+		}
+		
 		arg2.doFilter(arg0, arg1);
 	}
 
