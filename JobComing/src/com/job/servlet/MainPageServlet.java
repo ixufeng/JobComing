@@ -1,6 +1,7 @@
 package com.job.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.job.bean.JobShow;
 import com.job.service.ShowJobService;
 
 /**
@@ -30,15 +32,24 @@ public class MainPageServlet extends HttpServlet {
     }
 
 	
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("actoin");
+		HttpSession session=request.getSession();
 		//String u = request.getParameter("user");
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
 		request.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
 
 		request.setAttribute("hotList", jobService.getTodayWork(320500));
+<<<<<<< HEAD
 
+=======
+		if((List<JobShow>) session.getAttribute("jList")!=null){
+			List<JobShow>list=(List<JobShow>) session.getAttribute("jList");
+			request.setAttribute("recordList", list);
+		}
+>>>>>>> caojun
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
 	}

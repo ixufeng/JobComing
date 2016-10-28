@@ -185,33 +185,17 @@
 					       	<span class="glyphicon glyphicon-apple"></span>&nbsp;最&nbsp;近&nbsp;浏&nbsp;览&nbsp;记&nbsp;录
 					    </div>
 					     <ul class="list-group">
+					     	<c:forEach var="rcordList" items="${requestScope.recordList }"></c:forEach>
 					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
+					        	<a href="">${rcordList.location }</a>&nbsp;
+					        	<a href="">[${rcordList.jobKind.jobKindName}]</a>&nbsp;
+					        	<a href="DetailJobPServlet.do?jobPublishId=${rcordList.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
+					        		&nbsp;${rcordList.jobPublish.detailAddress}
 					        		<span style="font-weight: bold;">...</span>
 					        	</a>
 					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
+					        
 					    </ul>
 					</div>
 				</div>
