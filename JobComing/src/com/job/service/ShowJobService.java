@@ -43,8 +43,18 @@ public class ShowJobService {
 			JobShow jobShow = new JobShow();		
 			jobShow.setUser(userDao.getUser(job.getUserId()));
 			jobShow.setJobKind(jobKindDao.getJobKind(job.getJobKindId()));
-			AddressCity city = cityDaoImpl.getAddressCityByCityCode(addressNumber);
-			jobShow.setLocation(city.getCityName());	
+			//AddressCity city = cityDaoImpl.getAddressCityByCityCode(addressNumber);
+			String location="";
+			AddressTown addressTown=townDaoImpl.geAddressTownByTownCode(addressNumber);
+			if(addressTown!=null){
+				location=addressTown.getTownName();
+			}else{
+				AddressCity addressCity=cityDaoImpl.getAddressCityByCityCode(addressNumber);
+				if(addressCity!=null){
+					location=addressCity.getCityName();
+				}
+			}
+			jobShow.setLocation(location);	
 			jobShow.setJobPublish(job);	
 			list.add(jobShow);
 		}
@@ -72,9 +82,10 @@ public class ShowJobService {
 	/**
 	 * 今日兼职推送
 	 */
+
 	public List<JobShow> getTodayWork(int addressNumber){
 		ArrayList<JobPublish>list=new ArrayList<JobPublish>();
-		List<JobShow>list2=new ArrayList<>();
+		List<JobShow>list2=new ArrayList<JobShow>();
 		list=(ArrayList<JobPublish>) jobDao.getJBListByToday(TimeUtils.getTodayBeginDateTime(),addressNumber);
 		for(int i=0;i<list.size();i++){
 			//如果详细地址超过6位就缩写
@@ -93,7 +104,10 @@ public class ShowJobService {
 			if(addressTown!=null){
 				location=addressTown.getTownName();
 			}else{
-				location=cityDaoImpl.getAddressCityByCityCode(adNumber).getCityName();
+				AddressCity addressCity=cityDaoImpl.getAddressCityByCityCode(adNumber);
+				if(addressCity!=null){
+					location=addressCity.getCityName();
+				}
 			}
 			//将数据插入到jobshow集合里去
 			JobShow jobShow=new JobShow();
@@ -104,12 +118,14 @@ public class ShowJobService {
 			//发布的工作
 			JobPublish jobPublish=new JobPublish();
 			jobPublish.setDetailAddress(list.get(i).getDetailAddress());
+			jobPublish.setJobPublishId(list.get(i).getJobPublishId());
 			jobShow.setJobPublish(jobPublish);
 			//地点
 			jobShow.setLocation(location);
 			list2.add(jobShow);
 		}
 		return list2;
+
 	}
 
 	

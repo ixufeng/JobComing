@@ -14,7 +14,7 @@ import com.job.daoImpl.UserDaoImpl;
 import com.job.service.UserService;
 
 
-@WebServlet("/LoginServlet")
+@WebServlet("/LoginServlet.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private  UserService us=new UserService();
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 			//将用户对象存入Session
 			User user=usd.getUser(username);
 			session.setAttribute("user", user);
-			request.getRequestDispatcher("").forward(request, response);
+			request.getRequestDispatcher("/MainPageServlet").forward(request, response);
 		}else{ 
 			request.setAttribute("error", "用户名或密码错误！");
 			request.getRequestDispatcher("login.jsp").forward(request, response);

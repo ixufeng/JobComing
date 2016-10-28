@@ -45,22 +45,22 @@
 						<div>
 							<span>兼职地点：</span>
 							<a class="current">全国</a>
-							<a href="" class="active">南京</a>
-							<a href="" class="active">杭州</a>
-							<a href="" class="active">上海</a>
-							<a href="" class="active">北京</a>
-							<a href="" class="active">深圳</a>
-							<a href="" class="active">广州</a>
-							<a href="" class="active">成都</a>
-							<a href="" class="active">苏州</a>
-							<a href="" class="active">长沙</a>
+							<a href="MainPageServlet?cityName=南京市" class="active">南京</a>
+							<a href="MainPageServlet?cityName=杭州市" class="active">杭州</a>
+							<a href="MainPageServlet?cityName=上海市" class="active">上海</a>
+							<a href="MainPageServlet?cityName=北京市" class="active">北京</a>
+							<a href="MainPageServlet?cityName=深圳市" class="active">深圳</a>
+							<a href="MainPageServlet?cityName=广州市" class="active">广州</a>
+							<a href="MainPageServlet?cityName=成都市" class="active">成都</a>
+							<a href="MainPageServlet?cityName=苏州市" class="active">苏州</a>
+							<a href="MainPageServlet?cityName=长沙市" class="active">长沙</a>
 							<a href="city.jsp" style="float: right;">更多<i class="caret"></i></a>
 							<div class="sep5" style="height: 20px;"></div>
 							<span>兼职形式：</span>
 							<a class="ser-kind">所有</a>
 							
 							<c:forEach items="${requestScope.kindList}" var="kind">								
-								<a href="" class="active">
+								<a href="MainPageServlet?jobKindId=${kind.jobKindId}" class="active">
 									<c:out value="${kind.jobKindName }"></c:out>
 								</a>
 							</c:forEach>						
@@ -92,7 +92,7 @@
 
 					<main class="packages-list-container" id="all-packages">
 						<ul class="list-group">
-							<c:forEach items="${requestScope.jobList}" var="jobshow">
+							<c:forEach items="${sessionScope.jobList}" var="jobshow">
 								<li class="list-group-item">
 									<table style="border: 0px;width: 100%;">
 										<tbody>
@@ -106,7 +106,7 @@
 												<td width="auto" valign="middle">
 													<span class="item_title"> 
 														<a href="" style="color: #00b38a;">[<c:out value="${jobshow.jobKind.jobKindName }"></c:out>]</a>
-														<a href="" style="color: #4d5256;"><c:out value="${jobshow.jobPublish.workDescribe }"></c:out></a>
+														<a href="DetailJobPServlet.do?jobPublishId=${jobshow.jobPublish.jobPublishId}" style="color: #4d5256;"><c:out value="${jobshow.jobPublish.workDescribe }"></c:out></a>
 													</span>
 													<div class="sep5" style="height: 1px;"></div>
 	
@@ -170,7 +170,7 @@
 					        <li class="list-group-item">
 					        	<a href="">${hotjob.location } </a>&nbsp;
 					        	<a href="">[${hotjob.jobKind.jobKindName}]</a>&nbsp;
-					        	<a href="">
+					        	<a href="DetailJobPServlet.do?jobPublishId=${hotjob.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
 					        		&nbsp;${hotjob.jobPublish.detailAddress}
 					        		<span style="font-weight: bold;">...</span>
@@ -185,33 +185,17 @@
 					       	<span class="glyphicon glyphicon-apple"></span>&nbsp;最&nbsp;近&nbsp;浏&nbsp;览&nbsp;记&nbsp;录
 					    </div>
 					     <ul class="list-group">
+					     	<c:forEach var="rcordList" items="${requestScope.recordList }"></c:forEach>
 					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
+					        	<a href="">${rcordList.location }</a>&nbsp;
+					        	<a href="">[${rcordList.jobKind.jobKindName}]</a>&nbsp;
+					        	<a href="DetailJobPServlet.do?jobPublishId=${rcordList.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
+					        		&nbsp;${rcordList.jobPublish.detailAddress}
 					        		<span style="font-weight: bold;">...</span>
 					        	</a>
 					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
+					        
 					    </ul>
 					</div>
 				</div>

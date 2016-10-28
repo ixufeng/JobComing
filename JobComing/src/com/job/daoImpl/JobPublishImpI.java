@@ -7,12 +7,10 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.junit.Test;
 
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
-import com.job.util.TimeUtils;
 
 public class JobPublishImpI implements JobPublishDao {
 	private CommonQuery query = new CommonQuery();
@@ -135,6 +133,23 @@ public class JobPublishImpI implements JobPublishDao {
 		String hql="from JobPublish where addressNumber = ?";
 		Session session=query.getSession();
 		Object[]params=new Object[]{addressNumber};
+		Query myquery=query.getQuery(hql, params, session);
+		myquery.setFirstResult(beginIndex);
+		myquery.setMaxResults(pagesize);
+		return myquery.list();
+	}
+	/**
+	 * 根据地址编号(省市区) 种类编号返回分页兼职信息
+	 * @param beginIndex
+	 * @param endIndex
+	 * @param addressNumber
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<JobPublish>getJPByJobKindPage(int beginIndex,int pagesize,int addressNumber,int jobKindId){
+		String hql="from JobPublish where addressNumber = ? and jobKindId=?";
+		Session session=query.getSession();
+		Object[]params=new Object[]{addressNumber,jobKindId};
 		Query myquery=query.getQuery(hql, params, session);
 		myquery.setFirstResult(beginIndex);
 		myquery.setMaxResults(pagesize);

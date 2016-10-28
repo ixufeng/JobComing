@@ -10,7 +10,7 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/JobComing?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/JobComing?useUnicode=true&amp;characterEncoding=UTF-8</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>		
 		<!-- <property name="show_sql">true</property>
 		<property name="format_sql">true</property> -->
