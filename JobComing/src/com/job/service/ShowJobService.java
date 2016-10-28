@@ -74,7 +74,7 @@ public class ShowJobService {
 	 */
 	public List<JobShow> getTodayWork(int addressNumber){
 		ArrayList<JobPublish>list=new ArrayList<JobPublish>();
-		List<JobShow>list2=new ArrayList<>();
+		List<JobShow>list2=new ArrayList<JobShow>();
 		list=(ArrayList<JobPublish>) jobDao.getJBListByToday(TimeUtils.getTodayBeginDateTime(),addressNumber);
 		for(int i=0;i<list.size();i++){
 			//如果详细地址超过6位就缩写
