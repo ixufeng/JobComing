@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.job.bean.AddressCity;
-import com.job.bean.AddressTown;
 import com.job.dao.AddressCityDao;
 import com.job.hibernate.CommonQuery;
 

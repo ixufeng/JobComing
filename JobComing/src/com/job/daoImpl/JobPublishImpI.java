@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.junit.Test;
 
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
@@ -138,8 +139,11 @@ public class JobPublishImpI implements JobPublishDao {
 		myquery.setMaxResults(pagesize);
 		return myquery.list();
 	}
+	/**
+	 *  获取当天发布的信息
+	 */
 	public List<JobPublish>getJBListByToday(Date morningTime){
-		String hql="from  jobPublish where jobPubishTime>morningTime";
+		String hql="from JobPublish where jobPublishTime<?";
 		Object[] params =new Object[] {morningTime};
 		return getJobPublishList(hql, params);
 	}
