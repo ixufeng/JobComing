@@ -7,8 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Random;
-
+import java.util.UUID;
 
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.tomcat.util.http.fileupload.FileItem;
@@ -42,7 +41,6 @@ public class UploadService {
 			for (FileItem item : fileList) {
 				// 判断文件是否是上传对象
 				if (!item.isFormField()) {
-					Random random=new  Random();
 					//获取上传文件的输入流
 					InputStream input=item.getInputStream();
 					// 获取上传文件的类型
@@ -53,7 +51,7 @@ public class UploadService {
 					// 判断是否是图片
 					if (contentType.equals("image")) {
 						//图片在data文件下的路径
-						String name="data\\" +random.nextInt()+filename;
+						String name="data\\" +UUID.randomUUID()+filename;
 						String path=absolutepath+name;
 						//获取输出流
 						FileOutputStream output=new FileOutputStream(new File(path));

@@ -9,7 +9,6 @@ import com.job.bean.AddressCity;
 import com.job.bean.JobPublish;
 import com.job.bean.JobShow;
 import com.job.dao.AddressCityDao;
-import com.job.dao.JobPublishDao;
 import com.job.dao.UserDao;
 import com.job.daoImpl.AddressCityDaoImpI;
 import com.job.daoImpl.AddressTownDaoImpI;
@@ -24,24 +23,10 @@ import com.job.daoImpl.UserDaoImpl;
  */  
 public class SearchService {
 	private JobPublishImpI jImpI=new JobPublishImpI();
-	private JobPublishDao jobDao = new JobPublishImpI();
 	private UserDao userDao = new UserDaoImpl();
 	private JobKindDaoImpI jobKindDao = new JobKindDaoImpI();
 	private AddressTownDaoImpI townDaoImpl = new AddressTownDaoImpI();
 	private AddressCityDao cityDaoImpl = new AddressCityDaoImpI();
-	
-	/**
-	 * 根据输入的关键字实现模糊搜索,如果用户数据空或无效字符串，则返回null
-	 * @param jobKind
-	 * @return
-	 */
-	public ArrayList<JobPublish> getJobByKind(String jobKind){
-		ArrayList<JobPublish> list = new ArrayList<JobPublish>();
-		if(jobKind!=null&&(!"".equals(jobKind))){
-			return null;
-		}		
-		return list;
-	}
 	/**
 	 * 通过兼职种类查询工作
 	 * @param jobKindId

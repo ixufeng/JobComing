@@ -53,7 +53,7 @@
 								<tbody>
 									<tr>
 										<td width="60" class="txt">种类</td>
-										<td><a href="">[${requestScope.jobdetail.jobKind.jobKindName}]</a></td>
+										<td><a>[${requestScope.jobdetail.jobKind.jobKindName}]</a></td>
 										<td width="60" class="txt">开始</td>
 										<td class="txt2">${requestScope.jobdetail.jobPublish.workBeginTime}</td>
 										<td rowspan="4" width="90" class="hidden-xs">
@@ -70,7 +70,7 @@
 										<td width="60" class="txt">性别</td>
 										<td class="txt2">${requestScope.jobdetail.user.sex }</td>
 										<td width="60" class="txt">地区</td>
-										<td class="txt2"><a href="">[${requestScope.jobdetail.location}]</a></td>
+										<td class="txt2"><a>[${requestScope.jobdetail.location}]</a></td>
 									</tr>
 									<tr>
 										<td width="60" class="txt">信誉</td>
@@ -129,8 +129,8 @@
 					     <ul class="list-group">
 					     	<c:forEach var="hotList" items="${requestScope.hotList1 }">
 					        <li class="list-group-item">
-					        	<a href="">${hotList.location }</a>&nbsp;
-					        	<a href="">[${hotList.jobKind.jobKindName}]</a>&nbsp;
+					        	<a>${hotList.location }</a>&nbsp;
+					        	<a>[${hotList.jobKind.jobKindName}]</a>&nbsp;
 					        	<a href="DetailJobPServlet.do?jobPublishId=${hotList.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
 					        		&nbsp;${hotList.jobPublish.detailAddress}
