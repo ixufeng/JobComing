@@ -168,8 +168,8 @@
 					     <ul class="list-group">
 					     	<c:forEach var="hotjob" items="${requestScope.hotList}">
 					        <li class="list-group-item">
-					        	<a href="">${hotjob.location } </a>&nbsp;
-					        	<a href="">[${hotjob.jobKind.jobKindName}]</a>&nbsp;
+					        	<a >${hotjob.location } </a>&nbsp;
+					        	<a >[${hotjob.jobKind.jobKindName}]</a>&nbsp;
 					        	<a href="DetailJobPServlet.do?jobPublishId=${hotjob.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
 					        		&nbsp;${hotjob.jobPublish.detailAddress}
