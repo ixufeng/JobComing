@@ -19,7 +19,7 @@ import com.job.service.UploadService;
 @WebServlet("/UpLoadServlet")
 public class UpLoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private UploadService ups=new UploadService();
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +35,6 @@ public class UpLoadServlet extends HttpServlet {
 			List<FileItem> fileList = disk.parseRequest(request);
 			HttpSession session=request.getSession();
 			String absoluatepath=getServletContext().getRealPath("/");
-			UploadService ups=new UploadService();
 			int userid=(Integer)session.getAttribute("userid");
 			if(ups.upLoad(fileList, disk, absoluatepath, userid)){
 				///上传成功

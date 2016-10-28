@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -58,6 +58,7 @@
 							<div class="sep5" style="height: 20px;"></div>
 							<span>兼职形式：</span>
 							<a class="ser-kind">所有</a>
+							
 							<c:forEach items="${requestScope.kindList}" var="kind">								
 								<a href="" class="active">
 									<c:out value="${kind.jobKindName }"></c:out>
@@ -88,7 +89,7 @@
 							<a href="" class="next"></a>
 						</div>
 					</div>
-					
+
 					<main class="packages-list-container" id="all-packages">
 						<ul class="list-group">
 							<c:forEach items="${requestScope.jobList}" var="jobshow">
@@ -165,78 +166,17 @@
 					       	<span class="glyphicon glyphicon-fire"></span>&nbsp;今&nbsp;日&nbsp;兼&nbsp;职&nbsp;推&nbsp;送
 					    </div>
 					     <ul class="list-group">
+					     	<c:forEach var="hotjob" items="${requestScope.hotList}">
 					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
+					        	<a href="">${hotjob.location } </a>&nbsp;
+					        	<a href="">[${hotjob.jobKind.jobKindName}]</a>&nbsp;
 					        	<a href="">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
+					        		&nbsp;${hotjob.jobPublish.detailAddress}
 					        		<span style="font-weight: bold;">...</span>
 					        	</a>
 					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					         <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					        <li class="list-group-item">
-					        	<a href="">[苏州]</a>&nbsp;
-					        	<a href="">[清洁]</a>&nbsp;
-					        	<a href="">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;江苏科技大学
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
+					        </c:forEach>
 					    </ul>
 					</div>
 					
