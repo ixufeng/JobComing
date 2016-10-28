@@ -41,7 +41,7 @@
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col-md-9 job-info">
-					<div class="panel panel-default">
+					<div class="panel panel-default" data-person="${requestScope.jobdetail.user.userName}" id="jobPublisher">
 						<div class="panel-heading">
 							<h3 class="panel-title">
             					闲着无聊做做兼职--JobComing
