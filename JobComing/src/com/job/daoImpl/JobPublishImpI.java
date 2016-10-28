@@ -143,7 +143,7 @@ public class JobPublishImpI implements JobPublishDao {
 	 *  获取当天发布的信息
 	 */
 	public List<JobPublish>getJBListByToday(Date morningTime){
-		String hql="from JobPublish where jobPublishTime<?";
+		String hql="from JobPublish where jobPublishTime>?";
 		Object[] params =new Object[] {morningTime};
 		return getJobPublishList(hql, params);
 	}
