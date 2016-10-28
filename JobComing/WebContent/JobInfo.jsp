@@ -43,9 +43,10 @@
 				<div class="col-md-9 job-info">
 					<div class="panel panel-default" data-person="${requestScope.jobdetail.user.userName}" id="jobPublisher">
 						<div class="panel-heading">
-							<h3 class="panel-title">
+							<h3 class="panel-title" style="display: inline-block;">
             					闲着无聊做做兼职--JobComing
         					</h3>
+        					<a href="" style="float: right;display: inline-block;">首页</a>
 						</div>
 						<div class="panel-body">
 							<table class="table">

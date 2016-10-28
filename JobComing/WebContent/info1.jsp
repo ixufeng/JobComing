@@ -42,21 +42,22 @@
 			<div class="row">
 				<div class="col-md-2 myinfo visible-lg visible-md">
 					<div class="list-group">
-						<a href="info1.html" class="list-group-item active">我的信息</a>
-						<a href="info2.html" class="list-group-item">参与记录</a>
-						<a href="info3.html" class="list-group-item">分享记录</a>
+						<a href="info1.jsp" class="list-group-item active">我的信息</a>
+						<a href="info2.jsp" class="list-group-item">参与记录</a>
+						<a href="info3.jsp" class="list-group-item">分享记录</a>
+						<a href="main.jsp" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
 					<ul class="nav nav-tabs nav-justified">
 						<li class="active bar">
-							<a href="info1.html">我的信息</a>
+							<a href="info1.jsp">我的信息</a>
 						</li>
 						<li class="bar">
-							<a href="info2.html">参与记录</a>
+							<a href="info2.jsp">参与记录</a>
 						</li>
 						<li class="bar">
-							<a href="info3.html">分享记录</a>
+							<a href="info3.jsp">分享记录</a>
 						</li>
 					</ul>
 					<table class="table table1">
