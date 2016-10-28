@@ -43,8 +43,18 @@ public class ShowJobService {
 			JobShow jobShow = new JobShow();		
 			jobShow.setUser(userDao.getUser(job.getUserId()));
 			jobShow.setJobKind(jobKindDao.getJobKind(job.getJobKindId()));
-			AddressCity city = cityDaoImpl.getAddressCityByCityCode(addressNumber);
-			jobShow.setLocation(city.getCityName());	
+			//AddressCity city = cityDaoImpl.getAddressCityByCityCode(addressNumber);
+			String location="";
+			AddressTown addressTown=townDaoImpl.geAddressTownByTownCode(addressNumber);
+			if(addressTown!=null){
+				location=addressTown.getTownName();
+			}else{
+				AddressCity addressCity=cityDaoImpl.getAddressCityByCityCode(addressNumber);
+				if(addressCity!=null){
+					location=addressCity.getCityName();
+				}
+			}
+			jobShow.setLocation(location);	
 			jobShow.setJobPublish(job);	
 			list.add(jobShow);
 		}
@@ -94,7 +104,10 @@ public class ShowJobService {
 			if(addressTown!=null){
 				location=addressTown.getTownName();
 			}else{
-				location=cityDaoImpl.getAddressCityByCityCode(adNumber).getCityName();
+				AddressCity addressCity=cityDaoImpl.getAddressCityByCityCode(adNumber);
+				if(addressCity!=null){
+					location=addressCity.getCityName();
+				}
 			}
 			//将数据插入到jobshow集合里去
 			JobShow jobShow=new JobShow();

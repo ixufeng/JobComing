@@ -45,22 +45,22 @@
 						<div>
 							<span>兼职地点：</span>
 							<a class="current">全国</a>
-							<a href="" class="active">南京</a>
-							<a href="" class="active">杭州</a>
-							<a href="" class="active">上海</a>
-							<a href="" class="active">北京</a>
-							<a href="" class="active">深圳</a>
-							<a href="" class="active">广州</a>
-							<a href="" class="active">成都</a>
-							<a href="" class="active">苏州</a>
-							<a href="" class="active">长沙</a>
+							<a href="MainPageServlet?cityName=南京市" class="active">南京</a>
+							<a href="MainPageServlet?cityName=杭州市" class="active">杭州</a>
+							<a href="MainPageServlet?cityName=上海市" class="active">上海</a>
+							<a href="MainPageServlet?cityName=北京市" class="active">北京</a>
+							<a href="MainPageServlet?cityName=深圳市" class="active">深圳</a>
+							<a href="MainPageServlet?cityName=广州市" class="active">广州</a>
+							<a href="MainPageServlet?cityName=成都市" class="active">成都</a>
+							<a href="MainPageServlet?cityName=苏州市" class="active">苏州</a>
+							<a href="MainPageServlet?cityName=长沙市" class="active">长沙</a>
 							<a href="city.jsp" style="float: right;">更多<i class="caret"></i></a>
 							<div class="sep5" style="height: 20px;"></div>
 							<span>兼职形式：</span>
 							<a class="ser-kind">所有</a>
 							
 							<c:forEach items="${requestScope.kindList}" var="kind">								
-								<a href="" class="active">
+								<a href="MainPageServlet?jobKindId=${kind.jobKindId}" class="active">
 									<c:out value="${kind.jobKindName }"></c:out>
 								</a>
 							</c:forEach>						
@@ -92,7 +92,7 @@
 
 					<main class="packages-list-container" id="all-packages">
 						<ul class="list-group">
-							<c:forEach items="${requestScope.jobList}" var="jobshow">
+							<c:forEach items="${sessionScope.jobList}" var="jobshow">
 								<li class="list-group-item">
 									<table style="border: 0px;width: 100%;">
 										<tbody>

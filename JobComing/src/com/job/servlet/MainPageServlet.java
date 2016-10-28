@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.job.bean.JobShow;
+import com.job.service.SearchService;
 import com.job.service.ShowJobService;
 
 /**
@@ -22,6 +23,8 @@ import com.job.service.ShowJobService;
 public class MainPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ShowJobService jobService = new ShowJobService();
+	private SearchService searchService=new SearchService();
+	private int jobKindId;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,17 +42,27 @@ public class MainPageServlet extends HttpServlet {
 		//String u = request.getParameter("user");
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
-		request.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
+		if(session.getAttribute("jobList")==null){
+			session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
+		}else{
+			if(request.getParameter("jobKindId")!=null){
+				//根据种类获取工作集合
+				jobKindId=Integer.parseInt(request.getParameter("jobKindId"));
+				session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, 1, 5, 320500));
+			}//else{
+				//根据城市名称获得工作集合
+			if(request.getParameter("cityName")!=null){
+				String cityName=request.getParameter("cityName");
+				session.setAttribute("jobList", searchService.getJobByCityName(1, 1, 5, cityName));
+			}
+		}
+		//}
 
 		request.setAttribute("hotList", jobService.getTodayWork(320500));
-<<<<<<< HEAD
-
-=======
 		if((List<JobShow>) session.getAttribute("jList")!=null){
 			List<JobShow>list=(List<JobShow>) session.getAttribute("jList");
 			request.setAttribute("recordList", list);
 		}
->>>>>>> caojun
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
 	}
