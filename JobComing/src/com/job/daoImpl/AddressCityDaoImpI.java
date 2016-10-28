@@ -60,7 +60,9 @@ public class AddressCityDaoImpI implements AddressCityDao {
 	/**
 	 * 通过城市编码 返回一个城市对象
 	 */
-	public AddressCity getAddressCityByCityCode(int cityCode) {
+
+	public AddressCity geAddressCityByCityCode(int cityCode) {
+
 		String hql = "from AddressCity where cityCode=?";
 		Object[] params = new Object[] { cityCode };
 		return getAddressCity(hql, params);
