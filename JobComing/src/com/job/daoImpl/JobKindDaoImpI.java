@@ -118,4 +118,6 @@ public class JobKindDaoImpI implements JobKindDao {
 		Object[]params=new Object[]{};
 		return getJobKindList(hql, params);
 	}
+	
+	
 }
