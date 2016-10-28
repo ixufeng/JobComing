@@ -16,7 +16,7 @@ import com.job.service.EvaluateService;
  * @author xufeng
  *
  */
-@WebServlet("/evaluate.do")
+@WebServlet("/Evaluate.do")
 public class EvaluateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private EvaluateService evaluate = new EvaluateService();

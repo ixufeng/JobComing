@@ -2,11 +2,11 @@ package com.job.daoImpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
@@ -136,7 +136,14 @@ public class JobPublishImpI implements JobPublishDao {
 		myquery.setFirstResult(beginIndex);
 		myquery.setMaxResults(pagesize);
 		return myquery.list();
-		
-		
 	}
+	/**
+	 *  获取当天发布的信息
+	 */
+	public List<JobPublish>getJBListByToday(Date morningTime){
+		String hql="from JobPublish where jobPublishTime>?";
+		Object[] params =new Object[] {morningTime};
+		return getJobPublishList(hql, params);
+	}
+	
 }

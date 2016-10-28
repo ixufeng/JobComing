@@ -32,7 +32,7 @@ public class EncodingFilter implements Filter {
 		}
 		//GET提交
 		else if(method.equals("GET")){
-			Enumeration<String> names = request.getHeaderNames();
+			Enumeration<String> names = request.getParameterNames();
 			while(names.hasMoreElements()){
 				String name = names.nextElement();
 				String[] value = request.getParameterValues(name);

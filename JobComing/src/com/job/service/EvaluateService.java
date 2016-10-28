@@ -62,5 +62,12 @@ public class EvaluateService {
 		}		
 		return false;
 	}
+	@Test
+	public void test(){
+		User u = new User();
+		u.setUserName("nihoao");
+		u.setPassword("12345678");
+		uDao.add(u);
+	}
 
 }

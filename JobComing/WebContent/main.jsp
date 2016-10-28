@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -57,12 +58,11 @@
 							<div class="sep5" style="height: 20px;"></div>
 							<span>兼职形式：</span>
 							<a class="ser-kind">所有</a>
-							<a href="" class="active">清洁</a>
-							<a href="" class="active">家教</a>
-							<a href="" class="active">宣传</a>
-							<a href="" class="active">派送</a>
-							<a href="" class="active">调研</a>
-							<a href="" class="active">促销</a>
+							<c:forEach items="${requestScope.kindList}" var="kind">								
+								<a href="" class="active">
+									<c:out value="${kind.jobKindName }"></c:out>
+								</a>
+							</c:forEach>						
 							<div class="sep5" style="height: 20px;"></div>
 							<span>开始时间：</span>
 							<a class="ser-kind">不限</a>
@@ -91,325 +91,71 @@
 					
 					<main class="packages-list-container" id="all-packages">
 						<ul class="list-group">
-							<li class="list-group-item">
-								<table style="border: 0px;width: 100%;">
-									<tbody>
-										<tr>
-											<td width="55" valign="top" align="center">
-												<a href="#">
-													<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
-												</a>
-											</td>
-											<td width="10"></td>
-											<td width="auto" valign="middle">
-												<span class="item_title"> 
-													<a href="" style="color: #00b38a;">[清洁]</a>
-													<a href="" style="color: #4d5256;">江苏科技大学某实验室需要一些人打扫卫生</a>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-
-												<span style="font-size: 11px; color: #ccc;">		
+							<c:forEach items="${requestScope.jobList}" var="jobshow">
+								<li class="list-group-item">
+									<table style="border: 0px;width: 100%;">
+										<tbody>
+											<tr>
+												<td width="55" valign="top" align="center">
 													<a href="#">
-														发布人
-													</a> &nbsp;•&nbsp; 
-													<strong>
-														<a href="#" style="color: #4d5256;">
-															张先生
-														</a>
-													</strong> &nbsp;•&nbsp; 
-															
-													<small>2天前</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														地点
-													</a> &nbsp;•&nbsp; 
-													<small>江苏张家港</small>
-												</span>
-											</td>
-											<td width="160" valign="top" align="left" class="hidden-xs">
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														开始
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														结束
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-											</td>
-											<td width="60" valign="top" class="hidden-xs" style="position: relative;">
-												<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
-													<span class="glyphicon glyphicon-envelope"></span>
-												</a>
-												<div class="clearfix"></div>
-												<p class="my_pre">预约成功</p>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
-							
-							<li class="list-group-item">
-								<table style="border: 0px;width: 100%;">
-									<tbody>
-										<tr>
-											<td width="55" valign="top" align="center">
-												<a href="#">
-													<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
-												</a>
-											</td>
-											<td width="10"></td>
-											<td width="auto" valign="middle">
-												<span class="item_title"> 
-													<a href="" style="color: #00b38a;">[清洁]</a>
-													<a href="" style="color: #4d5256;">江苏科技大学某实验室需要一些人打扫卫生</a>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-
-												<span style="font-size: 11px; color: #ccc;">		
-													<a href="#">
-														发布人
-													</a> &nbsp;•&nbsp; 
-													<strong>
-														<a href="#" style="color: #4d5256;">
-															张先生
-														</a>
-													</strong> &nbsp;•&nbsp; 
-															
-													<small>2天前</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														地点
-													</a> &nbsp;•&nbsp; 
-													<small>江苏张家港</small>
-												</span>
-											</td>
-											<td width="160" valign="top" align="left" class="hidden-xs">
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														开始
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														结束
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-											</td>
-											<td width="60" valign="top" class="hidden-xs" style="position: relative;">
-												<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
-													<span class="glyphicon glyphicon-envelope"></span>
-												</a>
-												<div class="clearfix"></div>
-												<p class="my_pre">预约成功</p>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
-							
-							<li class="list-group-item">
-								<table style="border: 0px;width: 100%;">
-									<tbody>
-										<tr>
-											<td width="55" valign="top" align="center">
-												<a href="#">
-													<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
-												</a>
-											</td>
-											<td width="10"></td>
-											<td width="auto" valign="middle">
-												<span class="item_title"> 
-													<a href="" style="color: #00b38a;">[清洁]</a>
-													<a href="" style="color: #4d5256;">江苏科技大学某实验室需要一些人打扫卫生</a>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-
-												<span style="font-size: 11px; color: #ccc;">		
-													<a href="#">
-														发布人
-													</a> &nbsp;•&nbsp; 
-													<strong>
-														<a href="#" style="color: #4d5256;">
-															张先生
-														</a>
-													</strong> &nbsp;•&nbsp; 
-															
-													<small>2天前</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														地点
-													</a> &nbsp;•&nbsp; 
-													<small>江苏张家港</small>
-												</span>
-											</td>
-											<td width="160" valign="top" align="left" class="hidden-xs">
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														开始
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														结束
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-											</td>
-											<td width="60" valign="top" class="hidden-xs" style="position: relative;">
-												<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
-													<span class="glyphicon glyphicon-envelope"></span>
-												</a>
-												<div class="clearfix"></div>
-												<p class="my_pre">预约成功</p>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
-							
-							<li class="list-group-item">
-								<table style="border: 0px;width: 100%;">
-									<tbody>
-										<tr>
-											<td width="55" valign="top" align="center">
-												<a href="#">
-													<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
-												</a>
-											</td>
-											<td width="10"></td>
-											<td width="auto" valign="middle">
-												<span class="item_title"> 
-													<a href="" style="color: #00b38a;">[清洁]</a>
-													<a href="" style="color: #4d5256;">江苏科技大学某实验室需要一些人打扫卫生</a>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-
-												<span style="font-size: 11px; color: #ccc;">		
-													<a href="#">
-														发布人
-													</a> &nbsp;•&nbsp; 
-													<strong>
-														<a href="#" style="color: #4d5256;">
-															张先生
-														</a>
-													</strong> &nbsp;•&nbsp; 
-															
-													<small>2天前</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														地点
-													</a> &nbsp;•&nbsp; 
-													<small>江苏张家港</small>
-												</span>
-											</td>
-											<td width="160" valign="top" align="left" class="hidden-xs">
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														开始
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														结束
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-											</td>
-											<td width="60" valign="top" class="hidden-xs" style="position: relative;">
-												<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
-													<span class="glyphicon glyphicon-envelope"></span>
-												</a>
-												<div class="clearfix"></div>
-												<p class="my_pre">预约成功</p>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
-							
-							<li class="list-group-item">
-								<table style="border: 0px;width: 100%;">
-									<tbody>
-										<tr>
-											<td width="55" valign="top" align="center">
-												<a href="#">
-													<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
-												</a>
-											</td>
-											<td width="10"></td>
-											<td width="auto" valign="middle">
-												<span class="item_title"> 
-													<a href="" style="color: #00b38a;">[清洁]</a>
-													<a href="" style="color: #4d5256;">江苏科技大学某实验室需要一些人打扫卫生</a>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-
-												<span style="font-size: 11px; color: #ccc;">		
-													<a href="#">
-														发布人
-													</a> &nbsp;•&nbsp; 
-													<strong>
-														<a href="#" style="color: #4d5256;">
-															张先生
-														</a>
-													</strong> &nbsp;•&nbsp; 
-															
-													<small>2天前</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														地点
-													</a> &nbsp;•&nbsp; 
-													<small>江苏张家港</small>
-												</span>
-											</td>
-											<td width="160" valign="top" align="left" class="hidden-xs">
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														开始
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-												<div class="sep5" style="height: 1px;"></div>
-												<span style="font-size: 11px; color: #ccc;"> 
-													<a href="#">
-														结束
-													</a> &nbsp;•&nbsp; 
-													<small>2016/10/26</small>
-												</span>
-											</td>
-											<td width="60" valign="top" class="hidden-xs" style="position: relative;">
-												<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
-													<span class="glyphicon glyphicon-envelope"></span>
-												</a>
-												<div class="clearfix"></div>
-												<p class="my_pre">预约成功</p>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</li>
+														<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
+													</a>
+												</td>
+												<td width="10"></td>
+												<td width="auto" valign="middle">
+													<span class="item_title"> 
+														<a href="" style="color: #00b38a;">[<c:out value="${jobshow.jobKind.jobKindName }"></c:out>]</a>
+														<a href="" style="color: #4d5256;"><c:out value="${jobshow.jobPublish.workDescribe }"></c:out></a>
+													</span>
+													<div class="sep5" style="height: 1px;"></div>
+	
+													<span style="font-size: 11px; color: #ccc;">		
+														<a href="#">
+															发布人
+														</a> &nbsp;•&nbsp; 
+														<strong>
+															<a href="#" style="color: #4d5256;">
+																<c:out value="${jobshow.user.userName }"></c:out>
+															</a>
+														</strong> &nbsp;•&nbsp; 
+																
+														<small>2天前</small>
+													</span>
+													<div class="sep5" style="height: 1px;"></div>
+													<span style="font-size: 11px; color: #ccc;"> 
+														<a href="#">
+															地点
+														</a> &nbsp;•&nbsp; 
+														<small><c:out value="${jobshow.location }"></c:out></small>
+													</span>
+												</td>
+												<td width="160" valign="top" align="left" class="hidden-xs">
+													<span style="font-size: 11px; color: #ccc;"> 
+														<a href="#">
+															开始
+														</a> &nbsp;•&nbsp; 
+														<small><c:out value="${jobshow.jobPublish.workBeginTime }"></c:out></small>
+													</span>
+													<div class="sep5" style="height: 1px;"></div>
+													<span style="font-size: 11px; color: #ccc;"> 
+														<a href="#">
+															结束
+														</a> &nbsp;•&nbsp; 
+														<small><c:out value="${jobshow.jobPublish.workOverTime }"></c:out></small>
+													</span>
+												</td>
+												<td width="60" valign="top" class="hidden-xs" style="position: relative;">
+													<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
+														<span class="glyphicon glyphicon-envelope"></span>
+													</a>
+													<div class="clearfix"></div>
+													<p class="my_pre">预约成功</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</li>													
+							</c:forEach>							
 						</ul>
 					</main>
 				</div>

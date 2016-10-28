@@ -11,5 +11,10 @@ public interface AddressCityDao {
 	public int  getCityCodeBycityName(String cityName);
 	//通过省份编号返回一个城市集合
 	public List<AddressCity> getAddressCityListByPCode(int provinceCode);
-	
+	//通过城市编码 返回一个城市对象
+
+	public AddressCity getAddressCityByCityCode(int cityCode);
+
+	//通过城市名称 返回一个城市对象
+	public AddressCity getAddressCityByCityName(String cityName);
 }

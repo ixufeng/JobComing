@@ -27,7 +27,7 @@ public class AddressTownDaoImpI implements AddressTownDao {
 	}
 
 	/**
-	 * 返回一条协议记录
+	 * 返回一条区县对象
 	 */
 	public AddressTown getAddressTown(String hql, Object[] params) {
 		Object obj = query.getObj(hql, params);
@@ -43,6 +43,14 @@ public class AddressTownDaoImpI implements AddressTownDao {
 	public AddressTown geAddressTownByTownName(String townName) {
 		String hql = "from AddressTown where townName=?";
 		Object[] params = new Object[] { townName };
+		return getAddressTown(hql, params);
+	}
+	/**
+	 * 通过区县编码 返回一个区县对象
+	 */
+	public AddressTown geAddressTownByTownCode(int townCode) {
+		String hql = "from AddressTown where townCode=?";
+		Object[] params = new Object[] { townCode };
 		return getAddressTown(hql, params);
 	}
 }

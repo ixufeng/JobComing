@@ -9,7 +9,13 @@ import com.job.hibernate.CommonQuery;
 
 public class AddressCityDaoImpI implements AddressCityDao {
 	private CommonQuery query = new CommonQuery();
-
+	/**
+	 * 返回一条城市对象
+	 */
+	public AddressCity getAddressCity(String hql, Object[] params) {
+		Object obj = query.getObj(hql, params);
+		return obj == null ? null : (AddressCity) obj;
+	}
 	/**
 	 * 通过城市名称返回所属省份的编号
 	 * 
@@ -49,5 +55,23 @@ public class AddressCityDaoImpI implements AddressCityDao {
 		String hql = "from AddressCity where cityName=? ";
 		Object[] params = new Object[] { cityName };
 		return (int) query.getObj(hql, params);
+	}
+	/**
+	 * 通过城市编码 返回一个城市对象
+	 */
+
+	public AddressCity getAddressCityByCityCode(int cityCode) {
+
+		String hql = "from AddressCity where cityCode=?";
+		Object[] params = new Object[] { cityCode };
+		return getAddressCity(hql, params);
+	}
+	/**
+	 * 通过城市名称 返回一个城市对象
+	 */
+	public AddressCity getAddressCityByCityName(String cityName) {
+		String hql = "from AddressCity where cityCode=?";
+		Object[] params = new Object[] { cityName };
+		return getAddressCity(hql, params);
 	}
 }
