@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/jobInfo.css" />
 		<link rel="shortcut icon" href="img/favicon.png">
+		<script type="text/javascript" src="js/map.js" ></script>
 	</head>
 
 	<body class="home-template">
@@ -139,6 +140,19 @@
 					        </li>
 					        </c:forEach>
 					    </ul>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="glyphicon glyphicon-map-marker"></span>&nbsp;导&nbsp;航
+						</div>
+						<div class="panel-body" id="map" style="min-height:300px;">
+							<script type="text/javascript">
+								ShowMap("map", {
+									city: '沭阳县',
+									addr: '华冲镇'
+								});
+							</script>	
+						</div>
 					</div>
 				</div>
 			</div>
