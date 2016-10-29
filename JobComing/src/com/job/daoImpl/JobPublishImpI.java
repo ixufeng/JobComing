@@ -168,4 +168,22 @@ public class JobPublishImpI implements JobPublishDao {
 		myquery.setMaxResults(10);
 		return myquery.list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	/**
+	 * 通过userId返回发布工作的集合
+	 * @param beginIndex
+	 * @param pagesize
+	 * @param userId
+	 * @return
+	 */
+	public List<JobPublish>getJBListByUserId(int beginIndex,int pagesize,int userId){
+		String hql="from JobPublish where userId=?";
+		Session session=query.getSession();
+		Object[]params=new Object[]{userId};
+		Query myquery=query.getQuery(hql, params, session);
+		myquery.setFirstResult(beginIndex);
+		myquery.setMaxResults(pagesize);
+		return myquery.list();
+	}
 }
