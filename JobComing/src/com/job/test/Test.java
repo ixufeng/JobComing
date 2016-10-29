@@ -1,5 +1,8 @@
 package com.job.test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.job.bean.User;
 import com.job.daoImpl.UserDaoImpl;
 
@@ -9,9 +12,6 @@ public class Test {
 
 	@org.junit.Test
 	public void test(){
-		User user = new User();
-		user.setUserName("匆匆那年YY");
-		user.setPassword("123456");
-		userDao.add(user);
+		System.out.println(new SimpleDateFormat("yyyy").format(new Date()));
 	}
 }

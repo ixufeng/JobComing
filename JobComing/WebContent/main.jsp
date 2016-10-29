@@ -157,7 +157,7 @@
 													</span>
 												</td>
 												<td width="60" valign="top" class="hidden-xs" style="position: relative;">
-													<a href="#" class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
+													<a class="count_livid" style="float:right;margin-right: 10px; font-size: 25px;" data-pre="0">
 														<span class="glyphicon glyphicon-envelope"></span>
 													</a>
 													<div class="clearfix"></div>
@@ -243,6 +243,17 @@
 		<script>
 			$(".fb-icon").click(function(){
 				$("#webchat7moor").css("display","block");
+			})
+			$(".count_livid").click(function(){
+				var temp = $(this);
+				var dattr = $(this).attr("data-pre");
+				if(dattr=="0"){
+					temp.next().next().fadeIn(500)
+					.animate({
+						top:"30px"
+					},500).fadeOut(500);	
+				}
+				temp.attr("data-pre","1");
 			})
 		</script>
 	</body>
