@@ -74,27 +74,27 @@
 							</tr>
 							<tr>
 								<td class="txt">用户昵称</td>
-								<td>匆匆那年YY</td>
+								<td>${sessionScope.user.userName}</td>
 							</tr>
 							<tr>
 								<td class="txt">性别</td>
-								<td>男</td>
+								<td>${sessionScope.user.sex}</td>
 							</tr>
 							<tr>
 								<td class="txt">年龄</td>
-								<td>22</td>
+								<td>${requestScope.age}</td>
 							</tr>
 							<tr>
 								<td class="txt">邮箱</td>
-								<td>1070763759@qq.com</td>
+								<td>${sessionScope.user.email}</td>
 							</tr>
 							<tr>
 								<td class="txt">手机</td>
-								<td>10707637591</td>
+								<td>${sessionScope.user.phone}</td>
 							</tr>
 							<tr>
 								<td class="txt">信誉</td>
-								<td>92%</td>
+								<td>${sessionScope.user.score}</td>
 							</tr>
 						</tbody>
 					</table>			
