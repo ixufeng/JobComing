@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -20,10 +21,20 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="login.jsp">登录</a> <span>/</span>
-				<a href="register.jsp">注册</a>
-			</div>
+		  <c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a href="PersonInfor.do?userId=${sessionScope.user.userId}">${sessionScope.user.userName}</a> <span>/</span>
+					<a href="ReleaseJob.do?userId=${sessionScope.user.userId}">发布兼职</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -168,8 +179,8 @@
 					     <ul class="list-group">
 					     	<c:forEach var="hotjob" items="${requestScope.hotList}">
 					        <li class="list-group-item">
-					        	<a href="">${hotjob.location } </a>&nbsp;
-					        	<a href="">[${hotjob.jobKind.jobKindName}]</a>&nbsp;
+					        	<a >${hotjob.location } </a>&nbsp;
+					        	<a >[${hotjob.jobKind.jobKindName}]</a>&nbsp;
 					        	<a href="DetailJobPServlet.do?jobPublishId=${hotjob.jobPublish.jobPublishId }">
 					        		<span class="glyphicon glyphicon-map-marker"></span>
 					        		&nbsp;${hotjob.jobPublish.detailAddress}
@@ -185,17 +196,34 @@
 					       	<span class="glyphicon glyphicon-apple"></span>&nbsp;最&nbsp;近&nbsp;浏&nbsp;览&nbsp;记&nbsp;录
 					    </div>
 					     <ul class="list-group">
-					     	<c:forEach var="rcordList" items="${requestScope.recordList }"></c:forEach>
-					        <li class="list-group-item">
-					        	<a href="">${rcordList.location }</a>&nbsp;
-					        	<a href="">[${rcordList.jobKind.jobKindName}]</a>&nbsp;
-					        	<a href="DetailJobPServlet.do?jobPublishId=${rcordList.jobPublish.jobPublishId }">
-					        		<span class="glyphicon glyphicon-map-marker"></span>
-					        		&nbsp;${rcordList.jobPublish.detailAddress}
-					        		<span style="font-weight: bold;">...</span>
-					        	</a>
-					        </li>
-					        
+					     	<c:choose>
+					     		<c:when test="${fn:length(requestScope.recordList)<6}">
+							     	<c:forEach var="rcordList" items="${requestScope.recordList }">
+							        <li class="list-group-item">
+							        	<a href="">${rcordList.location }</a>&nbsp;
+							        	<a href="">[${rcordList.jobKind.jobKindName}]</a>&nbsp;
+							        	<a href="DetailJobPServlet.do?jobPublishId=${rcordList.jobPublish.jobPublishId }">
+							        		<span class="glyphicon glyphicon-map-marker"></span>
+							        		&nbsp;${rcordList.jobPublish.detailAddress}
+							        		<span style="font-weight: bold;">...</span>
+							        	</a>
+							        </li>
+					      		  </c:forEach>
+					          </c:when>
+					         <c:otherwise>
+					         		<c:forEach  begin="0" end="5" step="1" var="rcordList" items="${requestScope.recordList }">
+							        <li class="list-group-item">
+							        	<a href="">${rcordList.location }</a>&nbsp;
+							        	<a href="">[${rcordList.jobKind.jobKindName}]</a>&nbsp;
+							        	<a href="DetailJobPServlet.do?jobPublishId=${rcordList.jobPublish.jobPublishId }">
+							        		<span class="glyphicon glyphicon-map-marker"></span>
+							        		&nbsp;${rcordList.jobPublish.detailAddress}
+							        		<span style="font-weight: bold;">...</span>
+							        	</a>
+							        </li>
+					      		  </c:forEach>
+					         </c:otherwise>
+					        </c:choose>
 					    </ul>
 					</div>
 				</div>

@@ -2,6 +2,7 @@ package com.job.service;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -61,11 +62,19 @@ public class DetailJobService {
 		return list;
 	}
 	/**
-	 * 添加至浏览记录
+	 * 修改浏览记录的个数
 	 * @param jobShow
 	 * @return
 	 */
-	public void addWatchRecord(JobShow jobShow,List<JobShow> jList){
-			jList.add(jobShow);
+	public void retRecordList(LinkedList<JobShow> jList){
+		for(int i=0;i<jList.size();i++){
+			//如果详细地址超过6位就缩写
+			String address=jList.get(i).getJobPublish().getDetailAddress();
+			if(address.length()>6){
+				String modifyAddress=address.substring(0, 6);
+				jList.get(i).getJobPublish().setDetailAddress(modifyAddress);
+			}
+		}
 	}
+	
 }
