@@ -179,7 +179,7 @@
 							</div>
 							<div class="form-group">
 								<label class="" for="content" style="margin-left: 5px;">评价内容</label>
-								<textarea class="form-control" rows="2">用户的一些评价，需要写进评价表</textarea>
+								<textarea id="fcon" class="form-control" rows="2">用户的一些评价，需要写进评价表</textarea>
 							</div>
 							<div class="form-group">
 								<label class="" for="content" style="margin-left: 5px;">用户评分</label>
@@ -192,7 +192,7 @@
 								</ul>
 							</div>
 							<div class="form-group">
-								<input type="hidden" class="form-control grade" value="" name="grade"/>
+								<input id="hidd" type="hidden" class="form-control grade" value="" name="grade"/>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -245,6 +245,17 @@
 				$(this).prevAll().css("background-position","0px -30px");
 				$(this).nextAll().css("background-position","0px 0px");
 				$(".form-group .grade").val(value);
+			});
+			/*表单验证*/
+			$("form").submit(function(){
+				var con = $("#fcon").val();
+				var hidd = $("#hidd").val();
+				if(con==""||hidd==""){
+					return false;
+				}
+				else{
+					return true;
+				}
 			});
 		</script>
 	</body>
