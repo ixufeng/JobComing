@@ -37,7 +37,6 @@ public class MainPageServlet extends HttpServlet {
 	
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("actoin");
 		HttpSession session=request.getSession();
 		//String u = request.getParameter("user");
 		//添加兼职种类

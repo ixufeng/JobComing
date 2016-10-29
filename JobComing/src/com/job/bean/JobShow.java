@@ -7,8 +7,22 @@ public class JobShow {
 	private User user;
 	private String location;
 	
+	public JobShow() {
+		super();
+	}
 	
 	
+	
+	public JobShow(JobPublish jobPublish, JobKind jobKind, User user, String location) {
+		super();
+		this.jobPublish = jobPublish;
+		this.jobKind = jobKind;
+		this.user = user;
+		this.location = location;
+	}
+
+
+
 	public JobPublish getJobPublish() {
 		return jobPublish;
 	}

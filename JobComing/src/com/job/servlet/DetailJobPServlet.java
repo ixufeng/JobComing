@@ -2,6 +2,7 @@ package com.job.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ import com.job.service.DetailJobService;
 public class DetailJobPServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DetailJobService  dtservice=new DetailJobService();
-	private List<JobShow>jList;
+
 	public DetailJobPServlet() {
 		super();
 
@@ -37,19 +38,25 @@ public class DetailJobPServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		LinkedList<JobShow> jList=null;
+		HttpSession session=request.getSession();
+		//添加至浏览记录
+		if(session.getAttribute("jList")==null){
+			jList=new LinkedList<JobShow>();
+		}else{
+			jList=(LinkedList<JobShow>) session.getAttribute("jList");
+		
+		}
 		if(request.getParameter("jobPublishId")!=null){
-			HttpSession session=request.getSession();
+			JobShow jobdetail = null;
+			
 			int jobPublishId=Integer.parseInt(request.getParameter("jobPublishId"));
 			//详细工作详情
-			JobShow jobdetail=dtservice.getJSByJpId(jobPublishId);
+			jobdetail=dtservice.getJSByJpId(jobPublishId);
 			request.setAttribute("jobdetail", jobdetail);
-			//添加至浏览记录
-			if(session.getAttribute("jList")==null){
-				jList=new ArrayList<JobShow>();
-			}else{
-				jList=(List<JobShow>) session.getAttribute("jList");
-			}
-			dtservice.addWatchRecord(jobdetail,jList);
+			JobShow jobShow = new JobShow(jobdetail.getJobPublish(), jobdetail.getJobKind(), jobdetail.getUser(), jobdetail.getLocation());
+			jList.addFirst(jobShow);
+			dtservice.retRecordList(jList);
 			session.setAttribute("jList", jList);
 			//今日推送工作记录
 			List<JobShow>list=dtservice.getTodayWork(320500);

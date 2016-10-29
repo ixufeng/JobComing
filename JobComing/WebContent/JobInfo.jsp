@@ -46,7 +46,7 @@
 							<h3 class="panel-title" style="display: inline-block;">
             					闲着无聊做做兼职--JobComing
         					</h3>
-        					<a href="" style="float: right;display: inline-block;">首页</a>
+        					<a href="MainPageServlet" style="float: right;display: inline-block;">首页</a>
 						</div>
 						<div class="panel-body">
 							<table class="table">
