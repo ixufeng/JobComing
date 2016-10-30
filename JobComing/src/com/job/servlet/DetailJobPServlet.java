@@ -49,15 +49,17 @@ public class DetailJobPServlet extends HttpServlet {
 		}
 		if(request.getParameter("jobPublishId")!=null){
 			JobShow jobdetail = null;
-			
+			JobShow jobdetail1=null;
 			int jobPublishId=Integer.parseInt(request.getParameter("jobPublishId"));
 			//详细工作详情
 			jobdetail=dtservice.getJSByJpId(jobPublishId);
-			request.setAttribute("jobdetail", jobdetail);
+			//浏览记录
 			JobShow jobShow = new JobShow(jobdetail.getJobPublish(), jobdetail.getJobKind(), jobdetail.getUser(), jobdetail.getLocation());
 			jList.addFirst(jobShow);
 			dtservice.retRecordList(jList);
 			session.setAttribute("jList", jList);
+			jobdetail1=dtservice.getJSByJpId(jobPublishId);
+			request.setAttribute("jobdetail", jobdetail1);
 			//今日推送工作记录
 			List<JobShow>list=dtservice.getTodayWork(320500);
 			request.setAttribute("hotList1", list);

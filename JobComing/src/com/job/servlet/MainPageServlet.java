@@ -38,7 +38,6 @@ public class MainPageServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		//String u = request.getParameter("user");
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
 		if(session.getAttribute("jobList")==null){
@@ -47,15 +46,28 @@ public class MainPageServlet extends HttpServlet {
 			if(request.getParameter("jobKindId")!=null){
 				//根据种类获取工作集合
 				jobKindId=Integer.parseInt(request.getParameter("jobKindId"));
-				session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, 1, 5, 320500));
+				session.setAttribute("jobKindId", jobKindId);
+				String cityName=(String) session.getAttribute("cityName");
+				if(cityName!=null){
+					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
+				}else{
+					session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, 1, 5, 320500));
+				}
 			}//else{
 				//根据城市名称获得工作集合
-			if(request.getParameter("cityName")!=null){
+			else if(request.getParameter("cityName")!=null){
 				String cityName=request.getParameter("cityName");
-				session.setAttribute("jobList", searchService.getJobByCityName(1, 1, 5, cityName));
+				session.setAttribute("cityName", cityName);
+				int jobKindId=(Integer)session.getAttribute("jobKindId");
+				if(jobKindId!=0){
+					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
+				}else{
+					session.setAttribute("jobList", searchService.getJobByCityName(1, 5, cityName));
+				}
+			}else{
+				session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
 			}
 		}
-		//}
 
 		request.setAttribute("hotList", jobService.getTodayWork(320500));
 		if((List<JobShow>) session.getAttribute("jList")!=null){

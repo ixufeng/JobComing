@@ -56,7 +56,7 @@
 						<a href="info1.jsp" class="list-group-item active">我的信息</a>
 						<a href="info2.jsp" class="list-group-item">参与记录</a>
 						<a href="info3.jsp" class="list-group-item">分享记录</a>
-						<a href="main.jsp" class="list-group-item">返回首页</a>
+						<a href="MainPageServlet" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
@@ -75,7 +75,14 @@
 						<tbody>
 							<tr>
 								<td>
-									<img src="img/public.png" style="width: 60px;height: 60px;" class="img-thumbnail">
+									<c:choose>
+									  <c:when test="${ empty sessionScope.user.headPicture}">
+									  	   <img src="img/public.png"style="width: 60px;height: 60px;" class="img-thumbnail">
+									  </c:when>
+									  <c:otherwise>
+									      <img src="${sessionScope.user.headPicture}" style="width: 60px;height: 60px;" class="img-thumbnail">
+									   </c:otherwise>
+									</c:choose>
 								</td>
 								<td>
 									<a style="display: block; margin-top: 20px;" data-toggle="modal" data-target="#modifyInfo">
@@ -117,7 +124,7 @@
 		<div class="modal fade" id="modifyInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form role="form" action="info2.jsp" method="post" class="login-form">
+					<form role="form" action="ModifyPersonServlet" method="post" class="login-form" enctype="multipart/form-data">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="myModalLabel">个人信息修改</h4>
@@ -125,15 +132,15 @@
 						<div class="modal-body">
 							<div class="form-group">
 								<label class="sr-only" for="form-username">Username</label>
-								<input type="text" name="username" value="匆匆那年YY" readonly="readonly" class="form-username form-control" id="form-username">
+								<input type="text" name="username" value="${sessionScope.user.userName}" readonly="readonly" class="form-username form-control" id="form-username">
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="form-email">Email</label>
-								<input type="text" name="email" value="1070763759@qq.com" readonly="readonly" class="form-username form-control" id="form-email">
+								<input type="text" name="email" value="${sessionScope.user.email}" readonly="readonly" class="form-username form-control" id="form-email">
 							</div>
 							<div class="form-group">
 								<label class="sr-only" for="form-phone">Phone</label>
-								<input type="text" name="email" value="18151587371" readonly="readonly" class="form-username form-control" id="form-email">
+								<input type="text" name="email" value="${sessionScope.user.phone}" readonly="readonly" class="form-username form-control" id="form-email">
 							</div>
 							<div class="form-group">
 								<label class="control-label">头像选择</label>
@@ -142,13 +149,13 @@
 							<div class="form-group" style="margin-bottom: 60px;">
 								<div class="radio col-xs-4 col-sm-3">
 									<label>
-										<input type="radio" name="sex" id="male" value="male" checked="checked">
+										<input type="radio" name="sex" id="male" value="男" checked="checked">
 									</label>
 									<span><img src="img/male.png" class="img-responsive" style="width: 20px; height:20px;display: inline-block;margin-top: -2px;"></span>
 								</div>
 								<div class="radio col-xs-4 col-sm-3" style="margin-top: 10px;">
 									<label>
-										<input type="radio" name="sex" id="female" value="female">
+										<input type="radio" name="sex" id="female" value="女">
 									</label>
 									<span><img src="img/female.png" class="img-responsive" style="width: 20px; height:20px;display: inline-block;margin-top: -2px;"></span>
 								</div>

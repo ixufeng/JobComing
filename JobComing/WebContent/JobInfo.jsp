@@ -148,8 +148,8 @@
 						<div class="panel-body" id="map" style="min-height:300px;">
 							<script type="text/javascript">
 								ShowMap("map", {
-									city: '沭阳县',
-									addr: '华冲镇'
+									city: '${requestScope.jobdetail.location}',
+									addr: '${requestScope.jobdetail.jobPublish.detailAddress}'
 								});
 							</script>	
 						</div>

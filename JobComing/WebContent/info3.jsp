@@ -56,7 +56,7 @@
 						<a href="info1.jsp" class="list-group-item">我的信息</a>
 						<a href="info2.jsp" class="list-group-item">参与记录</a>
 						<a href="info3.jsp" class="list-group-item active">分享记录</a>
-						<a href="main.jsp" class="list-group-item">返回首页</a>
+						<a href="MainPageServlet" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
@@ -241,7 +241,7 @@
 						</div>
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">结束时间</label>
-							<input type="text" name="username" value="${jobShow.jobPublish.workOverTime}" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 					</div>
 				</div>

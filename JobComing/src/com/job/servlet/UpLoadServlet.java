@@ -12,15 +12,16 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItem;
 
+import com.job.bean.User;
 import com.job.service.UploadService;
 
 @WebServlet("/UpLoadServlet")
 public class UpLoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UploadService ups=new UploadService();
-
+	private int userid;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -35,9 +36,13 @@ public class UpLoadServlet extends HttpServlet {
 			List<FileItem> fileList = disk.parseRequest(request);
 			HttpSession session=request.getSession();
 			String absoluatepath=getServletContext().getRealPath("/");
-			int userid=(Integer)session.getAttribute("userid");
+			User user=(User) session.getAttribute("user");
+			if(user!=null){
+				userid=user.getUserId();
+			}
 			if(ups.upLoad(fileList, disk, absoluatepath, userid)){
 				///上传成功
+				
 			}
 		} catch (FileUploadException e) {
 			// TODO Auto-generated catch block
