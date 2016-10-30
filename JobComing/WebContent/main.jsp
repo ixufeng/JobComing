@@ -31,7 +31,7 @@
 			<c:otherwise>
 				<div class="site-nav">
 					<a href="PersonInforServlet.do">${sessionScope.user.userName}</a> <span>/</span>
-					<a href="ReleaseJob.do">发布兼职</a>
+					<a href="ReleaseJob.do?action=reach">发布兼职</a>
 				</div>
 			</c:otherwise>
 		  </c:choose>
