@@ -44,15 +44,10 @@
 								<i class="glyphicon glyphicon-search"></i>
 								<!--这个是键盘按下的时候搜索的ajax异步显示信息-->
 									<ul class="list-group" id="hide-info">
-										<li class="list-group-item">
-											<a href="">java</a>
-										</li>
-										<li class="list-group-item">
-											<a href="">java</a>
-										</li>
-										<li class="list-group-item">
-											<a href="">java</a>
-										</li>
+										
+										
+										
+										
 									</ul>
 							</div>
 						</form>
@@ -68,22 +63,22 @@
 						<div>
 							<span>兼职地点：</span>
 							<a class="current">全国</a>
-							<a href="MainPageServlet?cityName=南京市" class="active">南京</a>
-							<a href="MainPageServlet?cityName=杭州市" class="active">杭州</a>
-							<a href="MainPageServlet?cityName=上海市" class="active">上海</a>
-							<a href="MainPageServlet?cityName=北京市" class="active">北京</a>
-							<a href="MainPageServlet?cityName=深圳市" class="active">深圳</a>
-							<a href="MainPageServlet?cityName=广州市" class="active">广州</a>
-							<a href="MainPageServlet?cityName=成都市" class="active">成都</a>
-							<a href="MainPageServlet?cityName=苏州市" class="active">苏州</a>
-							<a href="MainPageServlet?cityName=长沙市" class="active">长沙</a>
+							<a href="MainPageServlet?mcityName=南京市" class="active">南京</a>
+							<a href="MainPageServlet?mcityName=杭州市" class="active">杭州</a>
+							<a href="MainPageServlet?mcityName=上海市" class="active">上海</a>
+							<a href="MainPageServlet?mcityName=北京市" class="active">北京</a>
+							<a href="MainPageServlet?mcityName=深圳市" class="active">深圳</a>
+							<a href="MainPageServlet?mcityName=广州市" class="active">广州</a>
+							<a href="MainPageServlet?mcityName=成都市" class="active">成都</a>
+							<a href="MainPageServlet?mcityName=苏州市" class="active">苏州</a>
+							<a href="MainPageServlet?mcityName=长沙市" class="active">长沙</a>
 							<a href="city.jsp" style="float: right;">更多<i class="caret"></i></a>
 							<div class="sep5" style="height: 20px;"></div>
 							<span>兼职形式：</span>
 							<a class="ser-kind">所有</a>
 							
 							<c:forEach items="${requestScope.kindList}" var="kind">								
-								<a href="MainPageServlet?jobKindId=${kind.jobKindId}" class="active">
+								<a href="MainPageServlet?mjobKindId=${kind.jobKindId}" class="active">
 									<c:out value="${kind.jobKindName }"></c:out>
 								</a>
 							</c:forEach>						
@@ -186,6 +181,15 @@
 								</li>													
 							</c:forEach>							
 						</ul>
+						 <ul class="pagination pull-right">
+							<li><a href="#">&laquo;</a></li>
+							<li class="active"><a href="#">1</a></li>
+							<li class="disabled"><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
 					</main>
 				</div>
 				<div class="col-md-3 adv visible-md visible-lg" style="padding-right: 0px;">
@@ -194,7 +198,7 @@
 					       	<span class="glyphicon glyphicon-fire"></span>&nbsp;今&nbsp;日&nbsp;兼&nbsp;职&nbsp;推&nbsp;送
 					    </div>
 					     <ul class="list-group">
-					     	<c:forEach var="hotjob" items="${requestScope.hotList}">
+					     	<c:forEach var="hotjob" items="${sessionScope.hotList}">
 					        <li class="list-group-item">
 					        	<a >${hotjob.location } </a>&nbsp;
 					        	<a >[${hotjob.jobKind.jobKindName}]</a>&nbsp;
@@ -206,6 +210,7 @@
 					        </li>
 					        </c:forEach>
 					    </ul>
+					    
 					</div>
 					
 					<div class="panel panel-default">

@@ -111,6 +111,12 @@
 											</select>
 										</div>
 										<h5 class="desc">
+											<span class="glyphicon glyphicon-leaf"></span>&nbsp;详细地址
+										</h5>
+										<div class="form-group">
+											<textarea id="descCon1" class="form-control" rows="3" placeholder="对具体工作地址进行简短的描述" name="detailaddress"></textarea>
+										</div>
+										<h5 class="desc">
 											<span class="glyphicon glyphicon-leaf"></span>&nbsp;开始时间
 										</h5>
 										<div class="form-group">
@@ -167,7 +173,8 @@
 				 var date2 = $("#enddate").val();
 				 var end=new Date(date2.replace("-", "/").replace("-", "/"));
 				 var con = $("#descCon").val();
-				 if(jobkind==""||jobaddress==""||date1==""||date2==""){
+				 var con1= $("#descCon1").val();
+				 if(jobkind==""||jobaddress==""||date1==""||date2==""||con==""||con1==""){
 				 	return false;
 				 }
 				 else if(end<start){

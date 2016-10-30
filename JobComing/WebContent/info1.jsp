@@ -72,7 +72,7 @@
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
-					<ul class="nav nav-tabs nav-justified">
+					<ul class="nav nav-tabs">
 						<li class="active bar">
 							<a href="info1.jsp">我的信息</a>
 						</li>

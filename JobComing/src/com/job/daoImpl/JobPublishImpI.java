@@ -1,3 +1,4 @@
+
 package com.job.daoImpl;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
+import com.job.util.TimeUtils;
 
 public class JobPublishImpI implements JobPublishDao {
 	private CommonQuery query = new CommonQuery();

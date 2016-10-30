@@ -72,7 +72,7 @@
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
-					<ul class="nav nav-tabs nav-justified">
+					<ul class="nav nav-tabs">
 						<li class="bar">
 							<a href="info1.jsp">我的信息</a>
 						</li>
@@ -106,6 +106,10 @@
 
 						</tbody>
 					</table>
+					<ul class="pager">
+					  <li class="previous"><a href="#">&larr; 上一页</a></li>
+					  <li class="next"><a href="#">下一页 &rarr;</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -37,51 +37,53 @@ public class MainPageServlet extends HttpServlet {
 	
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+		
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
 		if(session.getAttribute("jobList")==null){
 			session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
-		}else{
-			if(request.getParameter("jobKindId")!=null){
+		}
+		else{
+			if(request.getParameter("mjobKindId")!=null){
 				//根据种类获取工作集合
-				jobKindId=Integer.parseInt(request.getParameter("jobKindId"));
+				jobKindId=Integer.parseInt(request.getParameter("mjobKindId"));
 				session.setAttribute("jobKindId", jobKindId);
 				if( session.getAttribute("cityName")!=null){
-					String cityName=(String) session.getAttribute("cityName");
+					String cityName=(String) session.getAttribute("mcityName");
 					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
 				}else{
 					session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, 1, 5, 320500));
 				}
-			}//else{
-				//根据城市名称获得工作集合
-			else if(request.getParameter("cityName")!=null){
-				String cityName=request.getParameter("cityName");
-				session.setAttribute("cityName", cityName);
-				if(session.getAttribute("jobKindId")!=null){
-					int jobKindId=(Integer)session.getAttribute("jobKindId");
+			}//根据城市名称获得工作集合
+			else if(request.getParameter("mcityName")!=null){
+				String cityName=request.getParameter("mcityName");
+				session.setAttribute("mcityName", cityName);
+				if(session.getAttribute("mjobKindId")!=null){
+					int jobKindId=(Integer)session.getAttribute("mjobKindId");
 					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
 				}else{
 					session.setAttribute("jobList", searchService.getJobByCityName(1, 5, cityName));
 				}
 			}else{
 				session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
+				System.out.println("hahahhhahahhah");
+				List<JobShow> list = (List<JobShow>) session.getAttribute("jobList");
+				System.out.println(list.size());
 			}
 		}
-
-		request.setAttribute("hotList", jobService.getTodayWork(320500));
+		session.setAttribute("hotList", jobService.getTodayWork(320500));
 		if((List<JobShow>) session.getAttribute("jList")!=null){
 			List<JobShow>list=(List<JobShow>) session.getAttribute("jList");
 			request.setAttribute("recordList", list);
 		}
 		request.getRequestDispatcher("main.jsp").forward(request, response);
-		
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
 	}
 
 }

@@ -26,7 +26,7 @@ public class ShowJobService {
 	private UserDao userDao = new UserDaoImpl();
 	private JobKindDaoImpI jobKindDao = new JobKindDaoImpI();
 	private AddressTownDaoImpI townDaoImpl = new AddressTownDaoImpI();
-	private AddressCityDao cityDaoImpl = new AddressCityDaoImpI();
+	private AddressCityDaoImpI cityDaoImpl = new AddressCityDaoImpI();
 	/**
 	 * 有具体地址的显示
 	 * @param pageIndex
@@ -69,6 +69,16 @@ public class ShowJobService {
 	public ArrayList<JobKind> getJobType(){
 		ArrayList<JobKind> list = new ArrayList<JobKind>();
 		list =  (ArrayList<JobKind>) jobKindDao.getJobKindList("from JobKind ", null);
+		return list;
+	}
+	/**
+	 * 获取所有城市
+	 * @return
+	 */
+	
+	public List<AddressCity> getCity(){
+		List<AddressCity> list = new ArrayList<AddressCity>();
+		list =cityDaoImpl.getAddressCityList("from AddressCity ", null);
 		return list;
 	}
 	/**
