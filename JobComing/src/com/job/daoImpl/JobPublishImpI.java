@@ -1,3 +1,4 @@
+
 package com.job.daoImpl;
 
 import java.io.Serializable;
@@ -7,10 +8,12 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.junit.Test;
 
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
+import com.job.util.TimeUtils;
 
 public class JobPublishImpI implements JobPublishDao {
 	private CommonQuery query = new CommonQuery();
@@ -185,5 +188,16 @@ public class JobPublishImpI implements JobPublishDao {
 		myquery.setFirstResult(beginIndex);
 		myquery.setMaxResults(pagesize);
 		return myquery.list();
+	}
+	/**
+	 * 通过用户id返回发布工作的个数
+	 * @param userId
+	 * @return
+	 */
+	public long getCountByUserId(int userId){
+		String hql="select count(*) from JobPublish where userId=?";
+		Object[] params=new Object[]{userId};
+		Object object=query.getObj(hql, params);
+		return object==null?0:(Long)object;
 	}
 }

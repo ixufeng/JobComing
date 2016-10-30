@@ -98,7 +98,20 @@ public class TimeUtils {
 		 return sdf.format(d);
 		
 	 }
-	
-	
+	/**
+	 * string 返回date型
+	 * @param time
+	 * @return
+	 */
+	public static Date formatDate(String time){
+		SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			return sdf.parse(time);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }

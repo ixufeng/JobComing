@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import com.job.bean.AddressCity;
+import com.job.bean.JobKind;
 import com.job.dao.AddressCityDao;
 import com.job.hibernate.CommonQuery;
 
@@ -63,5 +64,21 @@ public class AddressCityDaoImpI implements AddressCityDao {
 		String hql = "from AddressCity where cityName=?";
 		Object[] params = new Object[] { cityName };
 		return getAddressCity(hql, params);
+	}
+	/**
+	 * 返回一个城市地址
+	 * 
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public List<AddressCity> getAddressCityList(String hql, Object[] params) {
+		List<AddressCity> list = new ArrayList<AddressCity>();
+		List<Object> list2 = new ArrayList<Object>();
+		list2 = query.selectForList(hql, params);
+		for (int i = 0; i < list2.size(); i++) {
+			list.add((AddressCity) list2.get(i));
+		}
+		return list;
 	}
 }

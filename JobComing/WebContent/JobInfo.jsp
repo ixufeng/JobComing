@@ -25,17 +25,40 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="">登录</a> <span>/</span>
-				<a href="">注册</a>
-			</div>
+			 <c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a href="PersonInforServlet.do">${sessionScope.user.userName}</a> <span>/</span>
+					<a href="ReleaseJob.do">发布兼职</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-sm-8 col-sm-offset-2">
 						<form class="" role="search">
 							<div class="form-group">
 								<input type="text" class="form-control search clearable" placeholder="搜索兼职/单位/地点">
 								<i class="glyphicon glyphicon-search"></i>
+							
+								<!--这个是键盘按下的时候搜索的ajax异步显示信息-->
+									<ul class="list-group" id="hide-info">
+										<li class="list-group-item">
+											<a href="">java</a>
+										</li>
+										<li class="list-group-item">
+											<a href="">java</a>
+										</li>
+										<li class="list-group-item">
+											<a href="">java</a>
+										</li>
+									</ul>
 							</div>
 						</form>
 					</div>
@@ -165,6 +188,7 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/chat.js"></script>
 		<script src="js/bootstrap.js"></script>
+		<script src="js/search.js"></script>
 		<script>
 			$("#show").click(function(){
 				$(".alert-warning").css("display","block");

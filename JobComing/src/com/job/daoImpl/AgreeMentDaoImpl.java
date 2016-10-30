@@ -120,5 +120,15 @@ public class AgreeMentDaoImpl implements AgreeMentDao {
 		}
 		return list;
 	}
-
+	/**
+	 * 根据用户id和协议状态返回达成协议的个数
+	 * @param userId
+	 * @return
+	 */
+	public long getCountByUserId(int userId){
+		String hql="select count(*) from AgreeMent where userId=? and status='已完成'";
+		Object[] params=new Object[]{userId};
+		Object object=query.getObj(hql, params);
+		return object==null?0:(Long)object;
+	}
 }
