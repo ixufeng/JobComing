@@ -35,7 +35,7 @@ public class MainPageServlet extends HttpServlet {
     }
 
 	
-	@SuppressWarnings("unchecked")
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 		
@@ -44,6 +44,20 @@ public class MainPageServlet extends HttpServlet {
 	
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cpTemp = request.getParameter("cp");
+		int cp=1;
+		if(cpTemp!=null){
+			request.setAttribute("cp", 1);
+			try{
+				cp = Integer.valueOf(cpTemp);
+				
+			}catch(Exception e){
+				cp = 1;
+			}
+		}
+		request.setAttribute("cp", cp);
+		
+		
 		HttpSession session=request.getSession();
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
@@ -57,9 +71,9 @@ public class MainPageServlet extends HttpServlet {
 				session.setAttribute("jobKindId", jobKindId);
 				if( session.getAttribute("cityName")!=null){
 					String cityName=(String) session.getAttribute("mcityName");
-					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
+					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, cp, 5, cityName));
 				}else{
-					session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, 1, 5, 320500));
+					session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, cp, 5, 320500));
 				}
 			}//根据城市名称获得工作集合
 			else if(request.getParameter("mcityName")!=null){
@@ -67,13 +81,13 @@ public class MainPageServlet extends HttpServlet {
 				session.setAttribute("mcityName", cityName);
 				if(session.getAttribute("mjobKindId")!=null){
 					int jobKindId=(Integer)session.getAttribute("mjobKindId");
-					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
+					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, cp, 5, cityName));
 				}else{
-					session.setAttribute("jobList", searchService.getJobByCityName(1, 5, cityName));
+					session.setAttribute("jobList", searchService.getJobByCityName(cp, 5, cityName));
 				}
 			}else{
-				session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
-				System.out.println("hahahhhahahhah");
+				session.setAttribute("jobList", jobService.getJobShow(cp, 20, 320500));
+				
 				List<JobShow> list = (List<JobShow>) session.getAttribute("jobList");
 				System.out.println(list.size());
 			}

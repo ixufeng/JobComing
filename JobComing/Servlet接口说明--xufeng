@@ -1,8 +1,0 @@
-url : /SendMailServlet?action=1
-action = pre : 发送预约的兼职邮件
-参数{
-	JobPublishId
-
-}
-
-
