@@ -3,6 +3,7 @@ package com.job.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
 
 import com.job.bean.AddressCity;
 import com.job.bean.AddressTown;
@@ -127,8 +128,38 @@ public class ShowJobService {
 		return list2;
 
 	}
-
-	
-	
-	
+	/**
+	 * 通过用户id返回分页的jobshow对象集合
+	 * @param pageIndex
+	 * @param pageSize
+	 * @param userId
+	 * @return
+	 */
+	public ArrayList<JobShow> getJShowByUserId(int pageIndex,int pageSize,int userId){
+		ArrayList<JobShow> list = new ArrayList<JobShow>();
+		int beginIndex = pageSize*(pageIndex-1);
+		
+		List<JobPublish> tempList = jobDao.getJBListByUserId(beginIndex, pageSize, userId);
+		for(JobPublish job:tempList){
+			JobShow jobShow = new JobShow();		
+			jobShow.setUser(userDao.getUser(userId));
+			jobShow.setJobKind(jobKindDao.getJobKind(job.getJobKindId()));
+			int addressNumber=job.getAddressNumber();
+			String location="";
+			AddressTown addressTown=townDaoImpl.geAddressTownByTownCode(addressNumber);
+			if(addressTown!=null){
+				location=addressTown.getTownName();
+			}else{
+				AddressCity addressCity=cityDaoImpl.getAddressCityByCityCode(addressNumber);
+				if(addressCity!=null){
+					location=addressCity.getCityName();
+				}
+			}
+			jobShow.setLocation(location);	
+			jobShow.setJobPublish(job);	
+			list.add(jobShow);
+		}
+		
+		return list;
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -21,10 +22,20 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="">登录</a> <span>/</span>
-				<a href="">注册</a>
-			</div>
+			<c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a>${sessionScope.user.userName}</a> <span>/</span>
+					<a href="MainPageServlet">首页</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -42,21 +53,22 @@
 			<div class="row">
 				<div class="col-md-2 myinfo visible-lg visible-md">
 					<div class="list-group">
-						<a href="info1.html" class="list-group-item">我的信息</a>
-						<a href="info2.html" class="list-group-item active">参与记录</a>
-						<a href="info3.html" class="list-group-item">分享记录</a>
+						<a href="info1.jsp" class="list-group-item">我的信息</a>
+						<a href="info2.jsp" class="list-group-item active">参与记录</a>
+						<a href="info3.jsp" class="list-group-item">分享记录</a>
+						<a href="main.jsp" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
 					<ul class="nav nav-tabs nav-justified">
 						<li class="bar">
-							<a href="info1.html">我的信息</a>
+							<a href="info1.jsp">我的信息</a>
 						</li>
 						<li class="active bar">
-							<a href="info2.html">参与记录</a>
+							<a href="info2.jsp">参与记录</a>
 						</li>
 						<li class="bar">
-							<a href="info3.html">分享记录</a>
+							<a href="info3.jsp">分享记录</a>
 						</li>
 					</ul>
 					<table class="table table2">
@@ -178,7 +190,7 @@
 							</div>
 							<div class="form-group">
 								<label class="" for="content" style="margin-left: 5px;">评价内容</label>
-								<textarea class="form-control" rows="2">用户的一些评价，需要写进评价表</textarea>
+								<textarea id="fcon" class="form-control" rows="2">用户的一些评价，需要写进评价表</textarea>
 							</div>
 							<div class="form-group">
 								<label class="" for="content" style="margin-left: 5px;">用户评分</label>
@@ -191,7 +203,7 @@
 								</ul>
 							</div>
 							<div class="form-group">
-								<input type="hidden" class="form-control grade" value="" name="grade"/>
+								<input id="hidd" type="hidden" class="form-control grade" value="" name="grade"/>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -244,6 +256,17 @@
 				$(this).prevAll().css("background-position","0px -30px");
 				$(this).nextAll().css("background-position","0px 0px");
 				$(".form-group .grade").val(value);
+			});
+			/*表单验证*/
+			$("form").submit(function(){
+				var con = $("#fcon").val();
+				var hidd = $("#hidd").val();
+				if(con==""||hidd==""){
+					return false;
+				}
+				else{
+					return true;
+				}
 			});
 		</script>
 	</body>

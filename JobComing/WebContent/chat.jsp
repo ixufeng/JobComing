@@ -7,6 +7,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="css/chat.css" />
+		<link rel="stylesheet" href="css/reset.css" />
 	</head>
 
 	<body>
@@ -25,30 +26,10 @@
 									<h3 class="title">小&nbsp;J</h3>
 									<p class="lg">尊敬的用户您好，请问有什么可以帮助您的！</p>
 								</li>
-								<li class="chat-item left">
-									<h3 class="title">小&nbsp;J</h3>
-									<p class="lg">尊敬的用户您好，请问有什么可以帮助您的！</p>
-								</li>
-								<li class="chat-item left">
-									<h3 class="title">小&nbsp;J</h3>
-									<p class="lg">尊敬的用户您好，请问有什么可以帮助您的！</p>
-								</li>
-								<li class="chat-item left">
-									<h3 class="title">小&nbsp;J</h3>
-									<p class="lg">尊敬的用户您好，请问有什么可以帮助您的！</p>
-								</li>
+								
 							</ul>
 						</div>					
-						<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;">
-							<div class="mCSB_draggerContainer">
-								<div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: block; height: 64px; max-height: 288px; top: 0px;">
-									<div class="mCSB_dragger_bar" style="line-height: 30px;">
-										
-									</div>
-								</div>
-								<div class="mCSB_draggerRail"></div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="toolbox">
@@ -189,11 +170,16 @@
 				</div>
 				<textarea id="chatText" name="chatText" class="chat-text" placeholder="您好，你有什么问题需要反馈"></textarea>
 				<div class="submit">快捷键: Enter
-					<input type="button" name="submit" class="submit-msg" value="发送">
+					<input type="button" name="submit" class="submit-msg" value="发送" id="send">
 				</div>
 			</div>			
 		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript" src="js/zUI.js" ></script>
 		<script>
+		$(function(){
+			$("#mCSB_1").panel({iWheelStep:32});
+		});
+			
 			$(".close").click(function(){
 				var a = $('#webchat7moor', window.parent.document).css("display","none");
 			})
@@ -208,7 +194,22 @@
 					.css("display","none");
 				}
 			});
-		</script>
+			function getEmojiCode(con){
+				var value = $("#chatText").val();
+				$("#chatText").val(value+con);
+			}
+			$("#send").click(function(){
+				var value = $("#chatText").val();
+				if(value!=""){
+					$(".chat-list").append("<li class='chat-item right'><h3 class='title'>某用户</h3><p class='lg'>"+value+"</p></li>")
+					$("#chatText").val("");
+					var h_ul = $(".chat-list").height();
+					var h = 278-h_ul+"px";
+					$("#mCSB_1_container").css("top",h);
+				}
+				
+			})
+		</script> 
 	</body>
 
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -21,10 +22,20 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="">登录</a> <span>/</span>
-				<a href="">注册</a>
-			</div>
+			<c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a>${sessionScope.user.userName}</a> <span>/</span>
+					<a href="MainPageServlet">首页</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -42,21 +53,22 @@
 			<div class="row">
 				<div class="col-md-2 myinfo visible-lg visible-md">
 					<div class="list-group">
-						<a href="info1.html" class="list-group-item active">我的信息</a>
-						<a href="info2.html" class="list-group-item">参与记录</a>
-						<a href="info3.html" class="list-group-item">分享记录</a>
+						<a href="info1.jsp" class="list-group-item active">我的信息</a>
+						<a href="info2.jsp" class="list-group-item">参与记录</a>
+						<a href="info3.jsp" class="list-group-item">分享记录</a>
+						<a href="main.jsp" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
 					<ul class="nav nav-tabs nav-justified">
 						<li class="active bar">
-							<a href="info1.html">我的信息</a>
+							<a href="info1.jsp">我的信息</a>
 						</li>
 						<li class="bar">
-							<a href="info2.html">参与记录</a>
+							<a href="info2.jsp">参与记录</a>
 						</li>
 						<li class="bar">
-							<a href="info3.html">分享记录</a>
+							<a href="info3.jsp">分享记录</a>
 						</li>
 					</ul>
 					<table class="table table1">
@@ -73,27 +85,27 @@
 							</tr>
 							<tr>
 								<td class="txt">用户昵称</td>
-								<td>匆匆那年YY</td>
+								<td>${sessionScope.user.userName}</td>
 							</tr>
 							<tr>
 								<td class="txt">性别</td>
-								<td>男</td>
+								<td>${sessionScope.user.sex}</td>
 							</tr>
 							<tr>
 								<td class="txt">年龄</td>
-								<td>22</td>
+								<td>${requestScope.age}</td>
 							</tr>
 							<tr>
 								<td class="txt">邮箱</td>
-								<td>1070763759@qq.com</td>
+								<td>${sessionScope.user.email}</td>
 							</tr>
 							<tr>
 								<td class="txt">手机</td>
-								<td>10707637591</td>
+								<td>${sessionScope.user.phone}</td>
 							</tr>
 							<tr>
 								<td class="txt">信誉</td>
-								<td>92%</td>
+								<td>${sessionScope.user.score}</td>
 							</tr>
 						</tbody>
 					</table>			
@@ -105,7 +117,7 @@
 		<div class="modal fade" id="modifyInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form role="form" action="" method="post" class="login-form">
+					<form role="form" action="info2.jsp" method="post" class="login-form">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h4 class="modal-title" id="myModalLabel">个人信息修改</h4>
@@ -145,7 +157,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary">修改信息</button>
+							<button type="submit" class="btn btn-primary">修改信息</button>
 						</div>
 					</form>
 				</div>

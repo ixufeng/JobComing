@@ -59,7 +59,7 @@ body{
 }
 .mCustomScrollBox {
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
     height: 100%;
     max-width: 100%;
     outline: 0;
@@ -86,6 +86,9 @@ body{
 }
 .chat .chat-list .left {
     text-align: left;
+}
+.chat .chat-list .right {
+    text-align: right;
 }
 .chat .chat-list .chat-item {
     margin: 10px 0;
