@@ -56,7 +56,7 @@
 						<a href="info1.jsp" class="list-group-item">我的信息</a>
 						<a href="info2.jsp" class="list-group-item active">参与记录</a>
 						<a href="info3.jsp" class="list-group-item">分享记录</a>
-						<a href="main.jsp" class="list-group-item">返回首页</a>
+						<a href="MainPageServlet" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">

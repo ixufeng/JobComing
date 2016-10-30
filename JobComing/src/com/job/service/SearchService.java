@@ -3,7 +3,7 @@ package com.job.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.junit.Test;
 
 import com.job.bean.AddressCity;
 import com.job.bean.JobPublish;
@@ -54,7 +54,7 @@ public class SearchService {
 		
 	}
 	/**
-	 * 根据城市名字查询工作
+	 * 根据城市名字和兼职种类查询工作
 	 * @param jobKindId
 	 * @param pageIndex
 	 * @param pageSize
@@ -71,6 +71,35 @@ public class SearchService {
 				addressNumber = townDaoImpl.geAddressTownByTownName(cityName).getTownCode();
 			}
 			list2 = jImpI.getJPByJobKindPage(beginIndex, pageSize, addressNumber, jobKindId);
+			for (JobPublish job : list2) {
+				JobShow jobShow = new JobShow();
+				jobShow.setUser(userDao.getUser(job.getUserId()));
+				jobShow.setJobKind(jobKindDao.getJobKind(job.getJobKindId()));
+				AddressCity city = cityDaoImpl.getAddressCityByCityCode(addressNumber);
+				jobShow.setLocation(city.getCityName());
+				jobShow.setJobPublish(job);
+				list.add(jobShow);
+			}
+		}
+		return list;
+	}
+	/**
+	 * 根据城市姓名查工作
+	 * @param pageIndex
+	 * @param pageSize
+	 * @param cityName
+	 * @return
+	 */
+	public List<JobShow> getJobByCityName( int pageIndex, int pageSize, String cityName){
+		List<JobShow> list = new ArrayList<JobShow>();
+		List<JobPublish> list2 = new ArrayList<JobPublish>();
+		int beginIndex = pageSize * (pageIndex - 1);
+		if (cityDaoImpl.getAddressCityByCityName(cityName) != null){
+			int addressNumber = cityDaoImpl.getAddressCityByCityName(cityName).getCityCode();
+			if (addressNumber == 0&&townDaoImpl.geAddressTownByTownName(cityName)!=null) {
+				addressNumber = townDaoImpl.geAddressTownByTownName(cityName).getTownCode();
+			}
+			list2 = jImpI.getJPByPage(beginIndex, pageSize, addressNumber);
 			for (JobPublish job : list2) {
 				JobShow jobShow = new JobShow();
 				jobShow.setUser(userDao.getUser(job.getUserId()));

@@ -65,7 +65,17 @@ public class UserDaoImpl implements UserDao {
 		Object[] params = new Object[] { headPicture, userId };
 		return update(hql, params);
 	}
-
+	/**
+	 * 修改用户性别
+	 * @param sex
+	 * @param userId
+	 * @return
+	 */
+	public int updateSex(String sex,int userId){
+		String hql="update User set sex=? where userId=?";
+		Object[] params = new Object[] { sex, userId };
+		return update(hql, params);
+	}
 	/**
 	 * 返回一个用户对象
 	 */
