@@ -14,6 +14,9 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/jobInfo.css" />
 		<link rel="shortcut icon" href="img/favicon.png">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<script type="text/javascript" src="js/map.js" ></script>
 	</head>
 
@@ -112,7 +115,7 @@
 									邮件预约
 								</a>
 								
-								<a href="" class="btn btn-default btn-success" style="margin-left: 30px;">
+								<a id="private-chat" class="btn btn-default btn-success" style="margin-left: 30px;">
 									<span class="glyphicon glyphicon-send"></span>
 									私聊一下
 								</a>
@@ -148,8 +151,8 @@
 						<div class="panel-body" id="map" style="min-height:300px;">
 							<script type="text/javascript">
 								ShowMap("map", {
-									city: '沭阳县',
-									addr: '华冲镇'
+									city: '${requestScope.jobdetail.location}',
+									addr: '${requestScope.jobdetail.jobPublish.detailAddress}'
 								});
 							</script>	
 						</div>
@@ -157,7 +160,10 @@
 				</div>
 			</div>
 		</div>
+		<jsp:include page="WEB-INF/components/chatCon.jsp"></jsp:include>
 		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/chat.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script>
 			$("#show").click(function(){

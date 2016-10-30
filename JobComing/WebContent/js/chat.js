@@ -90,6 +90,12 @@ $(document).ready(function () {
             });
 	    });
 	 
+	    /*点击私聊，来初始化聊天框*/
+	    $("#private-chat").click(function(){
+	    	var user = $("#jobPublisher").attr("data-person");
+	    	appendUser(user);
+	    });
+	    
   
 	    var ws = $.ws.init("ws://192.168.9.202:8080/JobComing/websocket");
 		ws.onopen = function(){
@@ -143,5 +149,24 @@ $(document).ready(function () {
 	    	var json = "{'receivedUserKey':'"+currentPerson+"','content':'"+content+"'}";
 			ws.send(json);
 	    });
+	    /**
+	     * 在好友列表中加入用户
+	     * @returns
+	     */
+	    function appendUser(userKey){
+	    	
+	    	$("#chatbox").css("display","block");
+	    	if($('#'+userKey+'')){
+				var friend = '<div class="friend">';
+				friend+='<img src="img/2_copy.jpg" />';
+				friend+='<p>';
+				friend+='<strong>'+userKey+'</strong>';
+				friend+='<span>marjoseph@gmail.com</span>';
+				friend+='</p>';
+				friend+='<div class="status away"></div>';
+				friend+=' </div>';
+				$("#friends").append(friend);
+			}
+	    }
 	    
 	});

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -21,10 +22,20 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="">登录</a> <span>/</span>
-				<a href="">注册</a>
-			</div>
+			<c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a>${sessionScope.user.userName}</a> <span>/</span>
+					<a href="MainPageServlet">首页</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -45,7 +56,7 @@
 						<a href="info1.jsp" class="list-group-item">我的信息</a>
 						<a href="info2.jsp" class="list-group-item">参与记录</a>
 						<a href="info3.jsp" class="list-group-item active">分享记录</a>
-						<a href="main.jsp" class="list-group-item">返回首页</a>
+						<a href="MainPageServlet" class="list-group-item">返回首页</a>
 					</div>
 				</div>
 				<div class="col-md-10 myinfo">
@@ -69,18 +80,20 @@
 								<th width="60" style="text-align: center">类别</th>
 								<th width="60" style="text-align: center">详情</th>
 							</tr>
+							<c:forEach var="jobShow" items="${sessionScope.jobShow}" varStatus="vs"> 
 							<tr>
-								<td width="60" style="text-align: center">1</td>
+								<td width="60" style="text-align: center">${vs.count}</td>
 								<td width="auto" style="text-align: center;">
-									<div style="overflow: hidden;display: block;min-width: 100px;">发布的描述发布的描述发布的描述</div>
+									<div style="overflow: hidden;display: block;min-width: 100px;">${jobShow.jobPublish.workDescribe }</div>
 								</td>
 								<td width="60" style="text-align: center">
-									<a>[清洁]</a>
+									<a>[${jobShow.jobKind.jobKindName}]</a>
 								</td>
 								<td width="60" style="text-align: center">
 									<a data-toggle="modal" data-target="#modifyPublish">[查看]</a>
 								</td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -216,19 +229,19 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">地点</label>
-							<input type="text" name="username" value="苏州市张家港长兴中路8号" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 						<div class="form-group">
 							<label class="" for="content" style="margin-left: 5px;">分享详情</label>
-							<textarea class="form-control" rows="2">兼职信息的介绍内容兼职信息的介绍内容</textarea>
+							<textarea class="form-control" rows="2"></textarea>
 						</div>
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">开始时间</label>
-							<input type="text" name="username" value="06/12" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">结束时间</label>
-							<input type="text" name="username" value="06/14" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 					</div>
 				</div>

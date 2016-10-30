@@ -109,9 +109,14 @@
 										<tbody>
 											<tr>
 												<td width="55" valign="top" align="center">
-													<a href="#">
-														<img src="img/public.png" style="width: 55px; height: 55px;" class="img-responsive img-rounded" border="0">
-													</a>
+													<c:choose>
+									 					 <c:when test="${ empty jobshow.user.headPicture}">
+									  	 			    	 <img src="img/public.png"style="width: 60px;height: 60px;" class="img-thumbnail">
+									 				 	</c:when>
+									 					 <c:otherwise>
+									    				 	 <img src="${jobshow.user.headPicture}" style="width: 60px;height: 60px;" class="img-thumbnail">
+									  					 </c:otherwise>
+													</c:choose>
 												</td>
 												<td width="10"></td>
 												<td width="auto" valign="middle">
