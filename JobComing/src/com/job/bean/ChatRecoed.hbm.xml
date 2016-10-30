@@ -4,12 +4,12 @@
 <!-- Generated 2016-10-24 12:36:25 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.job.bean.ChatRecoed" table="CHATRECOED">
-        <id name="userSendId" type="int">
-            <column name="USERSENDID" />
+        <id name="chatRecordId" type="int">
+            <column name="CHATRECORDID" />
             <generator class="increment" />
         </id>
-        <property name="chatRecordId" type="int">
-            <column name="CHATRECORDID" />
+        <property name="userSendId" type="int">
+            <column name="USERSENDID" />
         </property>
         <property name="userReciveId" type="int">
             <column name="USERRECIVEID" />
