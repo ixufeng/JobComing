@@ -14,6 +14,9 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/jobInfo.css" />
 		<link rel="shortcut icon" href="img/favicon.png">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
 	</head>
 
 	<body class="home-template">
@@ -110,7 +113,7 @@
 									邮件预约
 								</a>
 								
-								<a href="" class="btn btn-default btn-success" style="margin-left: 30px;">
+								<a id="private-chat" class="btn btn-default btn-success" style="margin-left: 30px;">
 									<span class="glyphicon glyphicon-send"></span>
 									私聊一下
 								</a>
@@ -142,7 +145,10 @@
 				</div>
 			</div>
 		</div>
+		<jsp:include page="WEB-INF/components/chatCon.jsp"></jsp:include>
 		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/chat.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script>
 			$("#show").click(function(){
