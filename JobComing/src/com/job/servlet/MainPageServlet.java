@@ -47,8 +47,8 @@ public class MainPageServlet extends HttpServlet {
 				//根据种类获取工作集合
 				jobKindId=Integer.parseInt(request.getParameter("jobKindId"));
 				session.setAttribute("jobKindId", jobKindId);
-				String cityName=(String) session.getAttribute("cityName");
-				if(cityName!=null){
+				if( session.getAttribute("cityName")!=null){
+					String cityName=(String) session.getAttribute("cityName");
 					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
 				}else{
 					session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, 1, 5, 320500));
@@ -58,8 +58,8 @@ public class MainPageServlet extends HttpServlet {
 			else if(request.getParameter("cityName")!=null){
 				String cityName=request.getParameter("cityName");
 				session.setAttribute("cityName", cityName);
-				int jobKindId=(Integer)session.getAttribute("jobKindId");
-				if(jobKindId!=0){
+				if(session.getAttribute("jobKindId")!=null){
+					int jobKindId=(Integer)session.getAttribute("jobKindId");
 					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
 				}else{
 					session.setAttribute("jobList", searchService.getJobByCityName(1, 5, cityName));

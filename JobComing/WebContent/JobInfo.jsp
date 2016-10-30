@@ -25,10 +25,20 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="">登录</a> <span>/</span>
-				<a href="">注册</a>
-			</div>
+			 <c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a href="PersonInforServlet.do">${sessionScope.user.userName}</a> <span>/</span>
+					<a href="ReleaseJob.do">发布兼职</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">

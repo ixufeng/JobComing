@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -20,10 +21,20 @@
 			<a href=""><em>JobComing~</em></a>
 		</div>
 		<header class="site-header jumbotron">
-			<div class="site-nav">
-				<a href="">登录</a> <span>/</span>
-				<a href="">注册</a>
-			</div>
+			<c:choose>
+		  	<c:when test="${empty sessionScope.user}">
+				<div class="site-nav">
+					<a href="login.jsp">登录</a> <span>/</span>
+					<a href="register.jsp">注册</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="site-nav">
+					<a href="PersonInforServlet.do">${sessionScope.user.userName}</a> <span>/</span>
+					<a href="MainPageServlet">首页</a>
+				</div>
+			</c:otherwise>
+		  </c:choose>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -45,17 +56,17 @@
 							<h3 class="panel-title" style="display: inline-block;">
             					分享一份兼职--JobComing
         					</h3>
-        					<a href="" style="float: right;display: inline-block;">首页</a>
+        					
 						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-8">
-									<form action="" method="post">
+									<form action="ReleaseJob.do?action=release" method="post">
 										<h5 class="desc">
 											<span class="glyphicon glyphicon-tags"></span>&nbsp;选择兼职类型
 										</h5>
 										<div class="form-group">
-											<select class="form-control" id="jobkind">
+											<select class="form-control" id="jobkind" name="jobKindId">
 												<option value="0">--选择一个兼职类型--</option>
 												<option value="1">[清洁]</option>
 												<option value="2">[家教]</option>
@@ -73,7 +84,7 @@
 											<span class="glyphicon glyphicon-map-marker"></span>&nbsp;选择兼职地点
 										</h5>
 										<div class="form-group">
-											<select class="form-control" id="jobaddress">
+											<select class="form-control" id="jobaddress" name="address">
 												<option value="0">--选择兼职地点--</option>
 												<option value="南京市">[南京]</option>
 												<option value="上海市">[上海]</option>
@@ -91,19 +102,19 @@
 											<span class="glyphicon glyphicon-leaf"></span>&nbsp;开始时间
 										</h5>
 										<div class="form-group">
-											<input type="date" class="form-control" id="begindate"/>
+											<input type="date" class="form-control" id="begindate" name="beginTime"/>
 										</div>
 										<h5 class="desc">
 											<span class="glyphicon glyphicon-leaf"></span>&nbsp;结束时间
 										</h5>
 										<div class="form-group">
-											<input type="date" class="form-control" id="enddate"/>
+											<input type="date" class="form-control" id="enddate" name="overTime"/>
 										</div>
 										<h5 class="desc">
 											<span class="glyphicon glyphicon-info-sign"></span>&nbsp;内容描述
 										</h5>
 										<div class="form-group">
-											<textarea id="descCon" class="form-control" rows="3" placeholder="对工作的内容进行简短的描述"></textarea>
+											<textarea id="descCon" class="form-control" rows="3" placeholder="对工作的内容进行简短的描述" name="describe"></textarea>
 										</div>
 										<button type="submit" class="btn btn-default btn-info" id="btn">发布信息</button>
 									</form>	
@@ -116,12 +127,12 @@
 										</div>
 										<div class="panel-body">
 											<p>
-												<img src="img/public.png" style="width: 60px;height: 60px;"  class="img-thumbnail"/>
+												<img src="${sessionScope.user.headPicture }" style="width: 60px;height: 60px;"  class="img-thumbnail"/>
 											</p>
-											<p>用户名:AAAAA</p>
-											<p>用户积分:96</p>
-											<p>发布次数:6</p>
-											<p>参与次数:16</p>
+											<p>用户名: ${sessionScope.user.userName }</p>
+											<p>用户积分: ${sessionScope.user.score}</p>
+											<p>发布次数: ${requestScope.pCount }</p>
+											<p>参与次数: ${requestScope.cCount }</p>
 										</div>
 									</div>
 								</div>
