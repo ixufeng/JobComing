@@ -1,0 +1,14 @@
+$(".search").keyup(function(){
+				$.ajax({
+					type:"post",
+					url:"",
+					data:{searchName:$(".search").val()},
+					success:function(data){
+						$("#hide-info").css("display","block");
+					},
+					error:function(){
+						alert("出现了一点错误")
+					},
+					dataType:"text",
+				});
+})

@@ -26,11 +26,23 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-sm-8 col-sm-offset-2">
 						<form class="" role="search">
 							<div class="form-group">
 								<input type="text" class="form-control search clearable" placeholder="搜索兼职/单位/地点">
 								<i class="glyphicon glyphicon-search"></i>
+								<!--这个是键盘按下的时候搜索的ajax异步显示信息-->
+									<ul class="list-group" id="hide-info">
+										<li class="list-group-item">
+											<a href="">java</a>
+										</li>
+										<li class="list-group-item">
+											<a href="">java</a>
+										</li>
+										<li class="list-group-item">
+											<a href="">java</a>
+										</li>
+									</ul>
 							</div>
 						</form>
 					</div>
@@ -133,6 +145,7 @@
 		</div>
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
+		<script src="js/search.js"></script>
 		<!--//提交判断-->
 		<script>
 			$("form").submit(function(){
