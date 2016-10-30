@@ -168,7 +168,7 @@ public class JobPublishImpI implements JobPublishDao {
 		Session session=query.getSession();
 		Query myquery=query.getQuery(hql, params, session);
 		myquery.setFirstResult(1);
-		myquery.setMaxResults(10);
+		myquery.setMaxResults(6);
 		return myquery.list();
 	}
 	

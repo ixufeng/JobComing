@@ -108,10 +108,6 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<ul class="pager">
-					  <li class="previous"><a href="#">&larr; 上一页</a></li>
-					  <li class="next"><a href="#">下一页 &rarr;</a></li>
-					</ul>
 				</div>
 			</div>
 		</div>
@@ -235,7 +231,8 @@
 		<!--用户评价模态框-->
 
 		<!--发布信息查看的模态框-->
-		<div class="modal fade" id="modifyPublish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<c:forEach var="jobShowD" items="${sessionScope.jobShow}" varStatus="vs"> 
+		<div class="modal fade" id="${vs.count}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -245,24 +242,25 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">地点</label>
-							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="${jobShowD.jobPublish.detailAddress}" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 						<div class="form-group">
 							<label class="" for="content" style="margin-left: 5px;">分享详情</label>
-							<textarea class="form-control" rows="2"></textarea>
+							<textarea class="form-control" rows="2">${jobShowD.jobPublish.workDescribe}</textarea>
 						</div>
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">开始时间</label>
-							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="${jobShowD.jobPublish.workBeginTime}" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 						<div class="form-group">
 							<label class="" for="username" style="margin-left: 5px;">结束时间</label>
-							<input type="text" name="username" value="" readonly="readonly" class="form-username form-control" id="form-username">
+							<input type="text" name="username" value="${jobShowD.jobPublish.workOverTime}" readonly="readonly" class="form-username form-control" id="form-username">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</c:forEach>
 		<!--发布信息查看的模态框-->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>

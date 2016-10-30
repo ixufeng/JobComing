@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Test;
-
 
 public class TimeUtils {
 
@@ -113,5 +111,40 @@ public class TimeUtils {
 			return null;
 		}
 	}
-	
+	/**
+	 * 时间
+	 * @param messageDate
+	 * @return
+	 */
+	public static String getTimeBefore(Date messageDate){
+		Date nowDate = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = "";
+		long before = messageDate.getTime();
+		long now = nowDate.getTime();
+		//差值 秒
+		long sub = (now - before)/1000;
+		//秒
+		if(sub/60<1){
+			dateString = "1分钟前";
+		}
+		//分钟 
+		else if(sub/60<60){
+			dateString = sub/60+"分钟前";
+		}
+		//小时
+		else if(sub/3600<24){
+			dateString = sub/3600+"小时前";
+		}
+		//天
+		else if(sub/3600/24<4){
+			dateString = sub/3600/24+"天前";
+		}
+		//本身时间
+		else{
+			dateString = sdf.format(messageDate);
+		}
+		return dateString;
+	}
+
 }

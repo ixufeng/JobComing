@@ -54,8 +54,8 @@ public class MainPageServlet extends HttpServlet {
 			if(request.getParameter("mjobKindId")!=null){
 				//根据种类获取工作集合
 				jobKindId=Integer.parseInt(request.getParameter("mjobKindId"));
-				session.setAttribute("jobKindId", jobKindId);
-				if( session.getAttribute("cityName")!=null){
+				session.setAttribute("mjobKindId", jobKindId);
+				if( session.getAttribute("mcityName")!=null){
 					String cityName=(String) session.getAttribute("mcityName");
 					session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, 1, 5, cityName));
 				}else{
@@ -73,9 +73,6 @@ public class MainPageServlet extends HttpServlet {
 				}
 			}else{
 				session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
-				System.out.println("hahahhhahahhah");
-				List<JobShow> list = (List<JobShow>) session.getAttribute("jobList");
-				System.out.println(list.size());
 			}
 		}
 		session.setAttribute("hotList", jobService.getTodayWork(320500));

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="time" uri="/WEB-INF/time.tld"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -99,7 +100,7 @@
 						<div class="page-sel">
 							<span>排序方式：</span>
 							<a class="ser-kind">默认</a>
-							<a href="" class="active">最新</a>
+							<a href="MainPageServlet?action=new" class="active">最新</a>
 						</div>
 						<div class="page-sel2">
 							<a href="" class="prev"></a>
@@ -142,8 +143,8 @@
 																<c:out value="${jobshow.user.userName }"></c:out>
 															</a>
 														</strong> &nbsp;•&nbsp; 
-																
-														<small>2天前</small>
+												 	 <c:set var="time" value="${jobshow.jobPublish.jobPublishTime}"/>
+														<small>${time:getTimeBefore(time)}</small>
 													</span>
 													<div class="sep5" style="height: 1px;"></div>
 													<span style="font-size: 11px; color: #ccc;"> 
