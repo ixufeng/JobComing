@@ -1,6 +1,6 @@
 function appendMessage(data){
 	
-			$("#chatbox").fadeIn();
+			
 			var html = '<div class="message">';
 			html += '<img src="img/2_copy.jpg" />';
 			html += '<div class="bubble">';
@@ -12,7 +12,7 @@ function appendMessage(data){
 			$("#chat-messages").animate({scrollTop: "300px"},300);
 				
 			var sel = "user_"+data.userSendId;
-			if(!$(sel)){
+			
 				var friend = '<div class="friend" id="'+sel+'">';
 				friend+='<img src="img/2_copy.jpg" />';
 				friend+='<p>';
@@ -22,7 +22,7 @@ function appendMessage(data){
 				friend+='<div class="status away"></div>';
 				friend+=' </div>';
 				$("#friends").append(friend);	
-			}
+			
 					
 	    	$("#chat-messages").animate({scrollTop: "300px"},300);
 			
@@ -37,11 +37,12 @@ function getMessage(){
     		url : "ChatServlet", 
 			type : "post",
 			dataType : "json",
+			scriptCharset:"utf-8",
     		data:{"action":"get"},
     		success:function(data){
     			
     			if(data.length>0){
-    				
+    				$("#chatbox").fadeIn();
     				for(var i=0;i<data.length;i++){
     					appendMessage(data[i]);  					
     				}
