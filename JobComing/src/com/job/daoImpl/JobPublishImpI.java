@@ -8,13 +8,9 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.junit.Test;
-
 import com.job.bean.JobPublish;
 import com.job.dao.JobPublishDao;
 import com.job.hibernate.CommonQuery;
-import com.job.util.TimeUtils;
-
 public class JobPublishImpI implements JobPublishDao {
 	private CommonQuery query = new CommonQuery();
 
@@ -120,7 +116,7 @@ public class JobPublishImpI implements JobPublishDao {
 	 * 通过地址编号(省市区)返回多条兼职信息
 	 */
 	public List<JobPublish>getJPListByAddressNumber(int addressnumber){
-		String hql = "from JobPublish where addressNumber=?";
+		String hql = "from JobPublish where addressNumber=?  order by jobPublishTime desc ";
 		Object[] params = new Object[] { addressnumber};
 		return  getJobPublishList(hql, params);
 	}
@@ -133,7 +129,7 @@ public class JobPublishImpI implements JobPublishDao {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<JobPublish>getJPByPage(int beginIndex,int pagesize,int addressNumber){
-		String hql="from JobPublish where addressNumber = ?";
+		String hql="from JobPublish where addressNumber = ?  order by jobPublishTime desc ";
 		Session session=query.getSession();
 		Object[]params=new Object[]{addressNumber};
 		Query myquery=query.getQuery(hql, params, session);
@@ -150,7 +146,7 @@ public class JobPublishImpI implements JobPublishDao {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<JobPublish>getJPByJobKindPage(int beginIndex,int pagesize,int addressNumber,int jobKindId){
-		String hql="from JobPublish where addressNumber = ? and jobKindId=?";
+		String hql="from JobPublish where addressNumber = ? and jobKindId=?  order by jobPublishTime desc ";
 		Session session=query.getSession();
 		Object[]params=new Object[]{addressNumber,jobKindId};
 		Query myquery=query.getQuery(hql, params, session);
@@ -162,16 +158,15 @@ public class JobPublishImpI implements JobPublishDao {
 	 *  获取当天发布10条的信息
 	 */
 	@SuppressWarnings("unchecked")
-	public List<JobPublish>getJBListByToday(Date morningTime,int addressNuber){
-		String hql="from JobPublish where jobPublishTime>? and addressNumber=? order by jobPublishTime desc ";
-		Object[] params =new Object[] {morningTime,addressNuber};
+	public List<JobPublish>getJBListByToday(Date morningTime){
+		String hql="from JobPublish where jobPublishTime>? order by jobPublishTime desc ";
+		Object[] params =new Object[] {morningTime};
 		Session session=query.getSession();
 		Query myquery=query.getQuery(hql, params, session);
-		myquery.setFirstResult(1);
+		myquery.setFirstResult(0);
 		myquery.setMaxResults(6);
 		return myquery.list();
 	}
-	
 	@SuppressWarnings("unchecked")
 	/**
 	 * 通过userId返回发布工作的集合
@@ -181,7 +176,7 @@ public class JobPublishImpI implements JobPublishDao {
 	 * @return
 	 */
 	public List<JobPublish>getJBListByUserId(int beginIndex,int pagesize,int userId){
-		String hql="from JobPublish where userId=?";
+		String hql="from JobPublish where userId=?  order by jobPublishTime desc ";
 		Session session=query.getSession();
 		Object[]params=new Object[]{userId};
 		Query myquery=query.getQuery(hql, params, session);

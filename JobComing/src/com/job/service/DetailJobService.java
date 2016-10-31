@@ -58,7 +58,7 @@ public class DetailJobService {
 	 */
 	public List<JobShow> getTodayWork(int addressNumber){
 		List<JobShow>list=new ArrayList<JobShow>();
-		list=sJobService.getTodayWork(addressNumber);
+		list=sJobService.getTodayWork();
 		return list;
 	}
 	/**

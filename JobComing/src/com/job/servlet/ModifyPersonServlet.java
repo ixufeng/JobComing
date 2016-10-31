@@ -37,8 +37,8 @@ public class ModifyPersonServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String sex = request.getParameter("sex");
-		System.out.println(sex);
+		//String sex = request.getParameter("sex");
+		//System.out.println("ha"+sex);
 		// 创建文件上传对象
 		DiskFileUpload disk = new DiskFileUpload();
 		// 读取请求对象中的输入流获取提交对象集合
@@ -53,11 +53,11 @@ public class ModifyPersonServlet extends HttpServlet {
 				}
 				if (ups.upLoad(fileList, disk, absoluatepath, userId)) {
 					/// 上传成功
-					if (ups.updateSexByUserId(sex, userId)) {
+//					if (ups.updateSexByUserId(sex, userId)) {
 						User user2 = usdpl.getUser(userId);
 						session.setAttribute("user", user2);
 						request.getRequestDispatcher("PersonInforServlet.do").forward(request, response);
-					}
+					//}
 				}else {
 				request.setAttribute("error", "修改信息失败！");
 				request.getRequestDispatcher("PersonInforServlet.do").forward(request, response);

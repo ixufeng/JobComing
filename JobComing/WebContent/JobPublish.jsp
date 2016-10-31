@@ -145,7 +145,14 @@
 										</div>
 										<div class="panel-body">
 											<p>
-												<img src="${sessionScope.user.headPicture }" style="width: 60px;height: 60px;"  class="img-thumbnail"/>
+												<c:choose>
+													  <c:when test="${ empty sessionScope.user.headPicture}">
+									  	   					<img src="img/public.png"style="width: 60px;height: 60px;" class="img-thumbnail">
+													  </c:when>
+											  		  <c:otherwise>
+									     				 <img src="${sessionScope.user.headPicture}" style="width: 60px;height: 60px;" class="img-thumbnail">
+									 			 	  </c:otherwise>
+											    </c:choose>
 											</p>
 											<p>用户名: ${sessionScope.user.userName }</p>
 											<p>用户积分: ${sessionScope.user.score}</p>

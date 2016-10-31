@@ -3,14 +3,12 @@ package com.job.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 
 import com.job.bean.AddressCity;
 import com.job.bean.AddressTown;
 import com.job.bean.JobKind;
 import com.job.bean.JobPublish;
 import com.job.bean.JobShow;
-import com.job.dao.AddressCityDao;
 import com.job.dao.JobPublishDao;
 import com.job.dao.UserDao;
 import com.job.daoImpl.AddressCityDaoImpI;
@@ -94,10 +92,10 @@ public class ShowJobService {
 	 * 今日兼职推送
 	 */
 
-	public List<JobShow> getTodayWork(int addressNumber){
+	public List<JobShow> getTodayWork(){
 		ArrayList<JobPublish>list=new ArrayList<JobPublish>();
 		List<JobShow>list2=new ArrayList<JobShow>();
-		list=(ArrayList<JobPublish>) jobDao.getJBListByToday(TimeUtils.getTodayBeginDateTime(),addressNumber);
+		list=(ArrayList<JobPublish>) jobDao.getJBListByToday(TimeUtils.getTodayBeginDateTime());
 		for(int i=0;i<list.size();i++){
 			//如果详细地址超过6位就缩写
 			String address=list.get(i).getDetailAddress();

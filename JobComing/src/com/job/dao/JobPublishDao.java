@@ -27,5 +27,5 @@ public interface JobPublishDao extends QueryDao {
 	//通过userId返回发布工作的集合
 	public List<JobPublish>getJBListByUserId(int beginIndex,int pagesize,int userId);
 	// 获取当天发布的信息
-	public List<JobPublish>getJBListByToday(Date morningTime,int addressNumber);
+	public List<JobPublish>getJBListByToday(Date morningTime);
 }

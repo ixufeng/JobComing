@@ -34,11 +34,12 @@
 .modal{
 	z-index: 1200;
 }
-.form-group ul {
+
+.modal .form-group ul {
 	padding-left: 15px;
 	margin-bottom: 30px;
 }
-.form-group ul li{
+.modal .form-group ul li{
 	width: 25px;
 	height: 25px;
 	list-style-type: none;
