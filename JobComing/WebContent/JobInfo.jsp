@@ -17,7 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/default.css">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
-		<script type="text/javascript" src="js/map.js" ></script>
+		<script type="text/javascript" src="js/map.js"></script>
 	</head>
 
 	<body class="home-template">
@@ -68,7 +68,7 @@
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col-md-9 job-info">
-					<div class="panel panel-default" data-person="${requestScope.jobdetail.user.userName}" id="jobPublisher">
+					<div class="panel panel-default" data-id="${requestScope.jobdetail.user.userId}" data-person="${requestScope.jobdetail.user.userName}" data-email="${requestScope.jobdetail.user.email}" id="jobPublisher">
 						<div class="panel-heading">
 							<h3 class="panel-title" style="display: inline-block;">
             					闲着无聊做做兼职--JobComing
@@ -84,7 +84,7 @@
 										<td width="60" class="txt">开始</td>
 										<td class="txt2">${requestScope.jobdetail.jobPublish.workBeginTime}</td>
 										<td rowspan="4" width="90" class="hidden-xs">
-											<img src="img/public.png" style="width: 80px;height: 90px;" class="img-thumbnail img-responsive" />
+											<img id="user-avatar" src="img/public.png" style="width: 80px;height: 90px;" class="img-thumbnail img-responsive" />
 										</td>
 									</tr>
 									<tr>

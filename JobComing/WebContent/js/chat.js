@@ -1,21 +1,60 @@
-/*websocket插件分装*/
-(function($){
+function appendMessage(data){
 	
-	var websocket = new Object();
-	
-	websocket.init = function(url){
-		if ('WebSocket' in window) {
-			 return new WebSocket(url);	 
-		}
-		return null;	
-	}
-	
-	$.ws = websocket;
-	
-})(jQuery);
-$(document).ready(function () {
-		/*当前正在聊天的人*/
-		var currentPerson = "000000";
+			$("#chatbox").fadeIn();
+			var html = '<div class="message">';
+			html += '<img src="img/2_copy.jpg" />';
+			html += '<div class="bubble">';
+			html += data.chatContent;
+			html += '<div class="corner"></div>';
+			html += '<span>3s</span>';
+			html += '</div></div>';
+			$('#chat-messages').append(html);	    	
+			$("#chat-messages").animate({scrollTop: "300px"},300);
+				
+			var sel = "user_"+data.userSendId;
+			if(!$(sel)){
+				var friend = '<div class="friend" id="'+sel+'">';
+				friend+='<img src="img/2_copy.jpg" />';
+				friend+='<p>';
+				friend+='<strong>Martin Joseph</strong>';
+				friend+='<span>marjoseph@gmail.com</span>';
+				friend+='</p>';
+				friend+='<div class="status away"></div>';
+				friend+=' </div>';
+				$("#friends").append(friend);	
+			}
+					
+	    	$("#chat-messages").animate({scrollTop: "300px"},300);
+			
+	    	
+	    	
+}
+		
+		
+
+function getMessage(){  	
+    	$.ajax({
+    		url : "ChatServlet", 
+			type : "post",
+			dataType : "json",
+    		data:{"action":"get"},
+    		success:function(data){
+    			
+    			if(data.length>0){
+    				
+    				for(var i=0;i<data.length;i++){
+    					appendMessage(data[i]);  					
+    				}
+    			}
+    		},
+    		error:function(data){
+    			console.log("链接错误");
+    		}
+    	});
+    	
+   }
+$(document).ready(function () {	
+		var cp = "-1";
 	    var preloadbg = document.createElement('img');
 	    preloadbg.src = 'img/timeline1.png';
 	    $('#searchfield').focus(function () {
@@ -38,9 +77,8 @@ $(document).ready(function () {
 	            $(this).val('Send message...');
 	        }
 	    });
-	    $("#friends").on("click",".friend",function(){
-	    	
-	    	currentPerson = $(this).attr("data-person");
+	    $("#friends").on("click",".friend",function(){	    	
+	    	cp = $(this).find("label").html();	    	
             var childOffset = $(this).offset();
             var parentOffset = $(this).parent().parent().offset();
             var childTop = childOffset.top - parentOffset.top;
@@ -90,83 +128,87 @@ $(document).ready(function () {
             });
 	    });
 	 
-	    /*点击私聊，来初始化聊天框*/
-	    $("#private-chat").click(function(){
-	    	var user = $("#jobPublisher").attr("data-person");
-	    	appendUser(user);
-	    });
-	    
+    /*点击私聊，来初始化聊天框*/
+    $("#private-chat").click(function(){
+    	var user = $("#jobPublisher").attr("data-person");
+    	var userId =  $("#jobPublisher").attr("data-Id");
+    	var userEmail = $("#jobPublisher").attr("data-email");
+    	var userImg = $("#user-avatar").attr("src");   	
+    	appendUser(user,userImg,"",userId);
+    });
+    $("#chat-close").click(function(){
+    	
+    	$("#chatbox").fadeOut();
+    });
   
-	    var ws = $.ws.init("ws://192.168.9.202:8080/JobComing/websocket");
-		ws.onopen = function(){
-			console.log("链接成功");
-		}
-		ws.onmessage = function(data){
-			//接收消息
-		var obj = eval("("+data.data+")"); 
-		if(!$('#'+data.receivedUserName+'')){
-			
+  //将发送的消息添加到消息框里
+	function sendHandle(content){
+
+    	
+    	var html = '<div class="message right">';
+    		html += '<img src="img/2_copy.jpg" />';
+    		html += '<div class="bubble">';
+    		html += content;
+    		html += '<div class="corner"></div>';
+    		html += '<span>3 min</span>';
+    		html += '</div></div>';
+    	$('#chat-messages').append(html);	    	
+    	$("#chat-messages").animate({scrollTop: "300px"},300);
+    	$("#content").val("");
+	}
+    
+    function sendMessage(){
+    	
+    	var content = $("#content").val();
+    	var receivedUserKey = cp;
+    	sendHandle(content);
+    	$.ajax({
+    		url : "ChatServlet", 
+			type : "post",
+			dataType : "json",
+    		data:{
+    				"action":"send",
+    				"content":content,
+    				"receivedUserKey":receivedUserKey
+    		},  	
+    		success:function(data){
+    			//发送成功
+    		},
+    		error:function(data){
+    			console.log(data);
+    		}
+    	});
+    }
+    
+   
+	
+	
+ 
+	    /**
+	     * 在好友列表中加入用户
+	     * @returns
+	     */
+	    function appendUser(userKey,userImage,userEmail="",userId){
+	    	
+	    	$("#chatbox").fadeIn();
+	    	console.log($("#"+userKey+""));
+	    	$("#friends").html("");	
 			var friend = '<div class="friend">';
-			friend+='<img src="img/2_copy.jpg" />';
+			friend+='<img src="'+userImage+'" />';
 			friend+='<p>';
-			friend+='<strong>Martin Joseph</strong>';
-			friend+='<span>marjoseph@gmail.com</span>';
+			friend+='<strong>'+userKey+'</strong>';
+			friend+='<label class="hidden">'+userId+'</label>';
+			friend+='<span>'+userEmail+'</span>';
 			friend+='</p>';
 			friend+='<div class="status away"></div>';
 			friend+=' </div>';
 			$("#friends").append(friend);
 			
-		}
-
-			var html = '<div class="message">';
-    		html += '<img src="img/2_copy.jpg" />';
-    		html += '<div class="bubble">';
-    		html += obj.content;
-    		html += '<div class="corner"></div>';
-    		html += '<span>3 min</span>';
-    		html += '</div></div>';
-	    	$('#chat-messages').append(html);	    	
-	    	$("#chat-messages").animate({scrollTop: "300px"},300);
-				
-		}
-		
-		  //点击发送按钮
-	    $("#send").click(function(){
-
-	    	var content = $("#content").val();
-	    	$("#content").val("");
-	    	var html = '<div class="message right">';
-	    		html += '<img src="img/2_copy.jpg" />';
-	    		html += '<div class="bubble">';
-	    		html += content;
-	    		html += '<div class="corner"></div>';
-	    		html += '<span>3 min</span>';
-	    		html += '</div></div>';
-	    	$('#chat-messages').append(html);	    	
-	    	$("#chat-messages").animate({scrollTop: "300px"},300);
-	    	
-	    	//发送至服务器
-	    	var json = "{'receivedUserKey':'"+currentPerson+"','content':'"+content+"'}";
-			ws.send(json);
-	    });
-	    /**
-	     * 在好友列表中加入用户
-	     * @returns
-	     */
-	    function appendUser(userKey){
-	    	
-	    	$("#chatbox").css("display","block");
-	    	if($('#'+userKey+'')){
-				var friend = '<div class="friend">';
-				friend+='<img src="img/2_copy.jpg" />';
-				friend+='<p>';
-				friend+='<strong>'+userKey+'</strong>';
-				friend+='<span>marjoseph@gmail.com</span>';
-				friend+='</p>';
-				friend+='<div class="status away"></div>';
-				friend+=' </div>';
-				$("#friends").append(friend);
-			}
 	    }
+	    $("#send").click(function(){
+	    	sendMessage();
+	    });
 	    
+	   window.setInterval("getMessage()",2000);
+	   
 	});

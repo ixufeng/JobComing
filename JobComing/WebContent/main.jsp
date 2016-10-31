@@ -183,12 +183,25 @@
 							</c:forEach>							
 						</ul>
 						 <ul class="pagination pull-right">
-							<li><a href="#">&laquo;</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li class="disabled"><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
+						 	<li><a href="#">&laquo;</a></li>
+						 	<c:choose>
+						 		
+						 		<c:when test="${requestScope.cp le 3}">						 			
+									<li <c:if test="${requestScope.cp eq 1}">class="active"</c:if>><a href="MainPageServlet?cp=1">1</a></li>
+									<li <c:if test="${requestScope.cp eq 2}">class="active"</c:if>><a href="MainPageServlet?cp=2">2</a></li>
+									<li <c:if test="${requestScope.cp eq 3}">class="active"</c:if>><a href="MainPageServlet?cp=3">3</a></li>
+									<li><a href="MainPageServlet?cp=4">4</a></li>
+									<li><a href="MainPageServlet?cp=5">5</a></li>
+						 		</c:when>
+						 		<c:when test="${ requestScope.cp gt 3}">						 			
+									<li><a href="MainPageServlet?cp=${requestScope.cp-2}">${requestScope.cp-2}</a></li>
+									<li ><a href="MainPageServlet?cp=${requestScope.cp-1}">${requestScope.cp-1}</a></li>
+									<li class="active"><a  href="MainPageServlet?cp=${requestScope.cp}">${requestScope.cp}</a></li>
+									<li><a href="MainPageServlet?cp=${requestScope.cp+1}">${requestScope.cp+1}</a></li>
+									<li><a href="MainPageServlet?cp=${requestScope.cp+2}">${requestScope.cp+2}</a></li>
+						 		</c:when>
+						 		
+						 	</c:choose>
 							<li><a href="#">&raquo;</a></li>
 						</ul>
 					</main>

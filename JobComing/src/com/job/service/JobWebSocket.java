@@ -20,7 +20,7 @@ import com.job.util.LocalThread;
  */
 
 
-@ServerEndpoint("/websocket")
+//@ServerEndpoint("/websocket")
 public class JobWebSocket  {
 
 	public static CopyOnWriteArraySet<JobWebSocket> webSocketSet = new CopyOnWriteArraySet<JobWebSocket>();
@@ -54,10 +54,8 @@ public class JobWebSocket  {
 		 } else{
 			 this.session.getAsyncRemote().sendText("000");
 		 }  
-		
-		 
+		System.out.println(webSocketSet.size());		 
 	}
-	
 	/**
 	 * 链接关闭时调用
 	 */
@@ -99,7 +97,5 @@ public class JobWebSocket  {
 		this.userKey = userKey;
 	}
 
-	
-	
-	
+
 }
