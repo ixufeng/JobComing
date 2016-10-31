@@ -2,7 +2,7 @@ function appendMessage(data){
 	
 			
 			var html = '<div class="message">';
-			html += '<img src="img/2_copy.jpg" />';
+			html += '<img src="'+data.userSendImg+'" />';
 			html += '<div class="bubble">';
 			html += data.chatContent;
 			html += '<div class="corner"></div>';
@@ -14,10 +14,10 @@ function appendMessage(data){
 			var sel = "user_"+data.userSendId;
 			
 				var friend = '<div class="friend" id="'+sel+'">';
-				friend+='<img src="img/2_copy.jpg" />';
+				friend+='<img src="'+data.userSendImg+'" />';
 				friend+='<p>';
-				friend+='<strong>Martin Joseph</strong>';
-				friend+='<span>marjoseph@gmail.com</span>';
+				friend+='<strong>'+data.userSendName+'</strong>';
+				friend+='<span>'+data.userSendEmail+'</span>';
 				friend+='</p>';
 				friend+='<div class="status away"></div>';
 				friend+=' </div>';

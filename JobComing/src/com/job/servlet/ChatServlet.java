@@ -35,7 +35,7 @@ public class ChatServlet extends HttpServlet {
 		if("send".equals(action)){
 			
 			String content = request.getParameter("content");
-			System.out.println(content);
+			
 			
 			int receivedUserKey;
 			try{
