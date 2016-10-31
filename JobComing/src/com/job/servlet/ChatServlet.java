@@ -33,8 +33,10 @@ public class ChatServlet extends HttpServlet {
 			return;
 		}
 		if("send".equals(action)){
-			System.out.println("send");
+			
 			String content = request.getParameter("content");
+			System.out.println(content);
+			
 			int receivedUserKey;
 			try{
 				 receivedUserKey = Integer.valueOf(request.getParameter("receivedUserKey"));	
@@ -54,8 +56,11 @@ public class ChatServlet extends HttpServlet {
 		}else if("get".equals(action)){
 			
 			String res = chat.get(u.getUserId());
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/html;charset=utf-8");
 			if(res!=null){
 				response.getWriter().write(res);
+				System.out.println(res);
 			}else{
 				response.getWriter().write("[]");
 			}
