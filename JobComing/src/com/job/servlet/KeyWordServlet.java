@@ -32,7 +32,6 @@ public class KeyWordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<String> keylist=new ArrayList<String>();
-		System.out.println("--------------------");
 		List<JobKind> list= jobService.getJobType();
 		for(int i=0;i<list.size();i++){
 			keylist.add(list.get(i).getJobKindName());

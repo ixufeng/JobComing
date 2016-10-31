@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.job.util.LocalThread;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class HttpSessionFilter implements Filter {
 
 	@Override

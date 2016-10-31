@@ -102,7 +102,7 @@
 									<a>[${jobShow.jobKind.jobKindName}]</a>
 								</td>
 								<td width="60" style="text-align: center">
-									<a data-toggle="modal" data-target="#modifyPublish">[查看]</a>
+									<a data-toggle="modal" data-target="#vs${vs.count}">[查看]</a>
 								</td>
 							</tr>
 							</c:forEach>
@@ -232,7 +232,7 @@
 
 		<!--发布信息查看的模态框-->
 		<c:forEach var="jobShowD" items="${sessionScope.jobShow}" varStatus="vs"> 
-		<div class="modal fade" id="${vs.count}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="vs${vs.count}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">

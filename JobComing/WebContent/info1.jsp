@@ -158,7 +158,7 @@
 								<label class="control-label">头像选择</label>
 								<input id="input-2" name="image" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
 							</div>
-							<div class="form-group" style="margin-bottom: 60px;">
+							<!-- <div class="form-group" style="margin-bottom: 60px;">
 								<div class="radio col-xs-4 col-sm-3">
 									<label>
 										<input type="radio" name="sex" id="male" value="男" checked="checked">
@@ -172,7 +172,7 @@
 									<span><img src="img/female.png" class="img-responsive" style="width: 20px; height:20px;display: inline-block;margin-top: -2px;"></span>
 								</div>
 							</div>
-
+							 -->
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -189,5 +189,4 @@
 		<script src="js/fileinput.js"></script>
 		<script src="js/search.js"></script>
 	</body>
-
 </html>

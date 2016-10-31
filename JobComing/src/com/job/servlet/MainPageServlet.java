@@ -62,7 +62,7 @@ public class MainPageServlet extends HttpServlet {
 		//添加兼职种类
 		request.setAttribute("kindList", jobService.getJobType());
 		if(session.getAttribute("jobList")==null){
-			session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
+			session.setAttribute("jobList", jobService.getJobShow(cp, 8, 320500));
 		}
 		else{
 			if(request.getParameter("mjobKindId")!=null){
@@ -75,8 +75,19 @@ public class MainPageServlet extends HttpServlet {
 				}else{
 					session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, cp, 5, 320500));
 				}
-			}//根据城市名称获得工作集合
-			else if(request.getParameter("mcityName")!=null){
+			}else{
+				if(session.getAttribute("mjobKindId")!=null){
+					int jobKindId=(Integer)session.getAttribute("mjobKindId");
+					if( session.getAttribute("mcityName")!=null){
+						String cityName=(String) session.getAttribute("mcityName");
+						session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, cp, 5, cityName));
+					}else{
+						session.setAttribute("jobList", searchService.getJobByKindId(jobKindId, cp, 5, 320500));
+					}
+				}
+			}
+			//根据城市名称获得工作集合
+			 if(request.getParameter("mcityName")!=null){
 				String cityName=request.getParameter("mcityName");
 				session.setAttribute("mcityName", cityName);
 				if(session.getAttribute("mjobKindId")!=null){
@@ -86,14 +97,23 @@ public class MainPageServlet extends HttpServlet {
 					session.setAttribute("jobList", searchService.getJobByCityName(cp, 5, cityName));
 				}
 			}else{
-				session.setAttribute("jobList", jobService.getJobShow(1, 20, 320500));
-				session.setAttribute("jobList", jobService.getJobShow(cp, 20, 320500));
+				if(session.getAttribute("mcityName")!=null){
+					String cityName=(String) session.getAttribute("mcityName");
+					if(session.getAttribute("mjobKindId")!=null){
+						int jobKindId=(Integer)session.getAttribute("mjobKindId");
+						session.setAttribute("jobList", searchService.getJobByCityName(jobKindId, cp, 5, cityName));
+					}else{
+						session.setAttribute("jobList", searchService.getJobByCityName(cp, 5, cityName));
+					}
+				}
 				
-				List<JobShow> list = (List<JobShow>) session.getAttribute("jobList");
-				System.out.println(list.size());
+			}
+			 
+			 if(session.getAttribute("mcityName")==null&&session.getAttribute("mjobKindId")==null&&request.getParameter("mjobKindId")==null&&request.getParameter("mcityName")==null){
+				session.setAttribute("jobList", jobService.getJobShow(cp, 8, 320500));
 			}
 		}
-		session.setAttribute("hotList", jobService.getTodayWork(320500));
+		session.setAttribute("hotList", jobService.getTodayWork());
 		if((List<JobShow>) session.getAttribute("jList")!=null){
 			List<JobShow>list=(List<JobShow>) session.getAttribute("jList");
 			request.setAttribute("recordList", list);
